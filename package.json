@@ -32,6 +32,7 @@
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.88.2",
     "@react-three/fiber": "^8.14.5",
+    "@react-three/gltfjsx": "^4.3.4",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
