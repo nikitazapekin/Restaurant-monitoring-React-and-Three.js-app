@@ -292,7 +292,10 @@ import { Sky } from "../../models";
 import Restaurant from "../../models/Restaurant";
 
 const RestaurantPreview = () => {
+  const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
+  //------------------------------------------------------------------------
+  //const [isRotating, setIsRotating] = useState(false);
   const [rotationAngle, setRotationAngle] = useState([0, 0, 0]);
   const rotationSpeed = isRotating ? 0.0000000000001 : 0; 
   const adjustBiplaneForScreenSize = () => {
@@ -319,7 +322,7 @@ const RestaurantPreview = () => {
       screenPosition = [0, -6.5, -43.4];
     } else {
      // screenScale = [1, 1, 1];
-     screenScale = [3, 3, 3];
+     screenScale = [1, 1, 1];
       screenPosition = [0, -10, -43.4];
     }
 
@@ -362,8 +365,14 @@ const RestaurantPreview = () => {
 
 
 
-  const [islandScale, islandPosition] = adjustIslandForScreenSize();
-  const [currentStage, setCurrentStage] = useState(10);
+  //const [islandScale, islandPosition] = adjustIslandForScreenSize();
+  //const [currentStage, setCurrentStage] = useState(10);
+
+//---------------------------------------------------------------------------
+
+const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
+const [islandScale, islandPosition] = adjustIslandForScreenSize();
+
   return (
     <>
       <section className="w-full h-screen relative">
@@ -387,9 +396,29 @@ const RestaurantPreview = () => {
             isRotating={rotationSpeed !== 0} rotationSpeed={0.0001} 
             />
             <Restaurant
-              rotation={rotationAngle}
+           /*   rotation={rotationAngle}
               position={islandPosition}
+              scale={islandScale} */
+
+
+              isRotating={isRotating}
+              setIsRotating={setIsRotating}
+              setCurrentStage={setCurrentStage}
+              position={islandPosition}
+
+           // position={[-111, -111, -111]}
+              rotation={[0.1, 4.7077, 0]}
               scale={islandScale}
+
+
+
+
+
+
+
+
+
+ 
             />
           </Suspense>
         </Canvas>
