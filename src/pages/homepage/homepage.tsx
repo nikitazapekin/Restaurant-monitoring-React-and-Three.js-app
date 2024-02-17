@@ -1,6 +1,12 @@
+import NavBar from "../../components/NavBar/NavBar";
+import { Global } from "../../consts/GlobalStyles";
+
 const Homepage = () => {
     return ( 
-        <>HOME</>
+        <>
+       <NavBar />
+       <Global />
+        </>
      );
 }
  
