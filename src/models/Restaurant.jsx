@@ -15,31 +15,20 @@ import { useEffect } from "react";
 import { a } from '@react-spring/three'
 import { Man } from "./Man";
 import Test from "../assets/floor.jpg"
-
+import { Cube } from "./Cube";
 import { useTexture } from "@react-three/drei";
-
- 
 import * as THREE from "three";
-
 import { Canvas, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import { Numbers } from "./Numbers";
 import { Bird } from "./Bird";
-//const Restaurant=(props)=> {
-  //  const Restaurant=(props)=> {
+import { coordinates } from "../consts/numbersOfTable";
     const Restaurant = ( isRotating,
         setIsRotating,
         setCurrentStage,
         currentFocusPoint,
         ...props) => {
-
-        
-       //   const texture = useLoader(TextureLoader, 'https://kartinki.pics/uploads/posts/2022-02/1645708397_1-kartinkin-net-p-krasivie-kartinki-smailiki-1.png');
-
  const { nodes, materials } = useGLTF(restaurantScene);
-
-
-
  const texture = useTexture(Test);
  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -93,18 +82,9 @@ import { Bird } from "./Bird";
     if (isRotating) {
       // If rotation is enabled, calculate the change in clientX position
       const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-
-      // calculate the change in the horizontal position of the mouse cursor or touch input,
-      // relative to the viewport's width
       const delta = (clientX - lastX.current) / viewport.width;
-
-      // Update the island's rotation based on the mouse/touch movement
       islandRef.current.rotation.y += delta * 0.02 * Math.PI;
-
-      // Update the reference for the last clientX position
       lastX.current = clientX;
-
-      // Update the rotation speed
       rotationSpeed.current = delta * 0.01 * Math.PI;
     }
   };
@@ -123,8 +103,6 @@ import { Bird } from "./Bird";
       rotationSpeed.current = -0.007;
     }
   };
-
-  // Handle keyup events
   const handleKeyUp = (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       setIsRotating(false);
@@ -132,7 +110,6 @@ import { Bird } from "./Bird";
   };
 
   useEffect(() => {
-    // Add event listeners for pointer and keyboard events
     const canvas = gl.domElement;
  canvas.addEventListener("pointerdown", handlePointerDown);
   canvas.addEventListener("pointerup", handlePointerUp);
@@ -149,28 +126,19 @@ import { Bird } from "./Bird";
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
-
-  // This function is called on each frame update
   useFrame(() => {
-    // If not rotating, apply damping to slow down the rotation (smoothly)
     if (!isRotating) {
-      // Apply damping factor
       rotationSpeed.current *= dampingFactor;
-
-      // Stop rotation when speed is very small
       if (Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
       }
 
       islandRef.current.rotation.y += rotationSpeed.current;
     } else {
-      // When rotating, determine the current stage based on island's orientation
       const rotation = islandRef.current.rotation.y;
 
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-
-      // Set the current stage based on the island's orientation
       switch (true) {
         case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
           setCurrentStage(4);
@@ -189,26 +157,6 @@ import { Bird } from "./Bird";
       }
     }
   });
-
-
-
-
-
-
-
-
-  function Cube({ texture }) {
-    const textureMap = useLoader(TextureLoader, texture);
-  
-    return (
-      <mesh receiveShadow position={[0, -0.3, 0]} rotation-x={-Math.PI / 2}>
-        <boxGeometry args={[500, 500, 500]} /> {/* Геометрия куба */}
-        <meshStandardMaterial color="gray" map={textureMap} />
-      </mesh>
-    );
-  }
-
-
   return (
 
       <a.group ref={islandRef} {...props} dispose={null}
@@ -220,8 +168,10 @@ import { Bird } from "./Bird";
 
         <Man />
 <Bird />
-<Numbers />
+{coordinates.map((item, index)=> (
+<Cube number={item.number}  x={item.x} y={item.y}  z={item.z} />
 
+))}
         <mesh receiveShadow position={[0, 0, 0]} rotation-x={-Math.PI / 2}>
     <boxGeometry args={[500, 500, 500]} /> {/* Геометрия куба */}
     <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
