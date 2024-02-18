@@ -3,6 +3,12 @@ import User from "../../assets/user.png"
 import Hidden from "../../assets/hidden.png"
 import Visible from "../../assets/visible.png"
 import { useState } from "react";
+import {useMutation, useQuery} from "@apollo/client";
+//import {GET_ALL_USERS, GET_ONE_USER} from "./query/user";
+//import {CREATE_USER} from "./mutations/user";
+import { GET_ALL_USERS, GET_ONE_USER } from "../../query/user";
+import { CREATE_USER } from "../../mutations/user";
+import { useEffect } from "react";
 const AuthForm = () => {
     const [isVisible, setIsVisble] =useState(false)
     const [regState, setRegState ]= useState({
@@ -24,7 +30,45 @@ const AuthForm = () => {
             [name]: value
         }));
     };
-    
+    //=================================================
+
+    const {data, loading, error, refetch} = useQuery(GET_ALL_USERS)
+    const {data:oneUser, loading: loadingOneUser} = useQuery(GET_ONE_USER, {
+        variables: {
+            id: 1
+        }
+    })
+    const [newUser] = useMutation(CREATE_USER)
+    const [users, setUsers] = useState([])
+    const [username, setUsername] = useState('')
+    const [age, setAge] = useState(0)
+
+    console.log(oneUser)
+
+    useEffect(() => {
+        if (!loading) {
+            setUsers(data.getAllUsers)
+        }
+    }, [data])
+
+    const addUser = (e) => {
+        e.preventDefault()
+        newUser({
+            variables: {
+                input: {
+                    username: regState.username, password: regState.password
+                }
+            }
+        }).then(({data}) => {
+            console.log(data)
+            setUsername('')
+            setAge(0)
+        })
+    }
+    const getAll = e => {
+        e.preventDefault()
+        refetch()
+    }
     return (
         <AuthFormWrapper>
             <AuthFormStyled>
@@ -48,6 +92,7 @@ const AuthForm = () => {
                      />
                     </AuthItemContentItem>
                     <AuthItemContentSubmit
+                     onClick={(e) => addUser(e)}
                     type="submit"
                     >Submit</AuthItemContentSubmit>
                 </AuthFormContent>
