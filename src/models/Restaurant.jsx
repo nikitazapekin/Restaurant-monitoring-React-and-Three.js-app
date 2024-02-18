@@ -23,6 +23,8 @@ import * as THREE from "three";
 
 import { Canvas, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
+import { Numbers } from "./Numbers";
+import { Bird } from "./Bird";
 //const Restaurant=(props)=> {
   //  const Restaurant=(props)=> {
     const Restaurant = ( isRotating,
@@ -195,6 +197,17 @@ import { TextureLoader } from 'three';
 
 
 
+  function Cube({ texture }) {
+    const textureMap = useLoader(TextureLoader, texture);
+  
+    return (
+      <mesh receiveShadow position={[0, -0.3, 0]} rotation-x={-Math.PI / 2}>
+        <boxGeometry args={[500, 500, 500]} /> {/* Геометрия куба */}
+        <meshStandardMaterial color="gray" map={textureMap} />
+      </mesh>
+    );
+  }
+
 
   return (
 
@@ -206,8 +219,15 @@ import { TextureLoader } from 'three';
       >
 
         <Man />
-  
- 
+<Bird />
+<Numbers />
+
+        <mesh receiveShadow position={[0, 0, 0]} rotation-x={-Math.PI / 2}>
+    <boxGeometry args={[500, 500, 500]} /> {/* Геометрия куба */}
+    <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
+</mesh>
+
+
             <mesh receiveShadow position={[0, -0.3, 0]} rotation-x={-Math.PI / 2}>
                 <planeGeometry args={[500, 500]} />
                 <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />

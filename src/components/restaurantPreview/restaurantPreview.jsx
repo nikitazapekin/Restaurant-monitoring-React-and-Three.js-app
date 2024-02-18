@@ -291,7 +291,7 @@ import { Suspense } from "react";
 import { Sky } from "../../models";
 import Restaurant from "../../models/Restaurant";
 import { Man } from "../../models/Man";
-
+import { Bird } from "../../models/Bird";
 const RestaurantPreview = () => {
   const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
