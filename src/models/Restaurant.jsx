@@ -13,6 +13,16 @@ import { useThree } from "@react-three/fiber";
 import restaurantScene from "../assets/3d/restaurant.glb"
 import { useEffect } from "react";
 import { a } from '@react-spring/three'
+import { Man } from "./Man";
+import Test from "../assets/floor.jpg"
+
+import { useTexture } from "@react-three/drei";
+
+ 
+import * as THREE from "three";
+
+import { Canvas, useLoader } from '@react-three/fiber';
+import { TextureLoader } from 'three';
 //const Restaurant=(props)=> {
   //  const Restaurant=(props)=> {
     const Restaurant = ( isRotating,
@@ -22,9 +32,14 @@ import { a } from '@react-spring/three'
         ...props) => {
 
         
-    const restaurantRef = useRef()
- // const { nodes, materials } = useGLTF("/restaurant.glb");
+       //   const texture = useLoader(TextureLoader, 'https://kartinki.pics/uploads/posts/2022-02/1645708397_1-kartinkin-net-p-krasivie-kartinki-smailiki-1.png');
+
  const { nodes, materials } = useGLTF(restaurantScene);
+
+
+
+ const texture = useTexture(Test);
+ texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
 
 
@@ -168,8 +183,7 @@ import { a } from '@react-spring/three'
           setCurrentStage(1);
           break;
         default:
-        //  setCurrentStage(null);
-      //  setCurrentStage(0);
+
       }
     }
   });
@@ -186,22 +200,25 @@ import { a } from '@react-spring/three'
 
       <a.group ref={islandRef} {...props} dispose={null}
       scale={[1, 1, 1]}
-      position={[1, -2,1]}
-     // position={[12.588, -6.204, 9.627]}
-    //  rotation={[360, 360, 360]} 
+      position={[3, -3,1]}
+   
     
       >
+
+        <Man />
+  
+ 
+            <mesh receiveShadow position={[0, -0.3, 0]} rotation-x={-Math.PI / 2}>
+                <planeGeometry args={[500, 500]} />
+                <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
+            </mesh>
+          
     <group
     >
-
-
- 
-
- 
       <group
      
      position={[12.588, 1.204, 9.627]}
-    //rotation={[Math.PI / 2, Math.PI / 2, Math.PI / 2]} 
+ 
       scale={[1, 1, 1.36]}
       >
         <mesh
@@ -401,7 +418,7 @@ import { a } from '@react-spring/three'
             rotation={[Math.PI / 2, Math.PI / 2, 0]}
           />
         </group>
-        <group position={[0, 0, -0.199]}>
+       <group position={[0, 0, -0.199]}>
           <mesh
             castShadow
             receiveShadow
@@ -483,6 +500,7 @@ import { a } from '@react-spring/three'
             rotation={[Math.PI / 2, Math.PI / 2, 0]}
           />
         </group>
+      
         <group position={[0.689, -0.889, 0]}>
           <mesh
             castShadow

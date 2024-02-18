@@ -290,6 +290,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Sky } from "../../models";
 import Restaurant from "../../models/Restaurant";
+import { Man } from "../../models/Man";
 
 const RestaurantPreview = () => {
   const [currentStage, setCurrentStage] = useState(1);
@@ -317,11 +318,9 @@ const RestaurantPreview = () => {
     let screenScale, screenPosition;
 
     if (window.innerWidth < 768) {
-    //  screenScale = [0.9, 0.9, 0.9];
     screenScale = [2, 2, 2];
       screenPosition = [0, -6.5, -43.4];
     } else {
-     // screenScale = [1, 1, 1];
      screenScale = [1, 1, 1];
       screenPosition = [0, -10, -43.4];
     }
@@ -350,29 +349,16 @@ const RestaurantPreview = () => {
       ]);
     }
   };
-
-
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
-
     return () => {
      document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
- // })
   }, [isRotating]); 
-
-
-
-  //const [islandScale, islandPosition] = adjustIslandForScreenSize();
-  //const [currentStage, setCurrentStage] = useState(10);
-
-//---------------------------------------------------------------------------
-
 const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
 const [islandScale, islandPosition] = adjustIslandForScreenSize();
-
   return (
     <>
       <section className="w-full h-screen relative">
@@ -395,31 +381,16 @@ const [islandScale, islandPosition] = adjustIslandForScreenSize();
             <Sky
             isRotating={rotationSpeed !== 0} rotationSpeed={0.0001} 
             />
+            
             <Restaurant
-           /*   rotation={rotationAngle}
-              position={islandPosition}
-              scale={islandScale} */
-
-
               isRotating={isRotating}
               setIsRotating={setIsRotating}
               setCurrentStage={setCurrentStage}
               position={islandPosition}
-
-           // position={[-111, -111, -111]}
               rotation={[0.1, 4.7077, 0]}
               scale={islandScale}
 
-
-
-
-
-
-
-
-
- 
-            />
+  /> 
           </Suspense>
         </Canvas>
         <button onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>

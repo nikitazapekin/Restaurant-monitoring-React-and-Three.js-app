@@ -44,3 +44,7 @@ export default App;
 
 
 //npx gltfjsx scene.gltf
+
+
+
+//https://sketchfab.com/3d-models/free-018-kana-sitting-993eaa99578640e98dce99e40c8b5b5c
