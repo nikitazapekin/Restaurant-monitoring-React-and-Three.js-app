@@ -46,8 +46,6 @@ import * as THREE from "three";
 
 export function Cube({number, x,y,z}) {
   const cubeRef = useRef();
-
-  // Создание текстуры с цифрой 1 в центре
   const createTexture = (text) => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");

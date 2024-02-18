@@ -28,26 +28,24 @@ export const NavBarLogo = styled.div`
     position: relative;
     width: 60px;
     height: 60px;
-  //  border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 123;
+    border-radius: 10px;
 
 `
-
 export const NavBarLogoImage = styled.img`
 width: 100%;
 height: 100%;
+border-radius: 10px;
 `
-
-
 export const NavBarBtns  = styled.div`
     display: flex;
     position: relative;
     justify-content: flex-end;
-//justify-content: center;
+ 
 gap: 30px;
 
 
@@ -60,3 +58,4 @@ export const NavBarBtn = styled.div`
     z-index: 123;
     cursor: pointer;
 ` 
+ 

@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer/footer";
 import NavBar from "../../components/NavBar/NavBar";
 import RestaurantPreview from "../../components/restaurantPreview/restaurantPreview";
 import { Global } from "../../consts/GlobalStyles";
@@ -8,6 +9,7 @@ const RestaurantPage = () => {
         <NavBar />
         <Global />
         <RestaurantPreview />
+        <Footer  />
         </>
       );
 }

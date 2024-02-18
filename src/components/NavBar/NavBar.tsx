@@ -11,13 +11,11 @@ const NavBar = () => {
                 <NavBarBtns>
                 <Link to={`/about`}><NavBarBtn>About</NavBarBtn></Link>
                 <Link to={`/restaurant`}>  <NavBarBtn>Our restaurant</NavBarBtn></Link>
-                <Link to={`/sign_in`}>   <NavBarBtn>Sign in</NavBarBtn> </Link>
-                <Link to={`/sign_up`}>   <NavBarBtn>Sign up</NavBarBtn></Link>
+                <Link to={`/sign_in`}>   <NavBarBtn>Account</NavBarBtn> </Link>
                 </NavBarBtns>
             </NavBarContentArea>
             <NavBarBackground />
         </NavBarComponent>
     );
 }
-
 export default NavBar;

@@ -23,6 +23,7 @@ import { TextureLoader } from 'three';
 import { Numbers } from "./Numbers";
 import { Bird } from "./Bird";
 import { coordinates } from "../consts/numbersOfTable";
+import { SittingMan } from "./SittingMan";
     const Restaurant = ( isRotating,
         setIsRotating,
         setCurrentStage,
@@ -158,26 +159,20 @@ import { coordinates } from "../consts/numbersOfTable";
     }
   });
   return (
-
       <a.group ref={islandRef} {...props} dispose={null}
       scale={[1, 1, 1]}
       position={[3, -3,1]}
-   
-    
       >
-
         <Man />
+        <SittingMan />
 <Bird />
 {coordinates.map((item, index)=> (
 <Cube number={item.number}  x={item.x} y={item.y}  z={item.z} />
-
 ))}
         <mesh receiveShadow position={[0, 0, 0]} rotation-x={-Math.PI / 2}>
     <boxGeometry args={[500, 500, 500]} /> {/* Геометрия куба */}
     <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
 </mesh>
-
-
             <mesh receiveShadow position={[0, -0.3, 0]} rotation-x={-Math.PI / 2}>
                 <planeGeometry args={[500, 500]} />
                 <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />

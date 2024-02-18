@@ -393,9 +393,9 @@ const [islandScale, islandPosition] = adjustIslandForScreenSize();
   /> 
           </Suspense>
         </Canvas>
-        <button onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+     {/*   <button onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
           {isRotating ? "Stop Rotation" : "Start Rotation"}
-        </button>
+  </button> */}
       </section>
     </>
   );
