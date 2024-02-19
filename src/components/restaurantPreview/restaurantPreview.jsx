@@ -292,11 +292,11 @@ import { Sky } from "../../models";
 import Restaurant from "../../models/Restaurant";
 import { Man } from "../../models/Man";
 import { Bird } from "../../models/Bird";
-const RestaurantPreview = () => {
+import { memo } from "react";
+const RestaurantPreview = memo(() => {
   const [currentStage, setCurrentStage] = useState(1);
   const [isRotating, setIsRotating] = useState(false);
-  //------------------------------------------------------------------------
-  //const [isRotating, setIsRotating] = useState(false);
+ 
   const [rotationAngle, setRotationAngle] = useState([0, 0, 0]);
   const rotationSpeed = isRotating ? 0.0000000000001 : 0; 
   const adjustBiplaneForScreenSize = () => {
@@ -399,7 +399,7 @@ const [islandScale, islandPosition] = adjustIslandForScreenSize();
       </section>
     </>
   );
-};
+});
 
 export default RestaurantPreview;
 

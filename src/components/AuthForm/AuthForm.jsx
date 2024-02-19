@@ -4,13 +4,14 @@ import Hidden from "../../assets/hidden.png"
 import Visible from "../../assets/visible.png"
 import { useState } from "react";
 import {useMutation, useQuery} from "@apollo/client";
-//import {GET_ALL_USERS, GET_ONE_USER} from "./query/user";
-//import {CREATE_USER} from "./mutations/user";
 import { GET_ALL_USERS, GET_ONE_USER } from "../../query/user";
 import { CREATE_USER } from "../../mutations/user";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 const AuthForm = () => {
     const [isVisible, setIsVisble] =useState(false)
+    const navigate = useNavigate()
     const [regState, setRegState ]= useState({
         username: "",
         password: ""
@@ -22,7 +23,7 @@ const AuthForm = () => {
        const {name, value} = event.target
     } */
     const handleChange = (event) => {
-        console.log(123)
+       
         const { name, value } = event.target;
         console.log(value)
         setRegState(prevState => ({
@@ -43,7 +44,7 @@ const AuthForm = () => {
     const [username, setUsername] = useState('')
     const [age, setAge] = useState(0)
 
-    console.log(oneUser)
+    console.log("ONE USER"+JSON.stringify(oneUser))
 
     useEffect(() => {
         if (!loading) {
@@ -69,8 +70,16 @@ const AuthForm = () => {
         e.preventDefault()
         refetch()
     }
+    const handleNavigate = (event) => {
+        addUser(event)
+        navigate("/personal")
+    }
+    if(loading) {
+        return <Spinner />
+    }
     return (
         <AuthFormWrapper>
+         {/*   <Spinner /> */}
             <AuthFormStyled>
                 <AuthTitle>Auth form</AuthTitle>
                 <AuthFormContent>
@@ -92,9 +101,12 @@ const AuthForm = () => {
                      />
                     </AuthItemContentItem>
                     <AuthItemContentSubmit
-                     onClick={(e) => addUser(e)}
+                    onClick={(event)=> handleNavigate(event)}
+                     //onClick={(e) => addUser(e)}
                     type="submit"
-                    >Submit</AuthItemContentSubmit>
+                    >Submit 
+                  
+                    </AuthItemContentSubmit>
                 </AuthFormContent>
                 <AuthFormBackgroundStyled />
             </AuthFormStyled>

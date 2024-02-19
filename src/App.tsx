@@ -3,6 +3,7 @@ import Homepage from "./pages/homepage/homepage";
 import AboutPage from "./pages/aboutPage/aboutPage";
 import RestaurantPage from "./pages/restaurantPage/restaurantPage";
 import SignInPage from "./pages/signInPage/signInPage";
+import PersonalPage from "./pages/personalPage/personalPage";
  
 //import { Footer, Navbar } from "./components";
 //import { About, Contact, Home, Projects } from "./pages";
@@ -24,6 +25,7 @@ const App = () => {
                   <Route path='/about' element={<AboutPage />} />
                   <Route path='/restaurant' element={<RestaurantPage />} />
                   <Route path='/sign_in' element={<SignInPage />} />
+                  <Route path='/personal' element={<PersonalPage />} />
                 </Routes>
          
               </>
