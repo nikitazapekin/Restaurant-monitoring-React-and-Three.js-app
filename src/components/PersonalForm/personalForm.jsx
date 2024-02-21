@@ -20,6 +20,12 @@ const {id} =useParams()
     })
     const arr = ["Table", "Table", "Table", "Table", "Table", "Table", "Table", "Table"]
     const [isOpen, setIsOpen] = useState(false)
+const [clickedElement, setClickedElement] = useState(1)
+
+    const handleClick = (id) => {
+        setIsOpen(true)
+setClickedElement(id)
+    }
     return (
         <PersonalFormWrapper>
           {/*    {loading && <Spinner />} */}
@@ -30,7 +36,7 @@ const {id} =useParams()
                     <GridWrapper>
                         <GridTable>
                             {arr.map((item, index) => (
-                                <GridTableElement onClick={() => setIsOpen(true)}>
+                                <GridTableElement onClick={() => handleClick(index+1)}>
                                     <GridTableElementTitle>
                                         {item} {index + 1}
                                     </GridTableElementTitle>
@@ -46,8 +52,9 @@ const {id} =useParams()
                 <PersonalFormBackgroundStyled />
             </PersonalFormStyled>
             <ModalWindow open={isOpen}
+            clickedElement={clickedElement}
                 onClose={() => setIsOpen(false)}>
-                Contragulation! You have successfully changed your personal data!
+             
             </ModalWindow>
         </PersonalFormWrapper>
     );

@@ -159,3 +159,42 @@ color: red;
 font-size: 30px;
 text-align: center;
 `
+export const BookedTime = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  position: relative;
+  gap: 5px;
+  margin-bottom: 20px;
+`
+export const BookedTimeItem =styled.div`
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 20px;
+`
+export const BookingTimeItemBackground = styled.div`
+    border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(173, 173, 173);
+  opacity: 0.2;
+`
+export const BookingTimeItemContent = styled.div`
+width: 100%;
+position: relative;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+`
+export const BookingTimeItemContentText = styled.p`
+  font-size: 35px;
+  color: gray;
+  
+`
