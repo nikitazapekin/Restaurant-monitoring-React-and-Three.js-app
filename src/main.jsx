@@ -3,17 +3,50 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 //import './index.css'
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
-
+import { gql, useSubscription } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
+/*
 const client = new ApolloClient({
     uri: 'http://localhost:5000/graphql',
     cache: new InMemoryCache()
-})
+}) */
+const wsLink = new WebSocketLink({
+  uri: `ws://localhost:5000/graphql`,
+  options: {
+    reconnect: true,
+  },
+});
+
+const client = new ApolloClient({
+  link: wsLink,
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider >,
 )
+
+//yarn add subscriptions-transport-ws @apollo/client
+//yarn add subscriptions-transport-ws @apollo/client
+/*
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+//import './index.css'
+//import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import apolloClient from "./apolloSetup.js"
+ import {ApolloProvider} from "@apollo/react-hooks"
+import Homepage from './pages/homepage/homepage.jsx'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <ApolloProvider client={apolloClient}>
+ 
+  <Homepage />
+  </ApolloProvider >,
+)*/
+
 //yarn add subscriptions-transport-ws @apollo/client
  
 
