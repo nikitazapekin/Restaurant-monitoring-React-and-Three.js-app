@@ -13,8 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { memo } from "react";
 const PersonalForm = memo(() => {
 const {id} =useParams()
-    const { data, loading, error, refetch } = useQuery(GET_ALL_USERS)
-    const { data: oneUser, loading: loadingOneUser } = useQuery(GET_ONE_USER, {
+        const { data: oneUser } = useQuery(GET_ONE_USER, {
         variables: {
           id: Number(id)
         }
@@ -23,7 +22,7 @@ const {id} =useParams()
     const [isOpen, setIsOpen] = useState(false)
     return (
         <PersonalFormWrapper>
-              {loading && <Spinner />}
+          {/*    {loading && <Spinner />} */}
             <PersonalFormStyled>
                 <PersonalTitle>Hello {oneUser!=undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
                 <PersonalTables>Our tables for booking:</PersonalTables>

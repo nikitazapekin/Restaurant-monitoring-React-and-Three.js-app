@@ -1,15 +1,15 @@
-import React from 'react'
+/*import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 //import './index.css'
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 import { gql, useSubscription } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
-/*
-const client = new ApolloClient({
-    uri: 'http://localhost:5000/graphql',
-    cache: new InMemoryCache()
-}) */
+
+//const client = new ApolloClient({
+ //   uri: 'http://localhost:5000/graphql',
+ //   cache: new InMemoryCache()
+//}) 
 const wsLink = new WebSocketLink({
   uri: `ws://localhost:5000/graphql`,
   options: {
@@ -27,49 +27,23 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </ApolloProvider >,
 )
-
-//yarn add subscriptions-transport-ws @apollo/client
-//yarn add subscriptions-transport-ws @apollo/client
-/*
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-//import './index.css'
-//import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
-import apolloClient from "./apolloSetup.js"
- import {ApolloProvider} from "@apollo/react-hooks"
-import Homepage from './pages/homepage/homepage.jsx'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <ApolloProvider client={apolloClient}>
- 
-  <Homepage />
-  </ApolloProvider >,
-)*/
-
-//yarn add subscriptions-transport-ws @apollo/client
- 
+*/
 
 
-
-
-
-/*
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink, split } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache, HttpLink, split } from '@apollo/client';
+import { gql, useSubscription } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { setContext } from '@apollo/client/link/context';
-import { onError } from '@apollo/client/link/error';
 
-// Создание HTTP ссылки
-const httpLink = createHttpLink({
+// HTTP Link
+const httpLink = new HttpLink({
   uri: 'http://localhost:5000/graphql',
 });
 
-// Создание WebSocket ссылки
+// WebSocket Link
 const wsLink = new WebSocketLink({
   uri: `ws://localhost:5000/graphql`,
   options: {
@@ -77,7 +51,7 @@ const wsLink = new WebSocketLink({
   },
 });
 
-// Разделение ссылок для HTTP и WebSocket
+// Split Link
 const splitLink = split(
   ({ query }) => {
     const definition = getMainDefinition(query);
@@ -90,45 +64,15 @@ const splitLink = split(
   httpLink,
 );
 
-// Middleware для добавления заголовков в запросы
-const authLink = setContext((_, { headers }) => {
-  // Получение токена авторизации из localStorage или любого другого места
-  const token = localStorage.getItem('token');
-  // Возврат объекта с заголовками
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-// Обработка ошибок
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    graphQLErrors.forEach(({ message, locations, path }) => {
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-      );
-    });
-  }
-  if (networkError) console.log(`[Network error]: ${networkError}`);
-});
-
-// Соединение всех ссылок в цепочку
-const link = authLink.concat(errorLink).concat(splitLink);
-
-// Создание клиента Apollo
+// Apollo Client
 const client = new ApolloClient({
-  link,
+  link: splitLink,
   cache: new InMemoryCache(),
 });
 
-// Рендеринг приложения
-ReactDOM.render(
+// Render
+ReactDOM.createRoot(document.getElementById('root')).render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById('root')
 );
-*/

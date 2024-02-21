@@ -19,9 +19,6 @@ const AuthForm = () => {
     const handleVisible =() => {
         setIsVisble(prev=>!prev)
     }
-   /* const handleChange = (event) => {
-       const {name, value} = event.target
-    } */
     const handleChange = (event) => {
        
         const { name, value } = event.target;
@@ -33,11 +30,11 @@ const AuthForm = () => {
     };
     //=================================================
 
-    const {data, loading, error, refetch} = useQuery(GET_ALL_USERS)
-    const {data:oneUser, loading: loadingOneUser} = useQuery(GET_ONE_USER, {
+ //   const {data, loading, error, refetch} = useQuery(GET_ALL_USERS)
+    //const {data:oneUser, loading: loadingOneUser} = useQuery(GET_ONE_USER, {
+        const {data:oneUser} = useQuery(GET_ONE_USER, {
         variables: {
            id: 1
-
         }
     })
     const [newUser] = useMutation(CREATE_USER)
@@ -47,11 +44,11 @@ const AuthForm = () => {
 
     console.log("ONE USER"+JSON.stringify(oneUser))
 
-    useEffect(() => {
+  /*  useEffect(() => {
         if (!loading) {
-            setUsers(data.getAllUsers)
+          //  setUsers(data.getAllUsers)
         }
-    }, [data])
+    }, [data]) */
 
     const addUser = (e) => {
         e.preventDefault()
@@ -76,9 +73,9 @@ const AuthForm = () => {
         addUser(event)
       //  navigate("/personal")
     }
-    if(loading) {
+ /*   if(loading) {
         return <Spinner />
-    }
+    } */
     return (
         <AuthFormWrapper>
          {/*   <Spinner /> */}

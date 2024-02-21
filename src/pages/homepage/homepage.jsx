@@ -205,7 +205,7 @@ export default GetCurrentNumberComponent;
 
 */
 
-
+/*
 import React, { useEffect } from 'react';
 import { useSubscription, gql, useQuery } from '@apollo/client';
 const INCREMENTING_NUMBER_SUBSCRIPTION = gql`
@@ -225,14 +225,13 @@ const Homepage = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+ 
 
-const handleClick = () => {
-    refetch();
-    console.log("DATA!" +JSON.stringify(data1))
-
+  const handleClick = async () => {
+    await refetch();
+    console.log("DATA!" + JSON.stringify(data1));
   };
-  /*useEffect(()=> {
-  }, [data1]) */
+ 
   return (
 <>
 <button onClick={handleClick}>Get Current Number</button>
@@ -247,4 +246,83 @@ const handleClick = () => {
 </>
   ) 
 }
-export default Homepage
+export default Homepage */
+
+/*
+import React, { useEffect } from 'react';
+import { useSubscription, gql, useQuery } from '@apollo/client';
+
+const INCREMENTING_NUMBER_SUBSCRIPTION = gql`
+  subscription IncrementingNumber {
+    currentNumber
+  }
+`;
+
+const GET_CURRENT_NUMBER = gql`
+  query GetCurrentNumber {
+    currentNumber
+  }
+`;
+
+const Homepage = () => {
+  const { data, loading, error } = useSubscription(INCREMENTING_NUMBER_SUBSCRIPTION);
+  const { loading: loading1, error: error1, data: data1, refetch } = useQuery(GET_CURRENT_NUMBER);
+
+  const handleClick = () => {
+    refetch();
+  };
+
+  useEffect(() => {
+    console.log("DATA!", data1);
+  }, [data1]);
+
+  if (loading || loading1) return <p>Loading...</p>;
+  if (error || error1) return <p>Error: {error ? error.message : error1.message}</p>;
+
+  return (
+    <>
+      <button onClick={handleClick}>Get Current Number</button>
+      <p>Current Number: {data.currentNumber}</p>
+
+      {data1 && data1.currentNumber !== null && (
+        <p>Current Number (from subscription): {data1.currentNumber}</p>
+      )}
+    </>
+  );
+};
+
+export default Homepage;
+ */
+
+
+
+import Footer from "../../components/Footer/footer";
+import NavBar from "../../components/NavBar/NavBar";
+import WelcomeForm from "../../components/WelcomeForm/WelcomeForm";
+import { Global } from "../../consts/GlobalStyles";
+import { Layout } from "../pages.styles";
+import { gql, useSubscription } from '@apollo/client';
+const USER_CREATED_SUBSCRIPTION = gql`
+subscription {
+userCreated {
+  id
+  username
+}
+}
+`;
+const Homepage = () => {
+   
+    return ( 
+        <>
+       <NavBar />
+       <Layout>
+       <Global />
+       <WelcomeForm />
+       <Footer />
+    </Layout> 
+
+</>
+     );
+}
+ 
+export default Homepage;
