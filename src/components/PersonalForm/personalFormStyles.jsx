@@ -32,10 +32,17 @@ export const PersonalFormWrapper = styled.div`
 export const PersonalTitle = styled.p`
     font-family: 'Times New Roman', Times, serif;
     font-size: 700;
-    font-size: 32px;
     position: relative;
     z-index: 123;
   font-size: 48px;
+`
+export const PersonalTables = styled.p`
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 700;
+    font-size: 32px;
+    position: relative;
+    z-index: 123;
+  font-size: 32px;
 `
 export const PersonalFormContent = styled.form`
     position: relative;
@@ -129,6 +136,10 @@ export const GridTableElement = styled.div`
     cursor: pointer;
 display: flex;
 flex-direction: column;
+
+&:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
 
 `
 export const GridTableElementBackground = styled.div`

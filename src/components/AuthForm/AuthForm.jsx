@@ -36,7 +36,8 @@ const AuthForm = () => {
     const {data, loading, error, refetch} = useQuery(GET_ALL_USERS)
     const {data:oneUser, loading: loadingOneUser} = useQuery(GET_ONE_USER, {
         variables: {
-            id: 1
+           id: 1
+
         }
     })
     const [newUser] = useMutation(CREATE_USER)
@@ -62,6 +63,7 @@ const AuthForm = () => {
             }
         }).then(({data}) => {
             console.log(data)
+            navigate(`/personal/${data.createUser.id}`)
             setUsername('')
             setAge(0)
         })
@@ -72,7 +74,7 @@ const AuthForm = () => {
     }
     const handleNavigate = (event) => {
         addUser(event)
-        navigate("/personal")
+      //  navigate("/personal")
     }
     if(loading) {
         return <Spinner />
