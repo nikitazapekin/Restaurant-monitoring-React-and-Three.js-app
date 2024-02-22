@@ -4,11 +4,27 @@ import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_TABLE_INFO } from '../../query/table';
 import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText } from './ModalStyles';
 import Calendar from '../calendar/calendar';
-export default function ModalWindow({  open, onClose, clickedElement }) {
+export default function ModalWindow({ open, onClose, clickedElement }) {
   if (!open) return null;
   const portalElement = document.getElementById('portal')
+
+
+  const { data: oneUser } = useQuery(GET_TABLE_INFO, {
+    variables: {
+      id: Number(1)
+    }
+  })
+  console.log("DTA" + JSON.stringify(oneUser))
+  try {
+
+    console.log("TIME" + JSON.stringify(oneUser.getTableInfo.timeForBooking))
+  } catch (e) {
+    console.log(e)
+  }
   const [isError, setIsError] = useState(false)
   const today = new Date();
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -33,8 +49,8 @@ export default function ModalWindow({  open, onClose, clickedElement }) {
       onClose()
     }
   }
-  useEffect(()=> {
-console.log(JSON.stringify(time))
+  useEffect(() => {
+    console.log(JSON.stringify(time))
   }, [time])
   return ReactDom.createPortal(
     <>
@@ -68,35 +84,28 @@ console.log(JSON.stringify(time))
           {isError && (
             <ErrorTime>Entered data is incorrect</ErrorTime>
           )}
-  <SelectDataTitle>
-  Reserved seats for current day
+          <SelectDataTitle>
+            Reserved seats for current day
           </SelectDataTitle>
-<BookedTime>
-  <BookedTimeItem>
-    <BookingTimeItemContent>
-<BookingTimeItemContentText>
- 12:00-14:00
-</BookingTimeItemContentText>
-<BookingTimeItemContentText>
-   4/4
-</BookingTimeItemContentText>
-    </BookingTimeItemContent>
-    <BookingTimeItemBackground />
-  </BookedTimeItem>
-  
-  <BookedTimeItem>
-    <BookingTimeItemContent>
-<BookingTimeItemContentText>
-
-15:00-19:00
-</BookingTimeItemContentText>
-<BookingTimeItemContentText>
-3/4
-</BookingTimeItemContentText>
-    </BookingTimeItemContent>
-    <BookingTimeItemBackground />
-  </BookedTimeItem>
-</BookedTime>
+          <BookedTime>
+            {oneUser && oneUser.getTableInfo != undefined && (
+              <>
+                {oneUser.getTableInfo.timeForBooking.map((item => (
+                  <BookedTimeItem>
+                    <BookingTimeItemContent>
+                      <BookingTimeItemContentText>
+                        {item.from}
+                      </BookingTimeItemContentText>
+                      <BookingTimeItemContentText>
+                        {item.to}
+                      </BookingTimeItemContentText>
+                    </BookingTimeItemContent>
+                    <BookingTimeItemBackground />
+                  </BookedTimeItem>
+                )))}
+              </>
+            )}
+          </BookedTime>
           <ModalButton
             onClick={handleBook}
           >
