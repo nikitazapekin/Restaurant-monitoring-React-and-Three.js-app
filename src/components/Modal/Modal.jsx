@@ -1,57 +1,14 @@
 
-
-import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
-import { useRef, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from "@apollo/client";
-import { GET_TABLE_INFO } from '../../query/table';
+import GetTableInfo from '../../hooks/getTableInfo';
 import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText } from './ModalStyles';
 import Calendar from '../calendar/calendar';
+import useCalendar from '../../hooks/useCalendar';
 export default function ModalWindow({ open, onClose, clickedElement }) {
   if (!open) return null;
   const portalElement = document.getElementById('portal')
-
-
-  const { data: oneUser } = useQuery(GET_TABLE_INFO, {
-    variables: {
-      id: Number(1)
-    }
-  })
-  console.log("DTA" + JSON.stringify(oneUser))
-  try {
-
-    console.log("TIME" + JSON.stringify(oneUser.getTableInfo.timeForBooking))
-  } catch (e) {
-    console.log(e)
-  }
-  const [isError, setIsError] = useState(false)
-  const today = new Date();
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  const currentDate = today.toLocaleDateString('en-US', options);
-  const [time, setTime] = useState({
-    from: "",
-    to: ""
-  })
-  const handleTime = (event) => {
-    setTime(prev => ({
-      ...prev,
-      [event.target.name]: event.target.value
-    }));
-  }
-  const hasEnglishLetters = (str) => {
-    return /[a-zA-Zа-яА-Я]/.test(str);
-  }
-  const handleBook = () => {
-    if (hasEnglishLetters(time.from) || hasEnglishLetters(time.to)) {
-      setIsError(true)
-    } else {
-      onClose()
-    }
-  }
-  useEffect(() => {
-    console.log(JSON.stringify(time))
-  }, [time])
+  const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
+  const {handleBook, handleTime, oneUser, isError, currentDate, errorMessage} = GetTableInfo({clickedElement, onClose, month, year, clickedDay})
   return ReactDom.createPortal(
     <>
       <Modal>
@@ -67,7 +24,7 @@ export default function ModalWindow({ open, onClose, clickedElement }) {
           <SelectDataTitle>
             Select data for booking
           </SelectDataTitle>
-          <Calendar />
+          <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
           <SelectDataTitle>
             Select time booking
           </SelectDataTitle>
@@ -80,12 +37,18 @@ export default function ModalWindow({ open, onClose, clickedElement }) {
               <SelectingBookingTimeBlockFromTitle> To</SelectingBookingTimeBlockFromTitle>
               <SelectingBookingTime onChange={(event) => handleTime(event)} name="to" placeholder='To 00:00' />
             </SelectBookingTimeBlockFrom>
+            <SelectBookingTimeBlockFrom>
+              <SelectingBookingTimeBlockFromTitle> Chairs</SelectingBookingTimeBlockFromTitle>
+              <SelectingBookingTime onChange={(event) => handleTime(event)} name="chairs" placeholder='0' />
+            </SelectBookingTimeBlockFrom>
           </SelectBookingTimeBlock>
-          {isError && (
-            <ErrorTime>Entered data is incorrect</ErrorTime>
-          )}
+     {errorMessage && (
+      <ErrorTime>
+        {errorMessage}
+      </ErrorTime>
+     )}
           <SelectDataTitle>
-            Reserved seats for current day
+            Reserved seats for {clickedDay}-{month}-{year}
           </SelectDataTitle>
           <BookedTime>
             {oneUser && oneUser.getTableInfo != undefined && (
@@ -94,10 +57,10 @@ export default function ModalWindow({ open, onClose, clickedElement }) {
                   <BookedTimeItem>
                     <BookingTimeItemContent>
                       <BookingTimeItemContentText>
-                        {item.from}
+                        {item.from}-{item.to}
                       </BookingTimeItemContentText>
                       <BookingTimeItemContentText>
-                        {item.to}
+                  {item.amountOfChairs}/{oneUser.getTableInfo.amountOfChairs} chairs 
                       </BookingTimeItemContentText>
                     </BookingTimeItemContent>
                     <BookingTimeItemBackground />
@@ -117,4 +80,4 @@ export default function ModalWindow({ open, onClose, clickedElement }) {
     </>,
     portalElement || document.body
   );
-}
+} 

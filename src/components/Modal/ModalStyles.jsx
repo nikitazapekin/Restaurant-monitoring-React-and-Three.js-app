@@ -131,7 +131,10 @@ export const SelectBookingTimeBlock = styled.div`
   height: auto;
   display: flex;
   justify-content: space-between;
- margin-bottom: 20px;
+  margin-bottom: 20px;
+  @media screen and (max-width: 700px) {
+    flex-wrap: wrap;
+  }
 `
 export const SelectBookingTimeBlockFrom = styled.div`
   width: 50%;

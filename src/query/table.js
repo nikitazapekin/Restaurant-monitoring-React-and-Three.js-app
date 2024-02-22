@@ -8,6 +8,8 @@ import {gql} from '@apollo/client'
       amountOfChairs
       timeForBooking {
       tableID
+      dataOfBooking
+      amountOfChairs
       from
       to
       }

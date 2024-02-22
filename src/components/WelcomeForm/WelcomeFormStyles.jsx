@@ -47,7 +47,6 @@ export const WelcomeTables = styled.p`
     z-index: 123;
   font-size: 32px;
 `
-
 export const WelcomeFormContent = styled.form`
 position: relative;
     width: 100%;
@@ -58,7 +57,7 @@ position: relative;
     align-items: center;
     border-radius: 20px;
    // flex-direction: column;
-    gap: 40px;
+  //  gap: 40px;
 `
 
 
@@ -75,7 +74,7 @@ height: auto;
     
     `
     export const WelcomeMessage =styled.div`
-    width:60%;
+    width:100%;
     display: flex;
     align-items: center;
     justify-content: center;

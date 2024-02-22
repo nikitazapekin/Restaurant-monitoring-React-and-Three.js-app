@@ -9,13 +9,14 @@ import { CREATE_USER } from "../../mutations/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
+import isAuthHook from "../../hooks/isAuthHook";
 const AuthForm = () => {
     const [isVisible, setIsVisble] =useState(false)
     const navigate = useNavigate()
     const [regState, setRegState ]= useState({
         username: "",
         password: ""
-    })
+    }) 
     const handleVisible =() => {
         setIsVisble(prev=>!prev)
     }
@@ -28,28 +29,16 @@ const AuthForm = () => {
             [name]: value
         }));
     };
-    //=================================================
-
- //   const {data, loading, error, refetch} = useQuery(GET_ALL_USERS)
-    //const {data:oneUser, loading: loadingOneUser} = useQuery(GET_ONE_USER, {
-        const {data:oneUser} = useQuery(GET_ONE_USER, {
+       const {data:oneUser} = useQuery(GET_ONE_USER, {
         variables: {
            id: 1
         }
-    })
+    }) 
     const [newUser] = useMutation(CREATE_USER)
     const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
     const [age, setAge] = useState(0)
-
-    console.log("ONE USER"+JSON.stringify(oneUser))
-
-  /*  useEffect(() => {
-        if (!loading) {
-          //  setUsers(data.getAllUsers)
-        }
-    }, [data]) */
-
+    console.log("ONE USER"+JSON.stringify(oneUser)) 
     const addUser = (e) => {
         e.preventDefault()
         newUser({
@@ -64,18 +53,15 @@ const AuthForm = () => {
             setUsername('')
             setAge(0)
         })
-    }
+    } 
     const getAll = e => {
         e.preventDefault()
         refetch()
     }
     const handleNavigate = (event) => {
         addUser(event)
-      //  navigate("/personal")
     }
- /*   if(loading) {
-        return <Spinner />
-    } */
+
     return (
         <AuthFormWrapper>
          {/*   <Spinner /> */}

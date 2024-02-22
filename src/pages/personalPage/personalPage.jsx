@@ -3,12 +3,11 @@ import NavBar from "../../components/NavBar/NavBar";
 import PersonalForm from "../../components/PersonalForm/personalForm";
 import { Global } from "../../consts/GlobalStyles";
 import { Layout } from "../pages.styles";
-
 const PersonalPage = () => {
     return ( <>
     <Layout>
     <NavBar />
-    <Global />
+    <Global /> 
     <PersonalForm />
     <Footer />
     </Layout>
