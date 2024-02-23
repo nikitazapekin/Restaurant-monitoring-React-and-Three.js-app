@@ -7,7 +7,6 @@ import { gql, useSubscription } from '@apollo/client';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary.jsx';
-
 const httpLink = new HttpLink({
   uri: 'http://localhost:5000/graphql',
 });
@@ -40,6 +39,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <ErrorBoundary>
   <ApolloProvider client={client}>
     <App />
-  </ApolloProvider>,
+  </ApolloProvider>
   </ErrorBoundary>
 );

@@ -10,7 +10,8 @@ import { BOOKING_ACTION } from '../mutations/table';
 const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const { data: oneUser, refetch } = useQuery(GET_TABLE_INFO, {
         variables: {
-            id: Number(clickedElement)
+            id: Number(clickedElement),
+            date:  String(""+clickedDay+"-"+month+"-"+year)
         },
     })
     const [isError, setIsError] = useState(false)

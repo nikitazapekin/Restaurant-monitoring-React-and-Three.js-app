@@ -2,8 +2,8 @@
 import {gql} from '@apollo/client'
 
   export const GET_TABLE_INFO = gql`
-  query getTableInfo($id: ID!){
-    getTableInfo(id: $id) {
+  query getTableInfo($id: ID!, $date: String!){
+    getTableInfo(id: $id, date: $date) {
       id
       amountOfChairs
       timeForBooking {
