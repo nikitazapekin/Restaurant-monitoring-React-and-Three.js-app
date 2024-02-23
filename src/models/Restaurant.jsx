@@ -18,6 +18,7 @@ import Test from "../assets/floor.jpg"
 import { Cube } from "./Cube";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import useMonitoring from "../subscribtions/monitoring";
 import { Canvas, useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import { Numbers } from "./Numbers";
@@ -91,7 +92,6 @@ const Restaurant = (isRotating,
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 
-    // Remove event listeners when component unmounts
     return () => {
       canvas.removeEventListener("pointerdown", handlePointerDown);
       canvas.removeEventListener("pointerup", handlePointerUp);
@@ -131,6 +131,10 @@ const Restaurant = (isRotating,
       }
     }
   });
+
+
+
+
   return (
     <a.group ref={islandRef} {...props} dispose={null}
       scale={[1, 1, 1]}

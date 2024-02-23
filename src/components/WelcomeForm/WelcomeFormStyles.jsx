@@ -12,6 +12,18 @@ export const WelcomeFormStyled = styled.div`
     flex-direction: column;
     gap: 30px
 `
+
+export const LeftSideStarImage = styled.img`
+max-width: 150px;
+//max-height: 150px;
+height: auto;
+width: 100%;
+position: absolute;
+left: 0;
+bottom: 0;
+z-index: 123;
+transform: rotate(30deg);
+`
 export const WelcomeFormBackgroundStyled = styled.div`
     border-radius:20px;
     width: 100%;
