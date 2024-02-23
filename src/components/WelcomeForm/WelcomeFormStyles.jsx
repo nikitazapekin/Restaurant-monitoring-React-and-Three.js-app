@@ -129,3 +129,30 @@ border-radius:20px;
 
 z-index: -11;
 ` 
+export const RigthTopStar = styled.img`
+  max-width: 100px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  z-index: 1234;
+  top: 0;
+  transform: rotate(30deg);
+`
+export const RigthBottomStar = styled.img`
+  max-width: 100px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  z-index: 1234;
+ bottom: 0;
+  transform: rotate(-30deg);
+`
+export const LeftTopStar = styled.img`
+  max-width: 100px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  z-index: 1234;
+top: 0;
+  transform: rotate(-30deg);
+`

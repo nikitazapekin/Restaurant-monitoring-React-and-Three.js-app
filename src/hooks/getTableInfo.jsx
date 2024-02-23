@@ -22,7 +22,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const [time, setTime] = useState({
         from: "",
         to: "",
-        chairs: ""
+        chairs: "1"
     })
     const handleTime = (event) => {
         setTime(prev => ({

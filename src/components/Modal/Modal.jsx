@@ -37,10 +37,10 @@ export default function ModalWindow({ open, onClose, clickedElement }) {
               <SelectingBookingTimeBlockFromTitle> To</SelectingBookingTimeBlockFromTitle>
               <SelectingBookingTime onChange={(event) => handleTime(event)} name="to" placeholder='To 00:00' />
             </SelectBookingTimeBlockFrom>
-            <SelectBookingTimeBlockFrom>
+       {/*     <SelectBookingTimeBlockFrom>
               <SelectingBookingTimeBlockFromTitle> Chairs</SelectingBookingTimeBlockFromTitle>
               <SelectingBookingTime onChange={(event) => handleTime(event)} name="chairs" placeholder='0' />
-            </SelectBookingTimeBlockFrom>
+  </SelectBookingTimeBlockFrom> */}
           </SelectBookingTimeBlock>
      {errorMessage && (
       <ErrorTime>

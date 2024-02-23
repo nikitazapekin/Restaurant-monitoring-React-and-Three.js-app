@@ -31,11 +31,14 @@ export const AuthFormWrapper = styled.div`
 `
 export const AuthTitle = styled.p`
     font-family: 'Times New Roman', Times, serif;
-    font-size: 700;
+    font-weight: 700;
     font-size: 32px;
     position: relative;
     z-index: 123;
   font-size: 48px;
+  @media screen and (max-width: 450px) {
+    font-size: 27px;
+  }
 `
 export const AuthFormContent = styled.form`
     position: relative;
@@ -70,6 +73,9 @@ position: relative;
     background-color: transparent;
     outline: none;
     font-size: 32px;
+    @media screen and (max-width: 530px) {
+        font-size: 20px;
+    }
 `
 export const AuthItemContentItemSubTitle = styled.p`
     font-size: 25px;
@@ -95,7 +101,11 @@ export const AuthIcon = styled.img`
 width: 40px;
 height: 40px;
 z-index: 1222;
-top: 40px
+top: 40px;
+@media screen and (max-width: 530px) {
+widt: 30px;
+heigh:30px;
+}
 `
 export const EyeIcon = styled.img`
     position: absolute;
@@ -104,5 +114,9 @@ width: 40px;
 height: 40px;
 z-index: 1222;
 cursor: pointer;
-top: 40px
+top: 40px;
+@media screen and (max-width: 530px) {
+width: 30px;
+height: 30px;
+}
 `

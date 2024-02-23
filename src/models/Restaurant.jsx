@@ -26,6 +26,7 @@ import { Bird } from "./Bird";
 import { coordinates } from "../consts/numbersOfTable";
 import { SittingMan } from "./SittingMan";
 import { Board } from "./Board";
+import { SecondBoard } from "./SecondBoard";
 const Restaurant = (isRotating,
   setIsRotating,
   setCurrentStage,
@@ -145,6 +146,7 @@ const Restaurant = (isRotating,
       <Bird />
 
       <Board />
+      <SecondBoard />
       {coordinates.map((item, index) => (
         <Cube number={item.number} x={item.x} y={item.y} z={item.z} />
       ))}
