@@ -1,11 +1,16 @@
 import useCalendar from "../../hooks/useCalendar";
+import GetTablesInfo from "../../hooks/getTablesInfo";
 import { CalendarBlock, CalendarComponent, CalendarComponentSwitchButton, CalendarComponentSwitchButtonBackground, CalendarComponentSwitchButtons, CalendarData, CalendarDatas, CurrentData, ErrorTime } from "./calendarStyles";
 import { useState } from "react";
+import { useEffect } from "react";
 const Calendar = ({ month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth}) => {
 
-    const currentDate = new Date();
-    const currentDay = currentDate.getDate();
-    console.log("DAY"+ currentDay)
+
+    const {refetch,allTables, handleRefetch} =GetTablesInfo({month, year, clickedDay})
+useEffect(()=>{
+refetch()
+}, [clickedDay]
+)
     return (
         <>
    <CalendarComponent>

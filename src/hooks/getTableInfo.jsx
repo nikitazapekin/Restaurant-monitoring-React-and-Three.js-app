@@ -11,7 +11,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const { data: oneUser, refetch } = useQuery(GET_TABLE_INFO, {
         variables: {
             id: Number(clickedElement),
-            date:  String(""+clickedDay+"-"+month+"-"+year)
+            date:  String(""+clickedDay+"-"+(month+1)+"-"+year)
         },
     })
     const [isError, setIsError] = useState(false)
@@ -35,7 +35,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     }
     const [newBookingElement] = useMutation(BOOKING_ACTION)
     const handleBook = () => {
-      //  setErrorMessage("")
         if (hasEnglishLetters(time.from) || hasEnglishLetters(time.to) || time.to.length != 5 || time.from.length !=5 || time.chairs.length == 0 || hasEnglishLetters(time.chairs)) {
        setErrorMessage("Entered data is incorrect")
         }
@@ -52,7 +51,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                         tableID: Number(clickedElement),
                         from: time.from,
                         to: time.to,
-                        dataOfBooking: ""+clickedDay+"-"+month+"-"+year,
+                        dataOfBooking: ""+clickedDay+"-"+(month+1)+"-"+year,
                         amountOfChairs: Number(time.chairs)
                     }
                 }
@@ -74,6 +73,17 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const handleRefreshData = () => {
         refetch()
     };
-    return { handleTime, oneUser, handleBook, isError, currentDate, handleRefreshData, refetch, errorMessage }
+
+    const handleBookTableForDay = () => {
+        setTime(prev => ({
+            ...prev,
+            from: "00:00",
+            to: "00:00"
+        }));
+    }
+    useEffect(()=> {
+console.log(JSON.stringify(time))
+    }, [time])
+    return {time,  handleTime, oneUser, handleBook, isError, currentDate, handleRefreshData, refetch, errorMessage, handleBookTableForDay }
 }
 export default GetTableInfo

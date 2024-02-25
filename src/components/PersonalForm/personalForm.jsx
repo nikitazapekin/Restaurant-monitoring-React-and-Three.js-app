@@ -13,8 +13,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import useCalendar from "../../hooks/useCalendar";
 import { memo } from "react";
 import Calendar from "../calendar/calendar";
+import GetTablesInfo from "../../hooks/getTablesInfo";
 const PersonalForm = memo(() => {
 const {id} =useParams()
+const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
         const { data: oneUser } = useQuery(GET_ONE_USER, {
         variables: {
           id: Number(id)
@@ -29,13 +31,13 @@ const [clickedElement, setClickedElement] = useState(1)
 setClickedElement(id)
     }
 
-    const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     return (
         <PersonalFormWrapper>
             <PersonalFormStyled>
          <PersonalTitle  id="section1">Hello {oneUser!=undefined &&  oneUser.getUser!=undefined ? oneUser.getUser.username : ""}!</PersonalTitle> 
+         <button  style={{position: "absolute", zIndex: "1234"}} onClick={()=>handleRefetch()}>dsfewef</button>
                 <PersonalTables>Our tables for booking:</PersonalTables>
                 <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
                 <PersonalFormContent>
