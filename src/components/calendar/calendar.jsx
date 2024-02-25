@@ -2,16 +2,17 @@ import useCalendar from "../../hooks/useCalendar";
 import { CalendarBlock, CalendarComponent, CalendarComponentSwitchButton, CalendarComponentSwitchButtonBackground, CalendarComponentSwitchButtons, CalendarData, CalendarDatas, CurrentData, ErrorTime } from "./calendarStyles";
 import { useState } from "react";
 const Calendar = ({ month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth}) => {
-  //  const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth } = props
-  // const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
+
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    console.log("DAY"+ currentDay)
     return (
         <>
-       
    <CalendarComponent>
-                <CurrentData>  {clickedDay}-{month}-{year}</CurrentData>
+                <CurrentData>  {clickedDay}-{month+1}-{year}</CurrentData>
                 <CalendarDatas>
-                    {Array.from({ length: daysInMonth }, (_, index) => (
-                        <CalendarData onClick={() => handleSelectDay(index + 1)} key={index}>{index + 1}</CalendarData>
+                    {Array.from({ length: daysInMonth }, (_, index) => ( 
+                        <CalendarData onClick={()=>handleSelectDay(index + 1)} key={index}>{index + 1}</CalendarData>
                     ))}
                 </CalendarDatas>
                 <CalendarComponentSwitchButtons>

@@ -3,6 +3,9 @@ export const NavBarComponent = styled.nav`
     width: 100%;
     height: 70px;
     position: relative;
+    @media screen and (max-width: 500px) {
+display: none;
+    }
 `
 export const NavBarBackground = styled.div`
 width: 100%;

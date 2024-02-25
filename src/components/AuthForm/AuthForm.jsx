@@ -48,6 +48,9 @@ const AuthForm = () => {
                 }
             }
         }).then(({data}) => {
+            const personalData = { username: regState.username, id: data.createUser.id };
+       // localStorage.setItem('personalData', JSON.stringify(personalData));
+       sessionStorage.setItem('personalData', JSON.stringify(personalData));
             console.log(data)
             navigate(`/personal/${data.createUser.id}`)
             setUsername('')
@@ -62,6 +65,13 @@ const AuthForm = () => {
         addUser(event)
     }
 
+    useEffect(()=> {
+        const storedData = sessionStorage.getItem('personalData');
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            navigate(`/personal/${parsedData.id}`)
+        }
+    }, [])
     return (
         <AuthFormWrapper>
          {/*   <Spinner /> */}

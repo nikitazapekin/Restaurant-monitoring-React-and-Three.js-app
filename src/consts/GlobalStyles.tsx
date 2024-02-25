@@ -13,6 +13,8 @@ export const Global = createGlobalStyle`
 		padding: 0;
 		font-family: var(--font-family);
 		 
+		 
+  scroll-behavior: smooth;
 
 	}
 

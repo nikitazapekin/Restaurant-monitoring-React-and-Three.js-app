@@ -32,7 +32,6 @@ const [isbookedTable, setIsBoockedTable] = useState({
 })
 useEffect(() => {
   console.log("TABLES" + JSON.stringify(data));
-  
   const time = new Date();
   console.log(time.getMinutes());
   console.log(time.getHours());

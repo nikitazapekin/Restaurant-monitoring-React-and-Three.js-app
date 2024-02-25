@@ -9,7 +9,6 @@ const NavBar = () => {
                 <Link to={`/`}>    <NavBarLogoImage src={Logo} alt="logo" /> </Link>
                 </NavBarLogo>
                 <NavBarBtns>
-            {/*    <Link to={`/about`}><NavBarBtn>About</NavBarBtn></Link> */}
                 <Link to={`/restaurant`}>  <NavBarBtn>Our restaurant</NavBarBtn></Link>
                 <Link to={`/sign_in`}>   <NavBarBtn>Account</NavBarBtn> </Link>
                 </NavBarBtns>

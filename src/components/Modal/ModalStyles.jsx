@@ -95,6 +95,19 @@ padding: 20px;
 export const SelectDataTitle  = styled.div`
 font-size: 40px;
 `
+export const SelectDataContainer = styled.div`
+  display: flex;
+  gap: 40px;
+  align-items: center;
+`
+
+export const SelectDataOption = styled.div`
+  font-size: 32px;
+  cursor: pointer;
+`
+export const SelectTimeTitle  = styled.div`
+font-size: 40px;
+`
 export const GridWrapper = styled.div`
     width: 100%;
 `

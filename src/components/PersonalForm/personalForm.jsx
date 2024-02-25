@@ -10,7 +10,9 @@ import { GET_ALL_USERS, GET_ONE_USER } from "../../query/user";
 import { CREATE_USER } from "../../mutations/user";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useCalendar from "../../hooks/useCalendar";
 import { memo } from "react";
+import Calendar from "../calendar/calendar";
 const PersonalForm = memo(() => {
 const {id} =useParams()
         const { data: oneUser } = useQuery(GET_ONE_USER, {
@@ -26,16 +28,20 @@ const [clickedElement, setClickedElement] = useState(1)
         setIsOpen(true)
 setClickedElement(id)
     }
+
+    const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
     return (
         <PersonalFormWrapper>
-          {/*    {loading && <Spinner />} */}
             <PersonalFormStyled>
-                <PersonalTitle>Hello {oneUser!=undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
+         <PersonalTitle  id="section1">Hello {oneUser!=undefined &&  oneUser.getUser!=undefined ? oneUser.getUser.username : ""}!</PersonalTitle> 
                 <PersonalTables>Our tables for booking:</PersonalTables>
+                <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
                 <PersonalFormContent>
                     <GridWrapper>
                         <GridTable>
-                            {arr.map((item, index) => (
+                            {Number(clickedDay)>=Number(currentDay)  && arr.map((item, index) => (
                                 <GridTableElement onClick={() => handleClick(index+1)}>
                                     <GridTableElementTitle>
                                         {item} {index + 1}
@@ -53,7 +59,14 @@ setClickedElement(id)
             </PersonalFormStyled>
             <ModalWindow open={isOpen}
             clickedElement={clickedElement}
-                onClose={() => setIsOpen(false)}>
+
+
+                onClose={() => setIsOpen(false)}
+                
+                month={month}
+                year={year}
+               clickedDay={clickedDay}
+                >
              
             </ModalWindow>
         </PersonalFormWrapper>
@@ -62,3 +75,4 @@ setClickedElement(id)
 
 export default PersonalForm;
 //Available tables for booking
+//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_smooth_scroll

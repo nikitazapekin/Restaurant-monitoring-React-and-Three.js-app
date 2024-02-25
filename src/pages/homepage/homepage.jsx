@@ -10,16 +10,18 @@ import { Global } from "../../consts/GlobalStyles";
 import { Layout } from "../pages.styles";
 const Homepage = () => {
     return ( 
-        <>
-       <NavBar />
-       <Layout>
-       <WelcomeForm />
-      <Global />
-       <Footer />
-       </Layout> 
- 
+         <>
+         {/*
+       
+     */}
 
-{/*<NavBarMobileComponent /> */}
+<NavBarMobileComponent /> 
+     <NavBar />
+     <Layout>
+     <WelcomeForm />
+     <Global />
+     <Footer />
+     </Layout> 
 
 
 </>

@@ -134,7 +134,7 @@ export const RigthTopStar = styled.img`
   height: auto;
   position: absolute;
   right: 0;
-  z-index: 1234;
+  z-index: 124;
   top: 0;
   transform: rotate(30deg);
 `
@@ -143,7 +143,7 @@ export const RigthBottomStar = styled.img`
   height: auto;
   position: absolute;
   right: 0;
-  z-index: 1234;
+  z-index: 123;
  bottom: 0;
   transform: rotate(-30deg);
 `
@@ -152,7 +152,7 @@ export const LeftTopStar = styled.img`
   height: auto;
   position: absolute;
   left: 0;
-  z-index: 1234;
+  z-index: 123;
 top: 0;
   transform: rotate(-30deg);
 `

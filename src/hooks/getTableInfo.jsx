@@ -35,6 +35,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     }
     const [newBookingElement] = useMutation(BOOKING_ACTION)
     const handleBook = () => {
+      //  setErrorMessage("")
         if (hasEnglishLetters(time.from) || hasEnglishLetters(time.to) || time.to.length != 5 || time.from.length !=5 || time.chairs.length == 0 || hasEnglishLetters(time.chairs)) {
        setErrorMessage("Entered data is incorrect")
         }
@@ -45,9 +46,8 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
             setErrorMessage("Please enter time")
       }
             else {
-            onClose()
-            newBookingElement({
-                variables: {
+                newBookingElement({
+                    variables: {
                     input: {
                         tableID: Number(clickedElement),
                         from: time.from,
@@ -58,6 +58,13 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                 }
             }).then(({ data }) => {
                 console.log(data)
+                console.log("MESSAGE"+data.createBookingAction.errorMessage)
+                if(data.createBookingAction.errorMessage){
+                    setErrorMessage(data.createBookingAction.errorMessage)
+                } else {
+                    onClose()
+
+                }
             })
         }
     }

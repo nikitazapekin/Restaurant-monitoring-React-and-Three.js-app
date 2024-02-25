@@ -9,6 +9,7 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 10px;
+z-index: 1234;
 `
 export const CalendarBlock = styled.div`
     position: relative;
@@ -73,11 +74,11 @@ export const CalendarData = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+transition: 1s ease-in-out;
     cursor: pointer;
     &:hover {
-
-box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+        text-shadow: rgba(0, 0, 0, 0.25) 50px 50px 100px -24px;
+//text-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
     position: relative;
 `

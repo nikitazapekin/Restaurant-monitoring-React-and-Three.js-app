@@ -126,6 +126,9 @@ export const GridTable =  styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 30%;
+  @media screen and (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  } 
 `
 export const GridTableElement = styled.div`
     width: auto;

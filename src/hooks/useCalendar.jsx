@@ -19,13 +19,23 @@ const useCalendar = () => {
         }
     }
     const handleDecrement = () => {
-        if (month != 1) {
 
+        const currentDate = new Date();
+        const currentMonth= currentDate.getMonth();
+const currentYear = currentDate.getFullYear()
+ 
+ console.log(currentMonth, month, currentYear,year)       
+if(Number(currentMonth+1)<=Number(month) && Number(currentYear)<=Number(year)){
+
+    
+    if (month != 1) {
+        
             setMonth(prev => (Number(prev - 1)))
         } else {
             setYear(prev => Number(prev - 1))
             setMonth(12)
         }
+    } 
     }
     const handleSelectDay = (day) => {
         setClickedDay(day)

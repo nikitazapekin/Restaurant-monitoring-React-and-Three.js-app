@@ -1,26 +1,52 @@
-import { NavBarAsidePanel, NavBarAsidePanelElement, NavBarMobile, NavBarMobileInput, NavBarMobileLine, NavBarMobileVersion } from "./NavBarMobileStyled";
-import { useRef } from "react";
+import { LogoImage, NavBarAsidePanel, NavBarAsidePanelBackground, NavBarAsidePanelElement, NavBarBackground, NavBarMobile, NavBarMobileElement, NavBarMobileInput, NavBarMobileVersion } from "./NavBarMobileStyled";
+import { useEffect, useRef } from "react";
+import Logo from "../../assets/logo.png"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const NavBarMobileComponent = () => {
- 
- const NavBar = useRef() 
+  const NavBar = useRef(null);
+  const [navbarWidth, setNavbarWidth] = useState(-4000);
+  const [isOpenNavBar, setIsOpenNavBar] = useState(true)
+
+  
+  useEffect(() => {
+    if (NavBar.current) {
+      setNavbarWidth(NavBar.current.offsetWidth);
+    }
+  }, [NavBar]);
+  const handleOpen = () => {
+    setIsOpenNavBar(prev=> !prev)
+  }
+
+
   return (
+    <NavBarMobileElement>
     <>
       <NavBarMobileVersion>
-        <NavBarMobile>
-          <NavBarMobileLine />
-          <NavBarMobileLine />
-          <NavBarMobileLine />
+        <NavBarBackground />
+        <NavBarMobile onClick={handleOpen}>
+      
         </NavBarMobile>
+        <Link to={`/`}> 
+        <LogoImage alt="logo" src={Logo} />
+        </Link>
       </NavBarMobileVersion>
-      <NavBarAsidePanel ref={Navbar} >
+      <NavBarAsidePanel ref={NavBar} 
+isOpenNavBar={isOpenNavBar}
+      navbarWidth={navbarWidth}
+      >
+        <NavBarAsidePanelBackground />
         <NavBarAsidePanelElement>
-Our restaurant
+      <Link to="/restaurant">
+           Our restaurant
+        </Link> 
         </NavBarAsidePanelElement>
         <NavBarAsidePanelElement>
-Account
+        <Link to={`/sign_in`}>      Account </Link>
         </NavBarAsidePanelElement>
       </NavBarAsidePanel>
     </>
+    </NavBarMobileElement>
   );
 }
 

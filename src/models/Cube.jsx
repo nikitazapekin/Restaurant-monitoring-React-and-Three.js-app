@@ -16,12 +16,15 @@ export function Cube({number, x,y,z}) {
     context.textAlign = "center";
     context.textBaseline = "middle";
     context.fillStyle = "white";
+
     context.fillText(text, centerX, centerY);
     
     return new THREE.CanvasTexture(canvas);
   };
+  const pinkMaterial = new THREE.MeshBasicMaterial({ color: 0xff69b4 });
       const textures = [number, number, number, number, number, number].map(createTexture);
       const geometry = new THREE.BoxGeometry();
+    //  const materials = textures.map((texture) => pinkMaterial);
   const materials = textures.map((texture) => new THREE.MeshBasicMaterial({ map: texture }));
   const cube = new THREE.Mesh(geometry, materials);
   cube.position.x = x;
