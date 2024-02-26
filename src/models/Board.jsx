@@ -5,11 +5,11 @@ import useMonitoring from "../subscribtions/monitoring";
 import { useEffect } from "react";
 import useTables from "../hooks/useTables";
 import useBoard from "../hooks/useBoard";
-
 export function Board() {
   const boardRef = useRef();
  const {currentTime} = useMonitoring()
-const {isbookedTable} = useBoard(currentTime)
+
+const {isbookedTable} = useBoard({currentTime})
   const createTexture = (text) => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");

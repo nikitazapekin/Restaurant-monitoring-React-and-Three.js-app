@@ -15,43 +15,54 @@ import { memo } from "react";
 import Calendar from "../calendar/calendar";
 import GetTablesInfo from "../../hooks/getTablesInfo";
 const PersonalForm = memo(() => {
-const {id} =useParams()
-const  {month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }= useCalendar()
-        const { data: oneUser } = useQuery(GET_ONE_USER, {
+    const { id } = useParams()
+    const { month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth } = useCalendar()
+    const { data: oneUser } = useQuery(GET_ONE_USER, {
         variables: {
-          id: Number(id)
+            id: Number(id)
         }
     })
     const arr = ["Table", "Table", "Table", "Table", "Table", "Table", "Table", "Table"]
     const [isOpen, setIsOpen] = useState(false)
-const [clickedElement, setClickedElement] = useState(1)
+    const [clickedElement, setClickedElement] = useState(1)
 
     const handleClick = (id) => {
         setIsOpen(true)
-setClickedElement(id)
+        setClickedElement(id)
     }
-
+    const { refetch, allTables, } = GetTablesInfo({ month, year, clickedDay })
+    useEffect(() => {
+        refetch()
+    }, [clickedDay]
+    )
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
     return (
         <PersonalFormWrapper>
+
+            {/*
+      <button className="open-btn" onClick={()=>setModalActive(true)}>ddd</button>
+<TestModal active={modalActive} setActive={setModalActive} />      
+    */}
             <PersonalFormStyled>
-         <PersonalTitle  id="section1">Hello {oneUser!=undefined &&  oneUser.getUser!=undefined ? oneUser.getUser.username : ""}!</PersonalTitle> 
-         <button  style={{position: "absolute", zIndex: "1234"}} onClick={()=>handleRefetch()}>dsfewef</button>
+                <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
                 <PersonalTables>Our tables for booking:</PersonalTables>
                 <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
                 <PersonalFormContent>
                     <GridWrapper>
                         <GridTable>
-                            {Number(clickedDay)>=Number(currentDay)  && arr.map((item, index) => (
-                                <GridTableElement onClick={() => handleClick(index+1)}>
+                            {Number(clickedDay) >= Number(currentDay) && arr.map((item, index) => (
+                                <GridTableElement
+                                    isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false}
+                                    data-tooltip="This table is booked for all day"
+                                    onClick={allTables && allTables.getInfornationAboutAbilityOfBooking[index] ? "" : () => handleClick(index + 1)}>
                                     <GridTableElementTitle>
                                         {item} {index + 1}
                                     </GridTableElementTitle>
                                     <AmountOfFreePlaces>
                                         4/4
                                     </AmountOfFreePlaces>
-                                    <GridTableElementBackground />
+                                    <GridTableElementBackground isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false} />
                                 </GridTableElement>
                             ))}
                         </GridTable>
@@ -60,16 +71,16 @@ setClickedElement(id)
                 <PersonalFormBackgroundStyled />
             </PersonalFormStyled>
             <ModalWindow open={isOpen}
-            clickedElement={clickedElement}
+                clickedElement={clickedElement}
 
 
                 onClose={() => setIsOpen(false)}
-                
+
                 month={month}
                 year={year}
-               clickedDay={clickedDay}
-                >
-             
+                clickedDay={clickedDay}
+            >
+
             </ModalWindow>
         </PersonalFormWrapper>
     );

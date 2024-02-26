@@ -115,6 +115,7 @@ top: 40px
 `
 export const GridWrapper = styled.div`
     width: 100%;
+    overflow-x: hidden;
 `
 export const GridTable =  styled.div`
     height: auto;
@@ -126,10 +127,12 @@ export const GridTable =  styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 30%;
+  overflow-x: hidden;
   @media screen and (max-width: 700px) {
     grid-template-columns: repeat(2, 1fr);
   } 
 `
+
 export const GridTableElement = styled.div`
     width: auto;
  height: auto;
@@ -139,24 +142,46 @@ export const GridTableElement = styled.div`
     cursor: pointer;
 display: flex;
 flex-direction: column;
-
+transition: 0.5s ease-in-out;
 &:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+
+
+&::after {
+    content: attr(data-tooltip);  
+    position: absolute;  
+width: auto;
+ white-space: nowrap;
+  padding: 20px;
+   display: ${props => props.isBooked ? 'block' : 'none'};
+   left: 50%;
+   transform: translateX(-50%);
+ //   bottom: 0%;  
+    background-color: #3989c9;
+    border-radius: 5px;
+    color: #fff;  
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    pointer-events: none;  
+    opacity: 0;  
+    
+    transition: 1s;  
+   } 
+   &:hover::after {
+    opacity: 1;  
+   }
 `
 export const GridTableElementBackground = styled.div`
 border-radius: 10px;
-background-color: rgba(
-77, 78, 79
-);
+background-color: ${props => props.isBooked ? 'rgba(161, 23, 8)' : 'rgba(77, 78, 79)'};
 position: absolute;
 left: 0;
 height: 100%;
 width: 100%;
 top: 0;
 z-index: 0;
-opacity: 0.1;
+opacity: 0.2;
 `
 export const  GridTableElementTitle = styled.p`
 font-size: 32px;

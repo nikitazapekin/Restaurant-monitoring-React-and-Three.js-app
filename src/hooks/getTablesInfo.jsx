@@ -24,16 +24,12 @@ console.log( `${dd}-${mm}-${yy}`)
          date: `${clickedDay}-${month+1}-${year}`
         },
     })  
-
     useEffect(()=> {
 console.log("INFO"+JSON.stringify(allTables))
     }, [allTables])
 const handleRefetch = () => {
     refetch()
 }
-  /*  useEffect(()=> {
-        refetch()
-        }, [month, clickedDay, year]) */
     return {refetch, allTables, handleRefetch}
   
 }

@@ -10,6 +10,8 @@ background-color: #FFF;
 padding: 0px;
 z-index: 10111;
 border-radius: 20px;
+//transition: 2s;
+//transform: ${props=> props.open ? "scale(1)" : "scale(0)"};
 
 `
 export const ModalWrapper = styled.div`

@@ -19,6 +19,8 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const today = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const currentDate = today.toLocaleDateString('en-US', options);
+
+   // const { refetch, allTables, } = GetTablesInfo({ month, year, clickedDay })
     const [time, setTime] = useState({
         from: "",
         to: "",
@@ -61,6 +63,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                 if(data.createBookingAction.errorMessage){
                     setErrorMessage(data.createBookingAction.errorMessage)
                 } else {
+
                     onClose()
 
                 }

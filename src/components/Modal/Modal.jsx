@@ -4,14 +4,18 @@ import GetTableInfo from '../../hooks/getTableInfo';
 import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText, SelectTimeTitle, SelectDataContainer, SelectDataOption, SelectForAllDayTable } from './ModalStyles';
 import Calendar from '../calendar/calendar';
 import useCalendar from '../../hooks/useCalendar';
+import GetTablesInfo from '../../hooks/getTablesInfo';
+import { useEffect } from 'react';
 export default function ModalWindow({ open, onClose, clickedElement, clickedDay, month, year }) {
   if (!open) return null;
   const portalElement = document.getElementById('portal')
   const { handleBook, handleTime, oneUser, isError, currentDate, errorMessage, handleBookTableForDay, time } = GetTableInfo({ clickedElement, onClose, month, year, clickedDay })
  // const { handleDecrement, handleIncrement, handleSelectDay, daysInMonth } = useCalendar()
+
+
   return ReactDom.createPortal(
     <>
-      <Modal>
+      <Modal open={open}>
         <ModalWrapper>
           <HeaderWrapper>
             <ModalTitle>
@@ -73,7 +77,7 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
           </ModalButton>
         </ModalWrapper>
       </Modal>
-      <OverlayStyles />
+      <OverlayStyles onClick={()=> onClose()} />
     </>,
     portalElement || document.body
   );
