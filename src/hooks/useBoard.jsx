@@ -57,20 +57,14 @@ useEffect(() => {
     }
   }
 }, [data]);
-
 useEffect(()=>{
   const time = new Date();
   const currentTime = `${time.getHours()}:${time.getMinutes()}`;
 console.log("TIME" +currentTime)
 for (let key in isbookedTable) {
- // console.log(`${key}: ${isbookedTable[key]}`);
  if( isbookedTable[key]) {
-
-   console.log("KEY" +isbookedTable[key])
    const arr = isbookedTable[key].split("-")
-  console.log("T", arr)
   const indexField = Object.keys(isbookedTable)[isbookedTable];
-
   if(!isAbleToBook(currentTime, arr[0], arr[1])) {
     setIsBoockedTable(prevState => ({
       ...prevState,

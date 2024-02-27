@@ -16,11 +16,11 @@ import TestModal from "../../components/Modal/TestModal";
 import { useState } from "react";
 import "./homepage.scss"
 const Homepage = () => {
-    const [cardList, setCardList] = useState(
+   /* const [cardList, setCardList] = useState(
      [
-          {id: 1, order: 3, text: "card 3"},
-          {id: 2, order: 2, text: "card 2"},
-          {id: 4, order: 1, text: "card 1"},
+          {id: 1, order: 3, text: "card 3", img: ""},
+          {id: 2, order: 2, text: "card 2", img: ""},
+          {id: 4, order: 1, text: "card 1", img: ""},
      ]
     )
 
@@ -65,7 +65,7 @@ if(a.order> b.order) {
 else {
      return -1
 }
-    }
+    } */
     return ( 
          <>
        
@@ -79,21 +79,7 @@ else {
     
 
 
-<div className="tt">
-
-    {cardList.sort(sortCards).map(card=> (
-         <div className="card"
-         onDragStart={(e)=> dragStartHandler(e, card)}
-         onDragLeave={(e)=>dragLeaveHandler(e)}
-         onDragEnd={(e)=>dragEndHandler(e)}
-         onDragOver={(e)=>dragOverHandler(e)}
-         onDrop={(e)=>dropHandler(e, card)}
-         draggable={true}
-         >
-          {card.text}
-     </div>
-    ))}
-    </div>
+ 
 </>
      );
 }

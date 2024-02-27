@@ -12,7 +12,6 @@ export function Bird() {
   useEffect(() => {
     actions["Take 001"].play();
   }, []);
-
   useFrame(({ clock, camera }) => {
     birdRef.current.position.y = Math.sin(clock.elapsedTime) * 0.2 + 2;
     if (birdRef.current.position.x > camera.position.x + 10) {
