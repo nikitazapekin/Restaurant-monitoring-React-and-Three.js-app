@@ -1,4 +1,4 @@
-import { LeftSideStarImage, LeftTopStar, ManImage, RigthBottomStar, RigthTopStar, WelcomeFormBackgroundStyled, WelcomeFormContent, WelcomeFormMessageBackground, WelcomeFormStyled, WelcomeFormWrapper, WelcomeMessage } from "./WelcomeFormStyles";
+/*import { LeftSideStarImage, LeftTopStar, ManImage, RigthBottomStar, RigthTopStar, WelcomeFormBackgroundStyled, WelcomeFormContent, WelcomeFormMessageBackground, WelcomeFormStyled, WelcomeFormWrapper, WelcomeMessage } from "./WelcomeFormStyles";
 import ShootingStar from "../../assets/shooting-star.png"
 import Star from "../../assets/star.png"
 import Star1 from "../../assets/star1.png"
@@ -104,6 +104,73 @@ else {
  </div>
 ))}
 </div>
+    </WelcomeFormWrapper>
+  </>);
+}
+
+export default WelcomeForm; */
+
+
+import { LeftSideStarImage, LeftTopStar, ManImage, RigthBottomStar, RigthTopStar, StarCard, StarImage, StarsBlock, WelcomeFormBackgroundStyled, WelcomeFormContent, WelcomeFormMessageBackground, WelcomeFormStyled, WelcomeFormWrapper, WelcomeMessage } from "./WelcomeFormStyles";
+import ShootingStar from "../../assets/shooting-star.png"
+import Star from "../../assets/star.png"
+import Star1 from "../../assets/star1.png"
+import Star2 from "../../assets/star3.png"
+import useMonitoring from "../../subscribtions/monitoring";
+import { useEffect } from "react";
+import { useState } from "react";
+import SmileStar1 from "../../assets/smileStar1.png"
+import SmileStar2 from "../../assets/SmileStar2.png"
+import SmileStar3 from "../../assets/SmileStar3.png"
+import SmileStar4 from "../../assets/smiley.png"
+import SmileStar5 from "../../assets/star5.png"
+import SmileStar6 from "../../assets/star6.png"
+import useStars from "../../hooks/useStars";
+const WelcomeForm = () => {
+// const {tables} = useMonitoring()
+
+const {cardList, currentCard, dragEndHandler, dragLeaveHandler,dragOverHandler, dropHandler, sortCards,  dragStartHandler} =useStars()
+
+
+  return (<>
+    <WelcomeFormWrapper>
+      <WelcomeFormStyled>
+        <LeftSideStarImage src={ShootingStar} alt="star-image" />
+        <RigthTopStar src={Star} alt="star"/>
+        <RigthBottomStar src={Star1} alt="star" />
+        <LeftTopStar src={Star2} alt="star" />
+        <WelcomeFormBackgroundStyled />
+        <WelcomeMessage>
+          Welcome to application of monitoring booking of tables at Zorka restaurant! Enjoy yorself!
+          <WelcomeFormMessageBackground />
+        </WelcomeMessage>
+
+
+<StarsBlock>
+{cardList.sort(sortCards).map(card=> (
+
+  <StarCard
+     onDragStart={(e)=> dragStartHandler(e, card)}
+     onDragLeave={(e)=>dragLeaveHandler(e)}
+     onDragEnd={(e)=>dragEndHandler(e)}
+     onDragOver={(e)=>dragOverHandler(e)}
+     onDrop={(e)=>dropHandler(e, card)}
+     draggable={true}
+     >
+
+      <StarImage src={card.img} alt="star" />
+     </StarCard>
+ 
+))}
+    </StarsBlock>
+
+
+
+
+
+
+      
+      </WelcomeFormStyled>
     </WelcomeFormWrapper>
   </>);
 }

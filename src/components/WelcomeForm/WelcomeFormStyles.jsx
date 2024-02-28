@@ -1,7 +1,7 @@
 
 
 
-import styled from "styled-components";
+import styled,  { keyframes } from "styled-components";
 export const WelcomeFormStyled = styled.div`
     width: 70%;
     position: relative;
@@ -155,4 +155,58 @@ export const LeftTopStar = styled.img`
   z-index: 123;
 top: 0;
   transform: rotate(-30deg);
+`
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg)
+  }
+`;
+
+export const StarsBlock = styled.div  `
+  
+display: flex;
+//width: 100%;
+gap: 20px;
+justify-content: center;
+
+`
+
+export const StarCard = styled.div`
+max-width: 100px;
+max-height: 100px;
+cursor: pointer;
+position: relative;
+
+
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: grab;
+    transition: 1s ease-in-out;
+    &:hover {
+     // animation: ;
+     animation: ${rotateAnimation} 1s linear forwards;
+    //  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+ 
+`
+export const StarImage = styled.img`
+  width: 100%;
+  height: 100%;
+ 
 `
