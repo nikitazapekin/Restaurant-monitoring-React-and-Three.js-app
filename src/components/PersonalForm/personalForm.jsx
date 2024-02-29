@@ -1,4 +1,4 @@
-import { PersonalFormBackgroundStyled, EyeIcon, PersonalFormContent, PersonalFormStyled, PersonalFormWrapper, PersonalIcon, PersonalItemContentItem, PersonalItemContentItemInput, PersonalItemContentItemSubTitle, PersonalItemContentSubmit, PersonalTitle, GridTable, GridTableElement, GridWrapper, GridTableElementBackground, GridTableElementTitle, AmountOfFreePlaces, PersonalTables } from "./personalFormStyles";
+import { PersonalFormBackgroundStyled, EyeIcon, PersonalFormContent, PersonalFormStyled, PersonalFormWrapper, PersonalIcon, PersonalItemContentItem, PersonalItemContentItemInput, PersonalItemContentItemSubTitle, PersonalItemContentSubmit, PersonalTitle, GridTable, GridTableElement, GridWrapper, GridTableElementBackground, GridTableElementTitle, AmountOfFreePlaces, PersonalTables, PerfectScrollbarStyled } from "./personalFormStyles";
 import User from "../../assets/user.png"
 import Hidden from "../../assets/hidden.png"
 import Visible from "../../assets/visible.png"
@@ -39,18 +39,15 @@ const PersonalForm = memo(() => {
     const currentDay = currentDate.getDate();
     return (
         <PersonalFormWrapper>
-
-            {/*
-      <button className="open-btn" onClick={()=>setModalActive(true)}>ddd</button>
-<TestModal active={modalActive} setActive={setModalActive} />      
-    */}
             <PersonalFormStyled>
-                <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
-                <PersonalTables>Our tables for booking:</PersonalTables>
+               <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
+                <PersonalTables>Our tables for booking:</PersonalTables>  
+                
                 <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
                 <PersonalFormContent>
-                    <GridWrapper>
+                 <GridWrapper>
                         <GridTable>
+
                             {Number(clickedDay) >= Number(currentDay) && arr.map((item, index) => (
                                 <GridTableElement
                                     isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false}
@@ -68,24 +65,20 @@ const PersonalForm = memo(() => {
                         </GridTable>
                     </GridWrapper>
                 </PersonalFormContent>
-                <PersonalFormBackgroundStyled />
+            
             </PersonalFormStyled>
             <ModalWindow open={isOpen}
                 clickedElement={clickedElement}
-
-
                 onClose={() => setIsOpen(false)}
-
                 month={month}
                 year={year}
                 clickedDay={clickedDay}
             >
-
-            </ModalWindow>
+                            </ModalWindow>
         </PersonalFormWrapper>
     );
 })
 
 export default PersonalForm;
-//Available tables for booking
-//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_smooth_scroll
+ 
+               {/* <PersonalFormBackgroundStyled /> */}

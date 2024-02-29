@@ -39,6 +39,7 @@ export const WelcomeFormWrapper = styled.div`
     width: 100%;
     height: 100%;
     position: relative;
+ 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,12 +69,7 @@ position: relative;
     background-color: #b9b9b9;
     align-items: center;
     border-radius: 20px;
-   // flex-direction: column;
-  //  gap: 40px;
 `
-
-
-
 export const ManImage = styled.img`
 max-width: 400px;
 width: 100%;
@@ -102,41 +98,43 @@ height: auto;
     color: black;
     z-index: 111;
     `
-/*
-export const WelcomeFormMessage = styled.div`
-    width: 100%;
-    max-width: 600px;
-position: absolute;
-    height:100%;
-  //  max-height: 100%;
- //   display: flex;
- //   justify-content: space-between;
- //   gap: 40px;
-   //
-   // background-color: ;
-`
-*/
+
 export const WelcomeFormMessageBackground = styled.div`
 width: 100%;
 height: 100%;
 position: absolute;
 top: 0;
 left: 0;
-//background-color: red;
 background-color: #fff;
 border-radius:20px;
 //opacity: 0.3;
 
 z-index: -11;
 ` 
-export const RigthTopStar = styled.img`
-  max-width: 100px;
+export const StarWrapper = styled.div`
+max-width: 100px;
+max-height: 100px;
+cursor: pointer;
+position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+top: 0;
+right: 0;
+    `
+    export const RigthTopStar = styled.img`
+    z-index: 124;
+
+transform: rotate(30deg);
+position: absolute;
+top: 0;
+right: 0;
+max-width: 100px;
+max-height: 100px;
+ /* 
+ max-width: 100px;
   height: auto;
-  position: absolute;
-  right: 0;
-  z-index: 124;
-  top: 0;
-  transform: rotate(30deg);
+   */
 `
 export const RigthBottomStar = styled.img`
   max-width: 100px;
@@ -175,17 +173,24 @@ const rotateAnimation = keyframes`
 `;
 
 export const StarsBlock = styled.div  `
-  
-display: flex;
-//width: 100%;
+//display: flex;
+display: grid;
+//grid-template-columns: repeat(10px, 10px);
+//grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+grid-template-columns: repeat(6, minmax(50px, 1fr));
 gap: 20px;
 justify-content: center;
-
-`
-
+@media screen and (max-width: 650px) {
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  height: 100px;
+  overflow-y: hidden;
+  row-gap: 100px;
+}
+` 
 export const StarCard = styled.div`
-max-width: 100px;
-max-height: 100px;
+max-width: 300px;
+max-height: 300px;
+min-width: 50px;
 cursor: pointer;
 position: relative;
 

@@ -184,31 +184,10 @@ import { useEffect } from "react";
 const AuthForm = () => {
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
-    const [regState, setRegState] = useState({
-     //   username: "",
-     email: "",
-        password: ""
-    });
-    const handleChange = (event) => {
-       
-      const { name, value } = event.target;
-      console.log(value)
-      setRegState(prevState => ({
-          ...prevState,
-          [name]: value
-      }));
-  };
     const handleVisible = () => {
         setIsVisible(prev => !prev);
     };
-
-    const { data: oneUser } = useQuery(GET_ONE_USER, {
-        variables: {
-            id: 1
-        }
-    });
     const [newUser] = useMutation(CREATE_USER);
-
     const addUser = async (event, values) => {
       event.preventDefault()
         try {
@@ -238,10 +217,6 @@ const AuthForm = () => {
             .required("Password is required")
             .min(4, "Password is too short - should be 4 chars min")
     });
-const test = (event, initialValues) => {
-  event.preventDefault()
-  console.log("TEST" , initialValues)
-}
 
 useEffect(()=> {
   const storedData = sessionStorage.getItem('personalData');
@@ -254,7 +229,6 @@ useEffect(()=> {
         <Formik
             initialValues={initialValues}
             validationSchema={signInSchema}
- 
         >
             {(formik) => {
                 const { errors, touched, isValid, dirty, handleSubmit } = formik;
@@ -262,23 +236,23 @@ useEffect(()=> {
                     <AuthFormWrapper>
                         <AuthFormStyled>
                             <AuthTitle>Auth form</AuthTitle>
-                            <Form // onSubmit={handleSubmit}
+                            <Form 
                             >
                                 <AuthFormBackgroundStyled />
                                 <AuthFormContent>
                                     <AuthItemContentItem>
                                         <AuthItemContentItemSubTitle htmlFor="email">Email</AuthItemContentItemSubTitle>
+                                        <AuthIcon  src={User} alt="user"/>
                                         <Field
                                             as={AuthItemContentItemInput}
                                             type="email"
-                                          //  value={regState.email}
                                             name="email"
                                             id="email"
-                                            placeholder="Type username"
-                                          //  onChange={(event)=>handleChange(event)}
-                                            required
+                                            placeholder="Type email"
+                                            color={(isValid)}
+                                         
                                         />
-                                        <ErrorMessage name="email" component="div" className="error" />
+                                        <ErrorMessage name="email" component="div" className="error" style={{color: "red"}} />
                                     </AuthItemContentItem>
                                     <AuthItemContentItem>
                                         <AuthItemContentItemSubTitle htmlFor="password">Password</AuthItemContentItemSubTitle>
@@ -286,20 +260,18 @@ useEffect(()=> {
                                             as={AuthItemContentItemInput}
                                             type={isVisible ? "text" : "password"}
                                             name="password"
-                                         //   value={regState.password}
                                             id="password"
-                                         //   onChange={(event)=>handleChange(event)}
                                             placeholder="Type password"
+                                         color={(isValid)}
+                                            required
                                         />
                                         <EyeIcon onClick={handleVisible} src={isVisible ? Visible : Hidden} alt="user" />
-                                        <ErrorMessage name="password" component="div" className="error" />
+                                        <ErrorMessage name="password" component="div" className="error"   style={{color: "red"}}/>
                                     </AuthItemContentItem>
                                     <AuthItemContentSubmit
                                         type="submit"
                                         disabled={!(dirty && isValid)}
-
                                         onClick={e => {addUser(e,  formik.values) }}
-                                     //   onClick={(dirty && isValid) ? (event) =>addUser(event,{email: regState.username,password: regState.password}) : "" }
                                     >
                                         Submit
                                     </AuthItemContentSubmit>

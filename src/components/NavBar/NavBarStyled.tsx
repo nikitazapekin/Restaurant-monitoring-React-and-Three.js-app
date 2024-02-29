@@ -22,7 +22,6 @@ export const NavBarContentArea = styled.div`
    position: relative;
     height: 70px;
     margin: 0 auto;
-    
 display: flex;
 align-items: center;
 justify-content: space-between;

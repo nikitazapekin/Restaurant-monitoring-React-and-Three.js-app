@@ -63,9 +63,10 @@ export const AuthItemContentItemInput = styled.input`
 position: relative;
     width: 100%;
     height: 60px;
-    color: gray;
+  //  color: gray;
+  color: ${props=> props.color ? "gray" : "red"};
     cursor: pointer;
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid  ${props=> props.color ? "gray" : "red"};
     border-left: none;
     border-right: none;
     border-top: none;
