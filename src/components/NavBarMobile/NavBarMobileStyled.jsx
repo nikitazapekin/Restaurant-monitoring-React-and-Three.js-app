@@ -112,14 +112,25 @@ align-items: center;
 `
 
 export const MenuHeader = styled.div`
-font-size: 3.5rem;
-color: white;
 padding: 10px;
 border-bottom: 1px solid white;
 width: 100%;
-text-align: center;
+display: flex;
+justify-content: space-between;
+align-items: center;
+//text-align: center;
 `
-
+export const MenuHeaderText = styled.h1`
+  
+  font-size: 3.5rem;
+  color: white;
+`
+export const MenuHeaderStar =styled.img`
+ // max-width: 200px;
+ width: 100px ;
+ height: auto
+  
+`
 export const StyledMenuList = styled.ul`
   
   text-align: center;

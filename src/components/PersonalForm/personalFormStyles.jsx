@@ -176,6 +176,7 @@ export const GridTableElement = styled.div`
     width: auto;
  height: auto;
     position: relative;
+    //background-color: ${props=>props.isBooked ? "red" : "gray"};
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -192,9 +193,8 @@ flex-direction: column;
 `
 export const GridTableElementBackground = styled.div`
 border-radius: 10px;
-background-color: rgba(
-77, 78, 79
-);
+//background-color: rgba(77, 78, 79);
+background-color: ${props=>props.isBooked ? "rgba(255, 3, 3)" : " rgba(77, 78, 79)"};
 position: absolute;
 left: 0;
 height: 100%;

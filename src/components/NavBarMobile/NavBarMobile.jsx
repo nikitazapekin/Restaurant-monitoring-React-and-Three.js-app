@@ -4,16 +4,9 @@ import { Link } from "react-router-dom";
 import Home from "../../assets/home.png"
 import Restaurant from "../../assets/restaurant.png"
 import User from "../../assets/white-user.png"
-import { Blur, Burger, BurgerButton, BurgerButtonLine, BurgerButtonSpan, MenuContent, MenuHeader, MenuListElement, MenuListElementNavigate, MenuWrapper, NavBarBackground, StyledMenuList } from "./NavBarMobileStyled";
+import Star from "../../assets/star.png"
+import { Blur, Burger, BurgerButton, BurgerButtonLine, BurgerButtonSpan, MenuContent, MenuHeader, MenuHeaderStar, MenuHeaderText, MenuListElement, MenuListElementNavigate, MenuWrapper, NavBarBackground, StyledMenuList } from "./NavBarMobileStyled";
 const Menu = ({ header, items, active, setActive }) => {
-
-  /*
- const storedData = sessionStorage.getItem('personalData');
-  if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      navigate(`/personal/${parsedData.id}`)
-  }
-  */
   return (
     <MenuWrapper
       isActive={active}
@@ -22,7 +15,13 @@ const Menu = ({ header, items, active, setActive }) => {
       <Blur />
       <MenuContent onClick={(e) => e.stopPropagation()}>
         <MenuHeader>
+
+      <MenuHeaderStar src={Star} alt="star" />
+      <MenuHeaderText>
+
           {header}
+      </MenuHeaderText>
+      <MenuHeaderStar src={Star} alt="star" />
         </MenuHeader>
         <StyledMenuList>
           {items.map((item, index) => (

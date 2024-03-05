@@ -47,7 +47,6 @@ const PersonalForm = memo(() => {
                 <PersonalFormContent>
                  <GridWrapper>
                         <GridTable>
-
                             {Number(clickedDay) >= Number(currentDay) && arr.map((item, index) => (
                                 <GridTableElement
                                     isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false}
