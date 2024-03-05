@@ -1,9 +1,9 @@
-
-import "./spinner.css"
+ 
+import { Loader } from "./SpinnerStyled"
 const Spinner = () => {
     return (
         <>
-            <span className="loader"></span>
+           <Loader />
         </>
     )
 }
