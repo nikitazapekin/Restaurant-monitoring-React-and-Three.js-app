@@ -18,7 +18,6 @@ const useBoard = ({currentTime}) => {
  
     const {data} = useTables({currentTime})
 const [isbookedTable, setIsBoockedTable] = useState({
-
   first: "",
   second: "",
   third: "",
@@ -38,10 +37,14 @@ useEffect(() => {
         if(item.from=="00:00" && item.to=="00:00"){
           isBooked = true;
           const indexField = Object.keys(isbookedTable)[i];
+          console.log("FIELSS"+indexField)
+        if(  isbookedTable[indexField]!="00:00-00:00") {
+console.log( "VALUE"+isbookedTable[indexField])
           setIsBoockedTable(prevState => ({
             ...prevState,
             [indexField]: `${item.from}-${item.to}`
           }));
+        }
         }
       else  if (isAbleToBook(currentTime, item.from, item.to)) {
           isBooked = true;

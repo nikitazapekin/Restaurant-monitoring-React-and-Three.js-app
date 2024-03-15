@@ -7,7 +7,11 @@ export const AuthFormStyled = styled.div`
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    gap: 30px
+    gap: 30px;
+
+    @media screen and (max-width: 500px) {
+        padding: 15px;
+    }
 `
 export const AuthFormBackgroundStyled = styled.div`
     border-radius:20px;
@@ -64,9 +68,9 @@ position: relative;
     width: 100%;
     height: 60px;
   //  color: gray;
-  color: ${props=> props.color ? "gray" : "red"};
+  color: ${props => props.color ? "gray" : "red"};
     cursor: pointer;
-    border-bottom: 2px solid  ${props=> props.color ? "gray" : "red"};
+    border-bottom: 2px solid  ${props => props.color ? "gray" : "red"};
     border-left: none;
     border-right: none;
     border-top: none;
@@ -82,7 +86,7 @@ export const AuthItemContentItemSubTitle = styled.p`
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
 `
-export const  AuthItemContentSubmit = styled.button`
+export const AuthItemContentSubmit = styled.button`
     width: 100%;
     height: 60px;
     cursor: pointer;
@@ -102,11 +106,18 @@ export const AuthIcon = styled.img`
 width: 40px;
 height: 40px;
 z-index: 1222;
-top: 40px;
+top: 60px;
 @media screen and (max-width: 530px) {
 widt: 30px;
 heigh:30px;
 }
+`
+export const EyeIconWrapper = styled.div`
+height: 100%;
+display: flex ;
+align-items: center;
+
+
 `
 export const EyeIcon = styled.img`
     position: absolute;
@@ -115,9 +126,10 @@ width: 40px;
 height: 40px;
 z-index: 1222;
 cursor: pointer;
-top: 40px;
+top: 60px;
 @media screen and (max-width: 530px) {
 width: 30px;
 height: 30px;
 }
 `
+

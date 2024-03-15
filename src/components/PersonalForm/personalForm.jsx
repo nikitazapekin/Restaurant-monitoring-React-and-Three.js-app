@@ -1,4 +1,4 @@
-import { PersonalFormBackgroundStyled, EyeIcon, PersonalFormContent, PersonalFormStyled, PersonalFormWrapper, PersonalIcon, PersonalItemContentItem, PersonalItemContentItemInput, PersonalItemContentItemSubTitle, PersonalItemContentSubmit, PersonalTitle, GridTable, GridTableElement, GridWrapper, GridTableElementBackground, GridTableElementTitle, AmountOfFreePlaces, PersonalTables, PerfectScrollbarStyled } from "./personalFormStyles";
+import { PersonalFormBackgroundStyled, EyeIcon, PersonalFormContent, PersonalFormStyled, PersonalFormWrapper, PersonalIcon, PersonalItemContentItem, PersonalItemContentItemInput, PersonalItemContentItemSubTitle, PersonalItemContentSubmit, PersonalTitle, GridTable, GridTableElement, GridWrapper, GridTableElementBackground, GridTableElementTitle, AmountOfFreePlaces, PersonalTables} from "./personalFormStyles";
 import User from "../../assets/user.png"
 import Hidden from "../../assets/hidden.png"
 import Visible from "../../assets/visible.png"
@@ -25,15 +25,15 @@ const PersonalForm = memo(() => {
     const arr = ["Table", "Table", "Table", "Table", "Table", "Table", "Table", "Table"]
     const [isOpen, setIsOpen] = useState(false)
     const [clickedElement, setClickedElement] = useState(1)
-
     const handleClick = (id) => {
+        refetch()
         setIsOpen(true)
         setClickedElement(id)
     }
     const { refetch, allTables, } = GetTablesInfo({ month, year, clickedDay })
     useEffect(() => {
         refetch()
-    }, [clickedDay]
+    }, [clickedDay, isOpen]
     )
     const currentDate = new Date();
     const currentDay = currentDate.getDate();
@@ -42,7 +42,6 @@ const PersonalForm = memo(() => {
             <PersonalFormStyled>
                <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
                 <PersonalTables>Our tables for booking:</PersonalTables>  
-                
                 <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
                 <PersonalFormContent>
                  <GridWrapper>
@@ -64,7 +63,6 @@ const PersonalForm = memo(() => {
                         </GridTable>
                     </GridWrapper>
                 </PersonalFormContent>
-            
             </PersonalFormStyled>
             <ModalWindow open={isOpen}
                 clickedElement={clickedElement}

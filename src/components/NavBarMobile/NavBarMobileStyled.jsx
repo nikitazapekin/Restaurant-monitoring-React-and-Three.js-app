@@ -59,7 +59,7 @@ export const BurgerButtonSpan = styled.span`
   position: relative;
   display: block;
   width: 30px;
- 
+  
   top: 15px;
 
   &::before,
@@ -69,14 +69,14 @@ export const BurgerButtonSpan = styled.span`
     width: 30px;
     height: 2px;
     background-color: black;
-   
+    
     transition: transform 0.3s ease;
   }
 
   &::before {
    top: 0;
  //  top: 10px
-  }
+}
 
   &::after {
     bottom: 0;
@@ -100,9 +100,9 @@ export const MenuContent = styled.div`
     width: 30%;
     height: 100%;
     z-index: 11111;
-  //  background-color: black;
+    //  background-color: black;
   background-color: rgba(117, 118, 120);
-    position: absolute;
+  position: absolute;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -129,7 +129,6 @@ export const MenuHeaderStar =styled.img`
  // max-width: 200px;
  width: 100px ;
  height: auto
-  
 `
 export const StyledMenuList = styled.ul`
   
@@ -152,6 +151,7 @@ font-size: 34px;
 `
 
 export const MenuWrapper = styled.div`
+ //margin-bottom: 20px;
       z-index: 11111;
   position: fixed;
     width: 100vw;

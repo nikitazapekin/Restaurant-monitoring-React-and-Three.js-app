@@ -1,5 +1,4 @@
 
-
 import styled from "styled-components";
 import PerfectScrollbar from "@opuscapita/react-perfect-scrollbar";
 export const PersonalFormStyled = styled.div`
@@ -15,10 +14,12 @@ export const PersonalFormStyled = styled.div`
     position: relative;
     gap: 30px;
      background-color: #e7e5e5;
-    overflow-y: scroll;
+     overflow-y: scroll;
 
     @media screen and (max-width:500px) {
-        width: 100%;
+      //  width: 100%;
+      padding: 15px;
+      top: 45px;
     }
     `
 
@@ -56,7 +57,7 @@ export const PersonalTitle = styled.p`
   @media screen and (max-width: 1000px) {
     font-size: 38px;
   }
-
+  
   @media screen and (max-width: 600px) {
     font-size: 28px;
   }
@@ -67,7 +68,7 @@ export const PersonalTables = styled.p`
     font-size: 32px;
     position: relative;
     z-index: 123;
-  font-size: 32px;
+    font-size: 32px;
 
   @media screen and (max-width: 600px) {
     font-size: 25px;
@@ -91,8 +92,8 @@ export const PersonalItemContentItem = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-
-`
+    
+    `
 export const PersonalItemContentItemInput = styled.input`
 position: relative;
     width: 100%;
@@ -144,7 +145,7 @@ cursor: pointer;
 top: 40px
 `
 export const GridWrapper = styled.div`
-    width: 100%;
+width: 100%;
 `
 
 export const PerfectScrollbarStyled = styled(PerfectScrollbar)`
@@ -162,32 +163,71 @@ export const GridTable =  styled.div`
     height: auto;
     max-height: 80vh;
  //   overflow-y: scroll;
-    position: relative;
+ position: relative;
     z-index: 1234;
    justify-items: center; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 30%;
+    grid-row-gap: 30%;
   @media screen and (max-width: 700px) {
     grid-template-columns: repeat(2, 1fr);
   } 
 `
 export const GridTableElement = styled.div`
-    width: auto;
+width: auto;
  height: auto;
     position: relative;
-    //background-color: ${props=>props.isBooked ? "red" : "gray"};
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
 display: flex;
 flex-direction: column;
+transition: 1s;
+perspective: 300px;
+
+
+
+
+
+
+&::after {
+    content: attr(data-tooltip);  
+    position: absolute;  
+width: auto;
+ white-space: nowrap;
+  padding: 20px;
+   display: ${props => props.isBooked ? 'block' : 'none'};
+   left: 50%;
+   transform: translateX(-50%);
+ //   bottom: 0%;  
+    background-color: #3989c9;
+    border-radius: 5px;
+    color: #fff;  
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    pointer-events: none;  
+    opacity: 0;  
+    
+    transition: 1s;  
+   } 
+   &:hover::after {
+    opacity: 1;  
+   }
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 600px) {
-    padding: 5px;
-  }
+  padding: 5px;
+}
 
 &:hover {
+  transform: rotateY(30deg) rotateX(15deg);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 `
@@ -210,7 +250,7 @@ position: relative;
 @media screen and (max-width: 600px) {
     font-size: 20px;
   }
-
+  
 
 
 `
@@ -220,3 +260,6 @@ color: rgba(66, 66, 66);
 font-weight: 500;
 text-align: right;
 `
+
+
+

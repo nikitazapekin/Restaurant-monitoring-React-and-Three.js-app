@@ -15,10 +15,8 @@ const Menu = ({ header, items, active, setActive }) => {
       <Blur />
       <MenuContent onClick={(e) => e.stopPropagation()}>
         <MenuHeader>
-
       <MenuHeaderStar src={Star} alt="star" />
       <MenuHeaderText>
-
           {header}
       </MenuHeaderText>
       <MenuHeaderStar src={Star} alt="star" />
@@ -31,13 +29,11 @@ const Menu = ({ header, items, active, setActive }) => {
                   {item.value}
                 </MenuListElementNavigate>
               </Link>
-
               <img src={item.icon} />
             </MenuListElement>
           ))}
         </StyledMenuList>
       </MenuContent>
-
     </MenuWrapper>
   );
 }

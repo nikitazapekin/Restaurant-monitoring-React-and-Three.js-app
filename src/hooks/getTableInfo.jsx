@@ -19,8 +19,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const today = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const currentDate = today.toLocaleDateString('en-US', options);
-
-   // const { refetch, allTables, } = GetTablesInfo({ month, year, clickedDay })
     const [time, setTime] = useState({
         from: "",
         to: "",
@@ -63,7 +61,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                 if(data.createBookingAction.errorMessage){
                     setErrorMessage(data.createBookingAction.errorMessage)
                 } else {
-
+                  //  refetch()
                     onClose()
 
                 }
@@ -76,7 +74,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const handleRefreshData = () => {
         refetch()
     };
-
     const handleBookTableForDay = () => {
         setTime(prev => ({
             ...prev,
@@ -84,9 +81,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
             to: "00:00"
         }));
     }
-    useEffect(()=> {
-console.log(JSON.stringify(time))
-    }, [time])
     return {time,  handleTime, oneUser, handleBook, isError, currentDate, handleRefreshData, refetch, errorMessage, handleBookTableForDay }
 }
 export default GetTableInfo

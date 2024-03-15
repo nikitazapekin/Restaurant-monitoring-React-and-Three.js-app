@@ -10,9 +10,6 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
   if (!open) return null;
   const portalElement = document.getElementById('portal')
   const { handleBook, handleTime, oneUser, isError, currentDate, errorMessage, handleBookTableForDay, time } = GetTableInfo({ clickedElement, onClose, month, year, clickedDay })
- // const { handleDecrement, handleIncrement, handleSelectDay, daysInMonth } = useCalendar()
-
-
   return ReactDom.createPortal(
     <>
       <Modal open={open}>
