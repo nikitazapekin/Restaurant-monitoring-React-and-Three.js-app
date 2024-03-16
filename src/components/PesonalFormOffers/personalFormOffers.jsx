@@ -4,10 +4,14 @@ import { PersonalFormWrapper, PersonalFormStyled, PersonalTitle } from "../Perso
 import { useParams } from "react-router-dom";
 import Trash from "../../assets/delete.png"
 import { BookingElement, BookingElementText, TrashBox, TrashBoxImage } from "./personalFormOffersStyles";
+import useRemoveFromBooked from "../../hooks/removeFromBooked";
 const PersonalFormOffers = () => {
     const { id } = useParams()
     const { oneUser, refetch } = YourBookedTables({ id })
-    useEffect(() => {
+  //  const {handleRefetch} = useRemoveFromBooked()
+
+  const {handleRemove} = useRemoveFromBooked()
+     useEffect(() => {
         refetch()
     }, [])
     useEffect(()=> {
@@ -19,6 +23,12 @@ if(oneUser) {
     }
 }
     }, [oneUser])
+
+
+    useEffect(()=> {
+refetch()
+console.log("is refetching")
+    }, [handleRemove])
     return (<>
         <PersonalFormWrapper>
             <PersonalFormStyled>
@@ -33,6 +43,7 @@ if(oneUser) {
                             </BookingElementText>
                             <TrashBox>
                                 <TrashBoxImage
+                               onClick={()=>handleRemove(item)}
                                     src={Trash}
                                     alt="trash" />
                                     </TrashBox>
