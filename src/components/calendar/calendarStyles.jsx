@@ -67,21 +67,31 @@ export const CalendarDatas = styled.div`
    justify-items: center; 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-  grid-row-gap: 5%;
+ // grid-row-gap: 5%;
 `
 export const CalendarData = styled.div`
-    padding: 10px;
     display: flex;
+   
+    max-width: 400px;
+    width: 100%;
+ padding:  10px 0;
     justify-content: center;
     align-items: center;
-transition: 1s ease-in-out;
+    border: 2px solid black;
+    transition: 1s ease-in-out;
     cursor: pointer;
+    height: 50px;
+
     &:hover {
         text-shadow: rgba(0, 0, 0, 0.25) 50px 50px 100px -24px;
-//text-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-}
+        background-color: #bdb8b8;
+        font-size: 22px;
+        font-weight: 900;
+    }
+
     position: relative;
-`
+`;
+
 
 export const ErrorTime = styled.div`
     color: red;

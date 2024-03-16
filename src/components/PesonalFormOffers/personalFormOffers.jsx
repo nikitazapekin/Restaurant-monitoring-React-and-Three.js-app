@@ -1,41 +1,19 @@
-import {  PersonalFormContent, PersonalFormStyled, PersonalFormWrapper, PersonalIcon, PersonalItemContentItem, PersonalItemContentItemInput, PersonalItemContentItemSubTitle, PersonalItemContentSubmit, PersonalTitle, GridTable, GridTableElement, GridWrapper, GridTableElementBackground, GridTableElementTitle, AmountOfFreePlaces, PersonalTables, PersonalTablesBlock, YourBookedTables } from "./personalFormStyles";
-import { Link } from "react-router-dom";
-import ModalWindow from "../Modal/Modal";
-import { useState } from "react";
-import {  useQuery } from "@apollo/client";
-import {GET_ONE_USER } from "../../query/user";
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import useCalendar from "../../hooks/useCalendar";
-import { memo } from "react";
-import Calendar from "../calendar/calendar";
-import GetTablesInfo from "../../hooks/getTablesInfo";
-const PersonalForm = memo(() => {
-    const { id } = useParams()
-    const { month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth } = useCalendar()
-    const { data: oneUser } = useQuery(GET_ONE_USER, {
-        variables: {
-            id: Number(id)
-        }
-    })
-    const arr = ["Table", "Table", "Table", "Table", "Table", "Table", "Table", "Table"]
-    const [isOpen, setIsOpen] = useState(false)
-    const [clickedElement, setClickedElement] = useState(1)
-    const handleClick = (id) => {
-        refetch()
-        setIsOpen(true)
-        setClickedElement(id)
-    }
-    const { refetch, allTables, } = GetTablesInfo({ month, year, clickedDay })
-    useEffect(() => {
-        refetch()
-    }, [clickedDay, isOpen]
-    )
-    const currentDate = new Date();
-    const currentDay = currentDate.getDate();
-    return (
-        <PersonalFormWrapper>
-            <PersonalFormStyled>
+import { PersonalFormWrapper , PersonalFormStyled, PersonalTitle} from "../PersonalForm/personalFormStyles";
+const PersonalFormOffers = () => {
+
+    
+    return ( <>
+
+
+
+
+<PersonalFormWrapper>
+    <PersonalFormStyled>
+    <PersonalTitle>Your booked offers</PersonalTitle>
+
+
+
+         {/*  
                 <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
                 <PersonalTablesBlock>
                     <PersonalTables>Our tables for booking:</PersonalTables>
@@ -66,17 +44,18 @@ const PersonalForm = memo(() => {
                         </GridTable>
                     </GridWrapper>
                 </PersonalFormContent>
-            </PersonalFormStyled>
-            <ModalWindow open={isOpen}
+                <ModalWindow open={isOpen}
                 clickedElement={clickedElement}
                 onClose={() => setIsOpen(false)}
                 month={month}
                 year={year}
                 clickedDay={clickedDay}
             >
-            </ModalWindow>
+                            </ModalWindow>
+                             */}
+                </PersonalFormStyled>
         </PersonalFormWrapper>
-    );
-})
-
-export default PersonalForm;
+    </> );
+}
+ 
+export default PersonalFormOffers;

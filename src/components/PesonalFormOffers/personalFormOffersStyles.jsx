@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import PerfectScrollbar from "@opuscapita/react-perfect-scrollbar";
 export const PersonalFormStyled = styled.div`
@@ -35,6 +34,8 @@ opacity: 0.4;
 background-color: rgba(202, 204, 219);
 z-index: 0;
 `
+
+
 export const PersonalFormWrapper = styled.div`
     width: 100%;
     height: 100%;
