@@ -17,16 +17,38 @@ import {gql} from '@apollo/client'
   }
   `;
     export const GET_TABLES_INFO = gql`
-     query getInfornationAboutAbilityOfBooking($date: String!){
-     
+     query getInfornationAboutAbilityOfBooking($date: String!){    
   getInfornationAboutAbilityOfBooking(date: $date)
- 
      }
- 
-  
+
     `; 
+  export const GET_YOUR_BOOKED_TABLES = gql`
+ query  getYourBookedTables( $user: String!) {
+    getYourBookedTables(user: $user) {
+      timeForBooking {
+   dataOfBooking,
+   tableID,
+   from,
+   to,
+   timeForBooking,
+   isBookedBy
+ }
+    }
+  }
+  `
+/*
+timeForBooking {
+dataOfBooking
+}
+query{
+  getYourBookedTables( user: "valera") {
+ timeForBooking {
+   dataOfBooking
+ }
+  }
+}
 
-
+*/
   /*  export const GET_TABLES_INFO = gql`
 query {
   getInfornationAboutAbilityOfBooking(date: "25-2-2024")

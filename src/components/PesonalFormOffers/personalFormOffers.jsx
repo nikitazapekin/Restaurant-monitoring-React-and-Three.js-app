@@ -1,61 +1,67 @@
-import { PersonalFormWrapper , PersonalFormStyled, PersonalTitle} from "../PersonalForm/personalFormStyles";
+import { useEffect } from "react";
+import YourBookedTables from "../../hooks/yourBookedTables";
+import { PersonalFormWrapper, PersonalFormStyled, PersonalTitle } from "../PersonalForm/personalFormStyles";
+import { useParams } from "react-router-dom";
+import Trash from "../../assets/delete.png"
+import { BookingElement, BookingElementText, TrashBox, TrashBoxImage } from "./personalFormOffersStyles";
 const PersonalFormOffers = () => {
-
-    
-    return ( <>
-
-
-
-
-<PersonalFormWrapper>
-    <PersonalFormStyled>
-    <PersonalTitle>Your booked offers</PersonalTitle>
-
-
-
-         {/*  
-                <PersonalTitle id="section1">Hello {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!</PersonalTitle>
-                <PersonalTablesBlock>
-                    <PersonalTables>Our tables for booking:</PersonalTables>
-                    <YourBookedTables>
-                        <Link to={`/yourOffers/${id}`}>
-                        Your booked tables
-                        </Link>
-                        </YourBookedTables>
-                </PersonalTablesBlock>
-                <Calendar month={month} year={year} clickedDay={clickedDay} handleDecrement={handleDecrement} handleIncrement={handleIncrement} handleSelectDay={handleSelectDay} daysInMonth={daysInMonth} />
-                <PersonalFormContent>
-                    <GridWrapper>
-                        <GridTable>
-                            {Number(clickedDay) >= Number(currentDay) && arr.map((item, index) => (
-                                <GridTableElement
-                                    isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false}
-                                    data-tooltip="This table is booked for all day"
-                                    onClick={allTables && allTables.getInfornationAboutAbilityOfBooking[index] ? "" : () => handleClick(index + 1)}>
-                                    <GridTableElementTitle>
-                                        {item} {index + 1}
-                                    </GridTableElementTitle>
-                                    <AmountOfFreePlaces>
-                                        4/4
-                                    </AmountOfFreePlaces>
-                                    <GridTableElementBackground isBooked={allTables ? allTables.getInfornationAboutAbilityOfBooking[index] : false} />
-                                </GridTableElement>
-                            ))}
-                        </GridTable>
-                    </GridWrapper>
-                </PersonalFormContent>
-                <ModalWindow open={isOpen}
-                clickedElement={clickedElement}
-                onClose={() => setIsOpen(false)}
-                month={month}
-                year={year}
-                clickedDay={clickedDay}
-            >
-                            </ModalWindow>
-                             */}
-                </PersonalFormStyled>
-        </PersonalFormWrapper>
-    </> );
+    const { id } = useParams()
+    const { oneUser, refetch } = YourBookedTables({ id })
+    useEffect(() => {
+        refetch()
+    }, [])
+    useEffect(()=> {
+console.log(JSON.stringify(oneUser))
+if(oneUser) {
+ //   console.log("ERR"+JSON.stringify(oneUser.getYourBookedTables))
+    for( let i=0; i<oneUser.getYourBookedTables.length; i++){
+        console.log("ERR"+JSON.stringify(oneUser.getYourBookedTables[i]))
+    }
 }
- 
+    }, [oneUser])
+    return (<>
+        <PersonalFormWrapper>
+            <PersonalFormStyled>
+                <PersonalTitle>Your booked tables</PersonalTitle>
+                {oneUser && (
+                <>
+                 {oneUser.getYourBookedTables.map((itemm)=> (
+                   itemm.timeForBooking.map((item, index) => (
+                        <BookingElement>
+                        <BookingElementText>
+                                {index + 1}.  Table №{item.tableID} is booked for {item.timeForBooking}  ({item.dataOfBooking})
+                            </BookingElementText>
+                            <TrashBox>
+                                <TrashBoxImage
+                                    src={Trash}
+                                    alt="trash" />
+                                    </TrashBox>
+                        </BookingElement>
+                    )
+                    )
+                 )) }
+                {/*
+                    oneUser.getYourBookedTables[0].timeForBooking.map((item, index) => (
+                        <BookingElement>
+                        <BookingElementText>
+                                {index + 1}.  Table №{item.tableID} is booked for {item.timeForBooking}  ({item.dataOfBooking})
+                            </BookingElementText>
+                            <TrashBox>
+                                <TrashBoxImage
+                                    src={Trash}
+                                    alt="trash" />
+                                    </TrashBox>
+                        </BookingElement>
+                    )
+                    )
+                    */}
+                </>
+                    )
+                    
+                    }
+            </PersonalFormStyled>
+        </PersonalFormWrapper>
+    </>);
+}
+
 export default PersonalFormOffers;

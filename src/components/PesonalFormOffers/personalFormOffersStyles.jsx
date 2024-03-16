@@ -35,6 +35,41 @@ background-color: rgba(202, 204, 219);
 z-index: 0;
 `
 
+export const BookingElement = styled.div`
+width: 100%;
+height: 60px;
+display: flex;
+background-color: #babdbd;
+align-items: center;
+border-radius: 20px;
+display: flex;
+justify-content: space-between;
+`
+export const BookingElementText = styled.p`
+    font-size: 22px;
+    user-select: none;
+    padding-left: 20px;
+`
+export const TrashBox = styled.div`
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+margin-right: 20px;
+`
+
+export const TrashBoxImage = styled.img`
+position: absolute;
+width: 100%;
+cursor: pointer;
+`
+
+
+
+
+
 
 export const PersonalFormWrapper = styled.div`
     width: 100%;

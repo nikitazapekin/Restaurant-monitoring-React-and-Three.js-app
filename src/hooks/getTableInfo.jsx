@@ -3,11 +3,12 @@
 import React, { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { useRef, useState } from "react";
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TABLE_INFO } from '../query/table';
 import { BOOKING_ACTION } from '../mutations/table';
 const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
+    const {id} = useParams()
     const { data: oneUser, refetch } = useQuery(GET_TABLE_INFO, {
         variables: {
             id: Number(clickedElement),
@@ -52,7 +53,8 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                         from: time.from,
                         to: time.to,
                         dataOfBooking: ""+clickedDay+"-"+(month+1)+"-"+year,
-                        amountOfChairs: Number(time.chairs)
+                        amountOfChairs: Number(time.chairs),
+                        isBookedBy: String(id)
                     }
                 }
             }).then(({ data }) => {
@@ -61,9 +63,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                 if(data.createBookingAction.errorMessage){
                     setErrorMessage(data.createBookingAction.errorMessage)
                 } else {
-                  //  refetch()
                     onClose()
-
                 }
             })
         }

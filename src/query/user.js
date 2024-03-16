@@ -18,13 +18,3 @@ export const GET_ONE_USER = gql`
         }
     }
 `;
-
-/*
-export const GET_USER_DATA =glb`
-query {
-    getUser(id: 1) {
-      id
-      username
-    }
-  }
-` */
