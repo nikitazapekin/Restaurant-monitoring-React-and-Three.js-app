@@ -1,7 +1,7 @@
 import styled from "styled-components"
 export const Modal = styled.div`
-width: 90%;
-height: 80%;
+width: 50%;
+height: 400px;
 position: fixed;
 top: 50%;
 left: 50%;
@@ -21,18 +21,77 @@ flex-direction: column;
 position: relative;
 width: 100%;
 height: 100%;
-margin-bottom: 10px;
-  justify-content: space-between;
-  overflow-y: scroll;
+justify-content: space-between;
+//row-gap: 50px;
+ // justify-content: space-between;
+ // overflow-y: scroll;
 `
 export const ModalTitle = styled.h1`
-  font-size: 60px;
-
+  font-size: 40px;
+  font-weight: 900;
+ 
 
 `
-export const HeaderWrapper = styled.div`
-  width: 100%;
+export const  OverlayStyles = styled.div`
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0, 0, 0, .7);
+z-index: 1000;
+`
+
+export const ButtonBlock = styled.div`
   display: flex;
+  flex-direction: column;
+`
+ export const AgreeButton = styled.button`
+
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    border-radius: 20px;;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &:hover{
+    letter-spacing: 2px;
+  background-color: rgba(212, 125, 4);
+  color: #fff;
+  transform: scale(1.01);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  transition: 1s ease-in-out;
+ `
+  export const DisagreeButton = styled.button`
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius:20px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  justify-content: center;
+  border: none;
+  outline: none;
+  &:hover{
+    letter-spacing: 2px;
+  background-color: rgba(148, 32, 6);
+  color: #fff;
+  transform: scale(1.01);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  transition: 1s ease-in-out;
+`
+/*
+export const HeaderWrapper = styled.div`
+width: 100%;
+display: flex;
   justify-content: space-between;
 
 `
@@ -106,7 +165,7 @@ export const SelectDataContainer = styled.div`
 export const SelectDataOption = styled.div`
   font-size: 32px;
   cursor: pointer;
-`
+  `
 export const SelectTimeTitle  = styled.div`
 font-size: 40px;
 `
@@ -117,12 +176,12 @@ export const GridTable =  styled.div`
     height: auto;
     position: relative;
     z-index: 1234;
-   justify-items: center; 
+    justify-items: center; 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 30%;
+    grid-row-gap: 30%;
   padding: 50px;
-`
+  `
 export const GridTableElement = styled.div`
    // width: auto;
  //height: auto;
@@ -172,7 +231,7 @@ export const SelectingBookingTime= styled.input`
   color: gray;
   font-size: 32px;
   `
-export const ErrorTime = styled.div`
+  export const ErrorTime = styled.div`
 color: red;
 font-size: 30px;
 text-align: center;
@@ -186,15 +245,15 @@ export const BookedTime = styled.div`
   position: relative;
   gap: 5px;
   margin-bottom: 20px;
-`
+  `
 export const BookedTimeItem =styled.div`
-  width: 100%;
+width: 100%;
   height: auto;
   position: relative;
   padding: 20px;
 `
 export const BookingTimeItemBackground = styled.div`
-    border-radius: 20px;
+border-radius: 20px;
   position: absolute;
   top: 0;
   left: 0;
@@ -212,12 +271,15 @@ align-items: center;
 justify-content: space-between;
 `
 export const BookingTimeItemContentText = styled.p`
-  font-size: 35px;
+font-size: 35px;
   color: gray;
   
 `
 
 export const SelectForAllDayTable = styled.div`
+
+
+
   width: 100%;
 height: auto;
 padding: 10px;
@@ -239,11 +301,4 @@ margin-bottom: 0px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 `
-
-
-export const NothingToShowText =styled.p`
-  
-  text-align: center;
-  color: gray;
-  
-`
+*/

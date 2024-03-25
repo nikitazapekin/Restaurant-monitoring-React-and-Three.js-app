@@ -37,8 +37,8 @@ const client = new ApolloClient({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ErrorBoundary>
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </ErrorBoundary>
 );

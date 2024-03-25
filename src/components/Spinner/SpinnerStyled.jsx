@@ -25,6 +25,7 @@ export const Loader = styled.span`
   left: 50%;
   display: flex;
   justify-content: center;
+  z-index: 111111;
   align-items: center;
 `;
 

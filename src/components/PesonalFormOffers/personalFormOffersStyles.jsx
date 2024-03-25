@@ -2,10 +2,8 @@ import styled from "styled-components";
 import PerfectScrollbar from "@opuscapita/react-perfect-scrollbar";
 export const PersonalFormStyled = styled.div`
     width: 100%;
-    //  width: 70%;
-    max-height: 70vh;
-     height: auto;
-  // height: 100%;
+   height: 70vh;
+    // height: auto;
     padding: 50px;
     border-radius: 20px;
     display: flex;
@@ -14,15 +12,11 @@ export const PersonalFormStyled = styled.div`
     gap: 30px;
      background-color: #e7e5e5;
      overflow-y: scroll;
-
     @media screen and (max-width:500px) {
-      //  width: 100%;
       padding: 15px;
       top: 45px;
     }
     `
-
-
 export const PersonalFormBackgroundStyled = styled.div`
     border-radius:20px;
     width: 100%;
@@ -320,3 +314,29 @@ text-align: right;
 
 
 
+
+
+export const NothingToShowText =styled.p`
+  
+  text-align: center;
+  color: gray;
+  
+`
+
+export const Warning = styled.div`
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+cursor: pointer;
+margin-left: auto;
+margin-right: 20px;
+`
+export const WarningImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+`

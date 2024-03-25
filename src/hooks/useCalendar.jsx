@@ -10,12 +10,16 @@ const useCalendar = () => {
     const daysInMonth = getDaysInMonth(year, month);
     const handleIncrement = () => {
         console.log(year)
-        if (month == 12) {
-            setMonth(1)
-            setYear(prev => Number(prev + 1))
-        }
-        else {
-            setMonth(prev => (Number(prev + 1)))
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        if(currentMonth+3>month){
+            if (month == 12) {
+                setMonth(1)
+                setYear(prev => Number(prev + 1))
+            }
+            else {
+                setMonth(prev => (Number(prev + 1)))
+            }
         }
     }
     const handleDecrement = () => {

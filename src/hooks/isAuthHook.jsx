@@ -3,22 +3,16 @@ import { useNavigate } from "react-router-dom"
 import {useMutation, useQuery} from "@apollo/client";
 import { CREATE_USER } from "../mutations/user";
 const isAuthHook = ()=> {
-    const [isAuth, setIsAuth] = useState(false)
-
-    const {data:oneUser} = useQuery(GET_ONE_USER, {
+    const {data:oneUser, loading} = useQuery(GET_ONE_USER, {
         variables: {
            id: 1
         }
     })
     const [newUser] = useMutation(CREATE_USER)
-    const [users, setUsers] = useState([])
-    const [username, setUsername] = useState('')
-    const [age, setAge] = useState(0)
     const [regState, setRegState ]= useState({
         username: "",
         password: ""
     })
-    console.log("ONE USER"+JSON.stringify(oneUser))
 const navigate= useNavigate()
     const addUser = (e) => {
         e.preventDefault()
@@ -35,6 +29,6 @@ const navigate= useNavigate()
             setAge(0)
         })
     }
-    return {addUser, regState, setRegState}
+    return {addUser, regState, setRegState, loading}
 }
 export default isAuthHook

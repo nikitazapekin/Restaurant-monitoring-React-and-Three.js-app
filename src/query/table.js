@@ -1,7 +1,7 @@
 
-import {gql} from '@apollo/client'
+import { gql } from '@apollo/client'
 
-  export const GET_TABLE_INFO = gql`
+export const GET_TABLE_INFO = gql`
   query getTableInfo($id: ID!, $date: String!){
     getTableInfo(id: $id, date: $date) {
       id
@@ -16,13 +16,13 @@ import {gql} from '@apollo/client'
     }
   }
   `;
-    export const GET_TABLES_INFO = gql`
+export const GET_TABLES_INFO = gql`
      query getInfornationAboutAbilityOfBooking($date: String!){    
   getInfornationAboutAbilityOfBooking(date: $date)
      }
 
-    `; 
-  export const GET_YOUR_BOOKED_TABLES = gql`
+    `;
+export const GET_YOUR_BOOKED_TABLES = gql`
  query  getYourBookedTables( $user: String!) {
     getYourBookedTables(user: $user) {
       timeForBooking {
@@ -31,7 +31,9 @@ import {gql} from '@apollo/client'
    from,
    to,
    timeForBooking,
-   isBookedBy
+   isBookedBy,
+   timeOfBooking,
+   isConfirmed
  }
     }
   }
@@ -49,9 +51,9 @@ query{
 }
 
 */
-  /*  export const GET_TABLES_INFO = gql`
+/*  export const GET_TABLES_INFO = gql`
 query {
-  getInfornationAboutAbilityOfBooking(date: "25-2-2024")
+getInfornationAboutAbilityOfBooking(date: "25-2-2024")
 }
 
 `; 
