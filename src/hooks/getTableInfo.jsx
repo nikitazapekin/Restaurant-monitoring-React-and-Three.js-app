@@ -210,9 +210,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
 
     }
 }
-useEffect(()=> {
-}, [])
-console.log("ONE USERRRRRRRRRRR" +JSON.stringify(oneUser))
+
 
     useEffect(() => {
         refetch()

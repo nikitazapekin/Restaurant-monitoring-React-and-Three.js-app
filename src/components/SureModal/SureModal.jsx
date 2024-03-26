@@ -2,17 +2,18 @@
 import ReactDom from 'react-dom';
 import GetTableInfo from '../../hooks/getTableInfo';
 import { OverlayStyles, Modal, ModalWrapper, AgreeButton, DisagreeButton, ButtonBlock } from './SureModalStyles';
+import { useMutation, useQuery } from "@apollo/client";
 import Calendar from '../calendar/calendar';
 import useCalendar from '../../hooks/useCalendar';
 import GetTablesInfo from '../../hooks/getTablesInfo';
 import { useEffect } from 'react';
-import useSureModal from '../../hooks/useSureModal';
+
 import { useState } from 'react';
 import { ModalTitle } from '../Modal/ModalStyles';
+import { useParams } from 'react-router-dom';
 export default function SureModalWindow({ isOpen, setIsOpen, item }) {
-  console.log("ITEEEEEEEM" + JSON.stringify(item))
-
   const [isSuccess, setIsSuccess] = useState(false)
+  const {id} = useParams() 
   if (!isOpen) return null
   const portalElement = document.getElementById('sure')
   const handleClick = () => {
@@ -22,9 +23,22 @@ export default function SureModalWindow({ isOpen, setIsOpen, item }) {
   }
   const handleAgree = () => {
     setIsSuccess(true)
+       newBookingElement({
+           variables: {
+               input: {
+                   tableID: item.tableID,
+                   from: item.from,
+                   to: item.to,
+                   dataOfBooking: item.dataOfBooking,
+                   amountOfChairs: item.amountOfChairs,
+                   isBookedBy: id
+               }
+           }
+       }).then(({ data }) => {
+           console.log("DATA" + JSON.stringify(data));
+       });  
   }
   return ReactDom.createPortal(
-
     <>
       {!isSuccess ? (
         <>
@@ -37,7 +51,7 @@ export default function SureModalWindow({ isOpen, setIsOpen, item }) {
               </ModalTitle>
               <ButtonBlock>
                 <AgreeButton
-                  onClick={handleAgree}
+                 onClick={handleAgree}
                 >
                   Yes I agree!
                 </AgreeButton>
