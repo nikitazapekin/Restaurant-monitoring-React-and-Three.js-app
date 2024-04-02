@@ -10,14 +10,23 @@ import { useState } from "react";
 import WarningSign from "../../assets/warning.png"
 import SureModalWindow from "../SureModal/SureModal";
 import TimerComponent from "../TimerComponent/TimerComponent";
-
+import "./index.css"
+import useHistoryTables from "../../hooks/useHistoryTables";
+import RestoreModalWindow from "../restoreModal/restoreMofal";
+import useRestoreWindow from "../../hooks/useRestoreWindow";
 const PersonalFormOffers = () => {
     const { id } = useParams()
     const { oneUser, refetch, loading } = YourBookedTables({ id })
     const [isOpen, setIsOpen] = useState(false)
     const { handleRemove, handleConfirmTable } = useRemoveFromBooked()
     const [confirmingItem, setConfirmingItem] = useState()
+
+    const { allTablesHistory, handleRefetchHistory  } = useHistoryTables()
     const clickedElement = useRef()
+
+    useEffect(() => {
+        console.log("HISTTTTTT" + JSON.stringify(allTablesHistory))
+    }, [allTablesHistory])
     useEffect(() => {
         refetch()
     }, [])
@@ -34,7 +43,24 @@ const PersonalFormOffers = () => {
         refetch()
     }
     const handleClick = (item) => {
-       clickedElement.current = item
+        clickedElement.current = { ...item, isHistory: false };
+       // clickedElement.current = item
+        setIsOpen(true)
+    }
+
+    const handleClickRemove = (item) => {
+
+        handleRemove(item)
+        handleRefetchHistory()
+    }
+
+    /*
+    const clickedHistoryElement = useRef()
+    */
+    const handleHistoryWindow = (item) => {
+        //  clickedElement.current= item
+        clickedElement.current = { ...item, isHistory: true };
+        // clickedHistoryElement.current = item
         setIsOpen(true)
     }
     return (
@@ -49,7 +75,13 @@ const PersonalFormOffers = () => {
                                     <BookingElement key={index}>
                                         <BookingElementText>
                                             Table №{item.tableID} is booked for {item.timeForBooking}  ({item.dataOfBooking})
-                                            <TimerComponent isConfirmed={item.isConfirmed} time={item.timeOfBooking} handleRemove={handleRemove} item={item} />
+
+                                            {!item.isConfirmed && (
+
+                                                <TimerComponent
+                                                handleRefetchHistory={handleRefetchHistory}
+                                                isConfirmed={item.isConfirmed} time={item.timeOfBooking} handleRemove={handleRemove} item={item} />
+                                                )}
                                         </BookingElementText>
                                         {!item.isConfirmed && (
                                             <Warning
@@ -62,7 +94,8 @@ const PersonalFormOffers = () => {
                                         )}
                                         <TrashBox>
                                             <TrashBoxImage
-                                                onClick={() => handleRemove(item)}
+
+                                                onClick={() => handleClickRemove(item)}
                                                 src={Trash}
                                                 alt="trash" />
                                         </TrashBox>
@@ -71,13 +104,43 @@ const PersonalFormOffers = () => {
                                 )
                             ))}
                             {oneUser.getYourBookedTables.length === 0 ? <NothingToShowText>Nothing to show</NothingToShowText> : <></>}
+
+
+                         
+
+
+                            {allTablesHistory && (
+                                allTablesHistory.getYourBookedTablesHistory.map(itemm => (
+                                    <>
+                                        {itemm.history.map((item, index) => (
+                                            <>
+                                                <BookingElement
+                                                    onClick={() => handleHistoryWindow(item)}
+                                                    //    onClick={setIsOpen(true)}
+                                                    key={index}>
+                                                    <BookingElementText>
+                                                        Table №{item.tableID} is booked for {item.timeForBooking}  ({item.dataOfBooking})
+
+                                                    </BookingElementText>
+
+
+                                                </BookingElement>
+                                            </>
+                                        ))
+                                        }
+                                    </>
+                                ))
+                            )}
+
                         </>
                     )}
                 </PersonalFormStyled>
                 {/* 
                */}
-                <SureModalWindow isOpen={isOpen} setIsOpen={setIsOpen} item={clickedElement} handleConfirm={handleConfirm}   />
+                <SureModalWindow isOpen={isOpen} setIsOpen={setIsOpen} item={clickedElement} handleConfirm={handleConfirm} />
+
             </PersonalFormWrapper>
+          
         </>
     );
 }

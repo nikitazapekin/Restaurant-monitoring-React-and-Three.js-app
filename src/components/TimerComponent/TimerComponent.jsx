@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const TimerComponent = ({ isConfirmed, refetch, time, handleRemove, item }) => {
+const TimerComponent = ({ isConfirmed, refetch, time, handleRemove, item, handleRefetchHistory }) => {
     const [hours, minutes, seconds] = time.split(':').map(Number);
     const end = new Date();
     end.setHours(hours);
@@ -13,6 +13,7 @@ const TimerComponent = ({ isConfirmed, refetch, time, handleRemove, item }) => {
         } else {
             if (currentTime >= end) {
                 handleRemove(item);
+                handleRefetchHistory()
                 clearInterval(intervalId);
             }
         }

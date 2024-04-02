@@ -8,8 +8,10 @@ import PersonalFormOffersPage from "./pages/personalFormOffersPage";
  
 //import { Footer, Navbar } from "./components";
 //import { About, Contact, Home, Projects } from "./pages";
-
+import useHistoryTables from "./hooks/useHistoryTables";
 const App = () => {
+
+  const {handleTest} = useHistoryTables()
   return (
     <main className='bg-slate-300/20'>
 
@@ -34,6 +36,9 @@ const App = () => {
           />
         </Routes>
         </Router> 
+
+
+       
     </main>
   );
 };

@@ -1,26 +1,21 @@
 
 import ReactDom from 'react-dom';
-import GetTableInfo from '../../hooks/getTableInfo';
-import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText, SelectTimeTitle, SelectDataContainer, SelectDataOption, SelectForAllDayTable, ModalSubTitle } from './ModalStyles';
-export default function ModalWindow({ open, onClose, clickedElement, clickedDay, month, year}) {
+//import GetTableInfo from '../../hooks/getTableInfo';
+import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText, SelectTimeTitle, SelectDataContainer, SelectDataOption, SelectForAllDayTable, ModalSubTitle } from './restoreModalStyles';
+export default function RestoreModalWindow({ open, onClose}) {
   if (!open) return null;
   const portalElement = document.getElementById('portal')
-  const { handleBook, handleTime, oneUser, isError, currentDate, errorMessage, handleBookTableForDay, time, isConfirm } = GetTableInfo({ clickedElement, onClose, month, year, clickedDay })
+  //const { handleBook, handleTime, oneUser, isError, currentDate, errorMessage, handleBookTableForDay, time, isConfirm } = GetTableInfo({ clickedElement, onClose, month, year, clickedDay })
   return ReactDom.createPortal(
-    
-    <>
-  {/*   {item ? ( 
-    
-    {item ? (
-  */}
     <>
 
-      {!isConfirm ? (
+    
         <>
           <Modal open={open} width="90">
             <ModalWrapper>
+                {/*
               <HeaderWrapper>
-                <ModalTitle>
+                  <ModalTitle>
                   Table № {clickedElement}   {clickedDay}-{month + 1}-{year}
                 </ModalTitle>
                 <ModalData>
@@ -59,7 +54,7 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
               <BookedTime>
                 {oneUser && oneUser.getTableInfo != undefined && (
                   <>
-                  {oneUser.getTableInfo.timeForBooking.map((item => (
+                    {oneUser.getTableInfo.timeForBooking.map((item => (
                       <BookedTimeItem>
                         <BookingTimeItemContent>
                           <BookingTimeItemContentText>
@@ -77,42 +72,17 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
               >
                 Submit
               </ModalButton>
+                    */}
+
+
             </ModalWrapper>
           </Modal>
 
-        </>) : (
-        <>
+        </>)  
 
-          <Modal open={open} width="40">
-            <ModalWrapper>
-              <ModalTitle>
-                Contragulation! You have successfully booked this table for {clickedDay}-{month + 1}-{year}  ({time.from} {time.to})
-              </ModalTitle>
-              <ModalSubTitle>
-                Confirm your booking action at booked tables
-              </ModalSubTitle>
-              <ModalButton
-                onClick={onClose}
-              >
-                Submit
-                </ModalButton>
-                </ModalWrapper>
-                </Modal>
-                </>
-                )}
-
-                </>
-                
-           {/*     ) : (
-                <> 
-
-                itemmm
-                </>
-           )} */}
-                
-                <OverlayStyles onClick={() => onClose()} />
-             
-                </>,
+  
+      <OverlayStyles onClick={() => onClose()} />
+    </>,
     portalElement || document.body
   );
 }  
