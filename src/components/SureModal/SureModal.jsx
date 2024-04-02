@@ -11,9 +11,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { ModalTitle } from '../Modal/ModalStyles';
 import { useParams } from 'react-router-dom';
-export default function SureModalWindow({ isOpen, setIsOpen, item }) {
+export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm }) {
   const [isSuccess, setIsSuccess] = useState(false)
-  const {id} = useParams() 
+  const { id } = useParams()
   if (!isOpen) return null
   const portalElement = document.getElementById('sure')
   const handleClick = () => {
@@ -22,21 +22,8 @@ export default function SureModalWindow({ isOpen, setIsOpen, item }) {
 
   }
   const handleAgree = () => {
+    handleConfirm(item.current)
     setIsSuccess(true)
-       newBookingElement({
-           variables: {
-               input: {
-                   tableID: item.tableID,
-                   from: item.from,
-                   to: item.to,
-                   dataOfBooking: item.dataOfBooking,
-                   amountOfChairs: item.amountOfChairs,
-                   isBookedBy: id
-               }
-           }
-       }).then(({ data }) => {
-           console.log("DATA" + JSON.stringify(data));
-       });  
   }
   return ReactDom.createPortal(
     <>
@@ -51,7 +38,7 @@ export default function SureModalWindow({ isOpen, setIsOpen, item }) {
               </ModalTitle>
               <ButtonBlock>
                 <AgreeButton
-                 onClick={handleAgree}
+                  onClick={handleAgree}
                 >
                   Yes I agree!
                 </AgreeButton>

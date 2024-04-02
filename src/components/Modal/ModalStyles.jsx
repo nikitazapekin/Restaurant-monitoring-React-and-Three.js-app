@@ -1,7 +1,8 @@
 import styled from "styled-components"
 export const Modal = styled.div`
 width: 90%;
-height: 80%;
+//height: 80%;
+width: ${props=> props.width}%;
 position: fixed;
 top: 50%;
 left: 50%;
@@ -27,8 +28,11 @@ margin-bottom: 10px;
 `
 export const ModalTitle = styled.h1`
   font-size: 60px;
+`
 
-
+export const ModalSubTitle = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
 `
 export const HeaderWrapper = styled.div`
   width: 100%;
