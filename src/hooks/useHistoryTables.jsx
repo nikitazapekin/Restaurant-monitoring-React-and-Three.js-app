@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { GET_HISTORY } from "../query/history";
 import {   useQuery, useMutation } from "@apollo/client"
+import { useState } from "react";
 import { REPLACE__FROM__HISTORY } from "../mutations/replaceFromHistory";
 const useHistoryTables = ( ) => {
     const {id} =useParams()
@@ -17,7 +18,7 @@ const useHistoryTables = ( ) => {
   
 
 
-
+const [errMess, setErrMess] = useState()
 
     const [replaceElement] = useMutation(REPLACE__FROM__HISTORY);
     const handleReplaceTable = (item) => {
@@ -38,9 +39,10 @@ const useHistoryTables = ( ) => {
             }
         }).then(({ data }) => {
             console.log("DATA" + JSON.stringify(data));
+            setErrMess(data)
         });
     }
-return {handleRefetchHistory, allTablesHistory, handleReplaceTable }
+return {handleRefetchHistory, allTablesHistory, handleReplaceTable, errMess }
 }
  
 export default useHistoryTables;

@@ -1,3 +1,15 @@
+
+import { gql } from '@apollo/client'
+export const REPLACE__FROM__HISTORY = gql`
+mutation RemoveFromBookedElements($input: BookingActionObject ) {
+    replaceFromHistory(input: $input ) {
+   errorMessage
+  }
+  }
+  `
+
+/*
+ ReplaceFromHistoryResult
 import { gql } from '@apollo/client'
 export const REPLACE__FROM__HISTORY = gql`
 mutation RemoveFromBookedElements($input: BookingActionObject ) {
@@ -13,5 +25,5 @@ mutation RemoveFromBookedElements($input: BookingActionObject ) {
   }
   }
   `
-
+ */
 // replaceFromHistory: (parent, { input }) => {

@@ -462,11 +462,11 @@ import { useState } from 'react';
 import { ModalTitle } from '../Modal/ModalStyles';
 import { useParams } from 'react-router-dom';
 import useHistoryTables from '../../hooks/useHistoryTables';
-
+import "./index.css"
 export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const { id } = useParams();
-  const { handleReplaceTable, handleRefetchHistory } = useHistoryTables()
+  const { handleReplaceTable, handleRefetchHistory, errMess } = useHistoryTables()
   console.log("ITEMMMMMMMMM" + JSON.stringify(item));
   if (!isOpen) return null;
 
@@ -545,13 +545,40 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
           <Modal>
             <ModalWrapper>
               <ModalTitle>
-                Congratulations! You have successfully booked this table!
+
+                {errMess && errMess.replaceFromHistory.errorMessage ? (
+                  <p>
+                    {errMess.replaceFromHistory.errorMessage}
+                  </p>
+                ) :
+                  (
+
+                    <p>
+                      Congratulations! You have successfully booked this table!
+                    </p>
+                  )
+
+                }
+                {/*   Congratulations! You have successfully booked this table! 
+             
+             
+
+
+             eplaceFromHistory":{"errorMessage":"You cannot book this table as it is already booked for typed time","__typename":"ReplaceFromHistoryResult"}}
+Submit
+ccccc
+             */}
+
+
+            
               </ModalTitle>
               <AgreeButton onClick={handleClick}>
                 Submit
               </AgreeButton>
             </ModalWrapper>
+
           </Modal>
+
           <OverlayStyles />
         </>
       )}
