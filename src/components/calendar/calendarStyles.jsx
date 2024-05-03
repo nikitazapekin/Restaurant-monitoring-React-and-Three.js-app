@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+/*
 export const CalendarComponent = styled.div`
 width: 100%;
 height: 300px;
@@ -36,10 +38,7 @@ export const CalendarComponentSwitchButton = styled.div`
     align-items: center;
     border-radius: 10px;
     transition: 1s ease-in-out;
-    /*&:hover {
-
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-    } */
+  
     &:hover{
     letter-spacing: 2px;
   background-color: rgba(212, 125, 4);
@@ -96,4 +95,66 @@ export const CalendarData = styled.div`
 export const ErrorTime = styled.div`
     color: red;
     font-size: 24px;
+`
+
+*/
+
+export const CalendarComponent = styled.div`
+    width: 100%;
+    height: 432px;
+    background-color: #E0B574;
+    border-radius: 14px;
+    padding: 51px 26px;
+`
+
+export const CalendarDatas = styled.div`
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+`
+
+
+export const CalendarDataDay = styled.div`
+width: 55px;
+height: 55px;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+font-weight: 600;
+font-size: 12px;
+color: #000;
+
+
+font-family: "Inter", sans-serif;
+`
+
+
+export const CalendarData = styled.div`
+width: 55px;
+height: 55px;
+display: flex;
+align-items: center;
+transition: 1s;
+justify-content: center;
+border: 0.87px solid #000;
+cursor: pointer;
+&:hover {
+    background: #45539d;
+
+    font-weight: 600;
+font-size: 12px;
+color: #fff;
+}
+`
+
+
+export const CalendarDataDisabled = styled.div`
+width: 55px;
+height: 55px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #ba955e;
+border: 0.87px solid #000;
 `

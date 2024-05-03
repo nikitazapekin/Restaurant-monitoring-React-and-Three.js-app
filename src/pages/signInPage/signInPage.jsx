@@ -8,13 +8,20 @@ import NavBarMobileComponent from "../../components/NavBarMobile/NavBarMobile";
 const SignInPage = () => {
     return ( 
         <>
+
+        <NavBar />
+        <AuthForm />
+        {/*
+           <Layout>
+        </Layout>
         <Layout>
-<NavBarMobileComponent />
+        <NavBarMobileComponent />
         <NavBar />
         <AuthForm />
         <Footer />
         <Global />
         </Layout>
+    */}
         </>
      );
 }

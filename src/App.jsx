@@ -6,12 +6,17 @@ import SignInPage from "./pages/signInPage/signInPage";
 import PersonalPage from "./pages/personalPage/personalPage";
 import PersonalFormOffersPage from "./pages/personalFormOffersPage";
  
-//import { Footer, Navbar } from "./components";
-//import { About, Contact, Home, Projects } from "./pages";
+ 
 import useHistoryTables from "./hooks/useHistoryTables";
+import { useEffect, useState } from "react";
 const App = () => {
 
   const {handleTest} = useHistoryTables()
+
+
+ 
+
+ 
   return (
     <main className='bg-slate-300/20'>
 

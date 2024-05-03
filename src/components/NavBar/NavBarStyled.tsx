@@ -1,4 +1,8 @@
 import styled from "styled-components"
+
+
+
+/*
 export const NavBarComponent = styled.nav`
     width: 100%;
     height: 70px;
@@ -60,4 +64,62 @@ export const NavBarBtn = styled.div`
     z-index: 123;
     cursor: pointer;
 ` 
- 
+ */
+
+
+
+
+
+export const Navbar = styled.header`
+    width: 100%;
+    height: auto;
+
+    `
+
+export const NavbarInner = styled.nav`
+        
+        width: 100%;
+        height: 84px;
+        background-color:  #E0B574;
+        border-radius: 0 0 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px
+    `
+export const NavbarLogo = styled.div`
+ font-family: "Medula One", sans-serif;
+    font-weight: 400;
+font-size: 53px;
+ cursor: pointer;
+color: #000;
+`
+export const NavbarItem = styled.div`
+        display: flex;
+        height: 84px;
+        align-items: center;
+    `
+export const NavbarList = styled.ul`
+        width: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        column-gap: 45px;
+        
+    `
+export const NavbarListItem = styled.li`
+    font-weight: 400;
+font-size: 39px;
+cursor: pointer;
+position: relative;
+color: #000;
+    font-family: "Mohave", sans-serif;;
+    &:hover::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #000;  
+    }
+`

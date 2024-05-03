@@ -9,6 +9,9 @@ import { Global } from "../../consts/GlobalStyles";
 import { Layout } from "../pages.styles";
 const PersonalPage = () => {
     return ( <>
+    <NavBar />
+    <PersonalForm />
+    {/*
     <Layout>
     <NavBar />
     <NavBarMobileComponent />
@@ -16,6 +19,7 @@ const PersonalPage = () => {
     <PersonalForm />
     <Footer />
     </Layout>
+    */}
     </>
      );
 }

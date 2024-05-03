@@ -11,7 +11,7 @@ const RestaurantPage = () => {
         <NavBarMobileComponent />
         <Global />
         <RestaurantPreview />
-        <Footer  />
+        
         </>
       );
 }

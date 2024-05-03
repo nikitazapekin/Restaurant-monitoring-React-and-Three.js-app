@@ -1,4 +1,4 @@
-
+/*
 import ReactDom from 'react-dom';
 import GetTableInfo from '../../hooks/getTableInfo';
 import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText, SelectTimeTitle, SelectDataContainer, SelectDataOption, SelectForAllDayTable, ModalSubTitle } from './ModalStyles';
@@ -9,10 +9,7 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
   return ReactDom.createPortal(
     
     <>
-  {/*   {item ? ( 
-    
-    {item ? (
-  */}
+
     <>
 
       {!isConfirm ? (
@@ -103,12 +100,7 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
 
                 </>
                 
-           {/*     ) : (
-                <> 
-
-                itemmm
-                </>
-           )} */}
+          
                 
                 <OverlayStyles onClick={() => onClose()} />
              
@@ -116,3 +108,46 @@ export default function ModalWindow({ open, onClose, clickedElement, clickedDay,
     portalElement || document.body
   );
 }  
+
+
+*/
+
+
+
+
+
+
+
+
+
+import ReactDom from 'react-dom';
+import GetTableInfo from '../../hooks/getTableInfo';
+import { ModalCard, ModalEl, ModalElInner, Overlay } from './ModalStyles';
+//import { OverlayStyles, ErrorTime, Modal, ModalWrapper, ModalButton, ModalHeader, ModalTextBlock, ModalHeaderImage, ModalTitle, HeaderWrapper, ModalData, GridWrapper, GridTable, GridTableElement, SelectDataTitle, SelectBookingTimeBlock, SelectBookingTimeBlockFrom, SelectingBookingTimeBlockFromTitle, SelectingBookingTime, BookedTime, BookedTimeItem, BookingTimeItemBackground, BookingTimeItemContent, BookingTimeItemContentText, SelectTimeTitle, SelectDataContainer, SelectDataOption, SelectForAllDayTable, ModalSubTitle } from './ModalStyles';
+export default function ModalWindow({ open, onClose, clickedElement, clickedDay, month, year }) {
+  // if (!open) return null;
+  const portalElement = document.getElementById('portal')
+  const { handleBook, handleTime, oneUser, isError, currentDate, errorMessage, handleBookTableForDay, time, isConfirm } = GetTableInfo({ clickedElement, onClose, month, year, clickedDay })
+
+  return ReactDom.createPortal(
+
+    <>
+
+    {/*
+      {open && (
+      )}
+    */}
+
+        <ModalEl open={open}>
+          <ModalElInner>
+            <ModalCard open={open}>
+              jj
+            </ModalCard>
+          </ModalElInner>
+          <Overlay onClick={() => onClose()} />
+        </ModalEl>
+    </>,
+    portalElement || document.body
+  );
+}
+

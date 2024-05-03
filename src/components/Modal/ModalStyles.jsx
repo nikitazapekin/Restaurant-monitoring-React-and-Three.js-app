@@ -1,4 +1,6 @@
 import styled from "styled-components"
+/*
+*/
 export const Modal = styled.div`
 width: 90%;
 //height: 80%;
@@ -206,7 +208,7 @@ export const BookingTimeItemBackground = styled.div`
   height: 100%;
   background-color: rgba(173, 173, 173);
   opacity: 0.2;
-`
+  `
 export const BookingTimeItemContent = styled.div`
 width: 100%;
 position: relative;
@@ -236,7 +238,7 @@ border-radius: 20px;
 transition: 1s ease-in-out;
 margin-bottom: 0px;
 &:hover{
-    letter-spacing: 2px;
+  letter-spacing: 2px;
   background-color: rgba(212, 125, 4);
   color: #fff;
   transform: scale(1.01);
@@ -250,4 +252,47 @@ export const NothingToShowText =styled.p`
   text-align: center;
   color: gray;
   
+`
+
+export const ModalEl = styled.div`
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  left: 0;
+  top: 0;
+  //display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s ease-in-out;
+  display: ${props => (props.open ? 'flex' : 'none')};
+  
+  `
+export const Overlay = styled.div`
+
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0, 0, 0, .7);
+z-index: 1000;
+`
+export const ModalElInner = styled.div`
+display: grid;
+grid-template-columns: minmax(200px, 368px);
+transition: 1s ease-in-out;
+ 
+`
+
+export const ModalCard = styled.div`
+height: 585px;
+//background: ${props => (!props.open ? 'red' : '#c29858')};
+background: #c29858;
+position: relative;
+border-radius: 20px;
+padding: 36px 41px;
+z-index: 1111111111111111;
+
+transition: transform 1s ease-in-out;
+  transform: ${props => (props.open ? 'translateX(0)' : 'translateX(100%)')}; 
 `

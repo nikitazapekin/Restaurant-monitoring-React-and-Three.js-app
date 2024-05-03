@@ -1,5 +1,8 @@
 
 import styled from "styled-components";
+
+
+/*
 import PerfectScrollbar from "@opuscapita/react-perfect-scrollbar";
 export const PersonalFormStyled = styled.div`
     width: 100%;
@@ -281,6 +284,214 @@ color: rgba(66, 66, 66);
 font-weight: 500;
 text-align: right;
 `
+*/
 
 
 
+
+
+export  const PersonalFormComponent = styled.div`
+
+height: 100vh;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+width: 100%;
+`
+
+
+
+export const RestaurantComponentBackground = styled.img`
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+//z-index: 11;
+
+`
+export const RadialGradient = styled.div`
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(86.16% 64.2% at 32.35% 38.27%, rgb(15, 15, 15) 0%, rgb(117, 117, 117) 100%);
+ // background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+`
+
+
+export const PersonalInner = styled.div`
+display: flex;
+flex-direction: column;
+//height: 100vh;
+width: 100%;
+align-items: center;
+//justify-content: center;
+margin-top: 160px;
+`
+
+export const PersonalHeader  = styled.div`
+  display: flex;
+  flex-direction: column;
+ // background-color: red;
+position: relative;
+z-index:111111111111
+`
+
+
+export const PersonalHeaderTitle  = styled.p`
+font-weight: 400;
+font-size: 51px;
+ 
+color: #fff;
+font-family: "Mohave", sans-serif;
+  
+`
+
+export const PersonalHeaderBtn = styled.button`
+padding: 13px 45px;
+border-radius: 15px;
+box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+background: #e0b574;
+display: flex;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+
+font-weight: 500;
+font-size: 20px;
+line-height: 100%;
+ 
+color: #000;
+border: none;
+outline: none
+`
+
+export const Ttl = styled.div`
+  
+`
+export const Ttt = styled.button`
+  
+`
+
+export const HeaderTitle = styled.div`
+font-weight: 400;
+font-size: 51px;
+ 
+color: #fff;
+font-family: "Mohave", sans-serif;
+`
+export const HeaderBtn = styled.button`
+box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+background: #e0b574;
+border-radius: 15px;
+padding: 13px 45px;
+font-weight: 500;
+font-size: 20px;
+line-height: 100%;
+color: #000;
+max-width: 262px;
+margin: 0 auto;
+outline: none;
+cursor: pointer;
+border: none
+`
+export const PersonalMain = styled.div`
+display: grid;
+grid-template-columns: minmax(300px, 1002px);
+background-color: orange;
+`
+
+export const PersonalMainInner = styled.div`
+ //background-color: red;
+ width: 100%;
+ position: relative;
+z-index: 1111111;
+`
+
+export const PersonalMainInnerTitle  = styled.h1`
+font-weight: 600;
+font-size: 31px;
+color: #fff;
+font-family: "Mohave", sans-serif;
+text-align: center;
+
+margin-top: 56px;
+`
+
+
+export const PersonalMainInnerContent = styled.div`
+//display: flex;
+justify-content: space-between;
+display: grid;
+grid-template-columns: minmax(200px, 435px) minmax(200px, 435px);
+
+`
+
+export const  PersonalMainInnerContentBlock = styled.div`
+  
+border-radius: 14px;
+//background-color:  black;
+`
+
+export const  PersonalCalendar = styled.div` 
+
+`
+export const  PersonalBlockTitle = styled.p` 
+font-weight: 400;
+font-size: 31px;
+color: #fff;
+font-family: "Mohave", sans-serif;
+text-align: center;
+`
+export const  PersonalTables = styled.div` 
+height: 432px;
+border-radius: 14px;
+background: #e0b574;
+width: 100%;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+align-items: center;
+`
+
+export const PersonalTableItem  = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+   cursor: pointer;
+`
+
+export const  TableItemMini  = styled.div`
+border-radius: 3px;
+width: 21px;
+height: 12px;
+box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+background: #7e643d;
+`
+
+export const  TableItemMiniBlock  = styled.div`
+display: flex;
+column-gap: 18px;
+`
+
+export const  TableItemMain = styled.div`
+padding: 15px 16px;
+box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+background: #7e643d;
+border-radius: 20px;
+
+font-weight: 600;
+font-size: 23px;
+text-align: center;
+color: #000;
+white-space: nowrap;
+max-width: 91px;
+font-family: "Mohave", sans-serif;
+&:hover {
+  height: 200px;
+}
+`
