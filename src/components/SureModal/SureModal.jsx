@@ -454,7 +454,42 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
 
 
 
+/*
+{item.current && (
+            <>
+              {!item.current.isHistory && (
+                <div className={styles.modal}>
+                  <div className={styles.modal__inner}>
+                    <div className={styles.modal__background}>   </div>
+                    <h1 className={styles.modal__title}>
+                      Congratulations!
+                    </h1>
+                    <div className={styles.modal__text}>
+                      <p className={styles.modal__about}>
+                        You have successfully booked
+                        this table for
+                        {item.current.dataOfBooking}
+                        (    {item.current.from} - {item.current.to} )
+                        <br />
+                        Confirm reservation in your
+                        personal account
+                      </p>
+                    </div>
+                    <button className={styles.modal__btn} onClick={handleClick}>
+                      Submit
+                    </button>
+                  </div>
+                  <div className={styles.modal__overlay}>
 
+                  </div>
+                </div>
+              )}
+
+            </>
+          )}
+
+
+          */
 
 
 
@@ -497,10 +532,16 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
     handleReplaceTable(restoreItem)
     handleRefetchHistory()
   }
+
+  const handleClose = () => {
+
+    console.log("open")
+    setIsOpen(true)
+  }
   return ReactDOM.createPortal(
     <>
 
-      {!isSuccess && (
+      {!isSuccess ? (
         <>
           {item.current && (
             <>
@@ -509,20 +550,19 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
                   <div className={styles.modal__inner}>
                     <div className={styles.modal__background}>   </div>
                     <h1 className={styles.modal__title}>
-                      Congratulations!
+
+                      Book this table?
                     </h1>
                     <div className={styles.modal__text}>
                       <p className={styles.modal__about}>
-                        You have successfully booked
-                        this table for
-                        {item.current.dataOfBooking}
-                        (    {item.current.from} - {item.current.to} )
-                        <br />
-                        Confirm reservation in your
-                        personal account
+                        Are you sure to book table № {item.current.tableID} for {item.current.timeForBooking} <br></br> ({item.current.dataOfBooking})?
+
+
                       </p>
                     </div>
-                    <button className={styles.modal__btn} onClick={handleClick}>
+                    <button className={styles.modal__btn} //onClick={handleClick}
+                      onClick={handleAgree}
+                    >
                       Submit
                     </button>
                   </div>
@@ -534,6 +574,70 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
 
             </>
           )}
+          {item.current && (
+            <>
+              {item.current.isHistory && (
+                <div className={styles.modal}>
+                  <div className={styles.modal__inner}>
+                    <div className={styles.modal__background}>   </div>
+                    <h1 className={styles.modal__title}>
+                      Restore this booking?
+                    </h1>
+                    <div className={styles.modal__text}>
+                      <p className={styles.modal__about}>
+                        Are you sure to restore booking of table N {item.current.tableID} for  <br /> {item.current.from} - {item.current.to}  ({item.current.dataOfBooking})
+                      </p>
+                    </div>
+                    <button className={styles.modal__btn} //onClick={handleClick}
+                      onClick={() => handleRestore(item.current)}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                  <div className={styles.modal__overlay}>
+
+                  </div>
+                </div>
+              )}
+
+            </>
+          )}
+        </>
+      ) : (
+
+
+        <>
+
+
+
+          <div className={styles.modal}>
+            <div className={styles.modal__inner}>
+              <div className={styles.modal__background}>   </div>
+              <h1 className={styles.modal__title}>
+                Contragulation!
+              </h1>
+              <div className={styles.modal__text}>
+                <p className={styles.modal__about}>
+
+                  You have successfully booked
+                  this table for 6-4-2024
+                  (12:00-14:00) <br />
+                  {/*     Confirm reservation in your
+                  personal account
+      */}
+                </p>
+              </div>
+              <button className={styles.modal__btn}
+                onClick={handleClick}
+              >
+                Submit
+              </button>
+            </div>
+            <div className={styles.modal__overlay}>
+
+            </div>
+          </div>
+
         </>
       )}
 

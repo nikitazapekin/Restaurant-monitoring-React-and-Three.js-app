@@ -23,21 +23,14 @@ const PersonalFormOffers = () => {
     const [isOpen, setIsOpen] = useState(false)
     const { handleRemove, handleConfirmTable } = useRemoveFromBooked()
     const [confirmingItem, setConfirmingItem] = useState()
-
     const { allTablesHistory, handleRefetchHistory } = useHistoryTables()
     const clickedElement = useRef()
-
-    useEffect(() => {
-        console.log("HISTTTTTT" + JSON.stringify(allTablesHistory))
-    }, [allTablesHistory])
     useEffect(() => {
         refetch()
     }, [])
-
     useEffect(() => {
         refetch()
     }, [handleRemove])
-
     if (loading) {
         return <Spinner />
     }
@@ -50,13 +43,12 @@ const PersonalFormOffers = () => {
         setIsOpen(true)
     }
     const handleClickRemove = (item) => {
-
         handleRemove(item)
         handleRefetchHistory()
     }
     const handleHistoryWindow = (item) => {
         clickedElement.current = { ...item, isHistory: true };
-        setIsOpen(true)
+      setIsOpen(prev=> !prev)
     }
     return (
         <>
@@ -75,8 +67,9 @@ const PersonalFormOffers = () => {
                                             <div className={styles.reserved__table}>
                                                 <div className={styles.reserved__table__left}>
                                                     <p className={styles.reserved__date}>
-                                                        Table №4 is booked for
-                                                        12:00-15:00(6-12-2024)
+                                                        Table №{item.tableID} is booked for
+                                                        {" " + item.timeForBooking}
+                                                        {" (" + item.dataOfBooking + ") "}
                                                     </p>
                                                     <p className={styles.reserved__verification}>
                                                         You must confirm reservation
@@ -92,10 +85,10 @@ const PersonalFormOffers = () => {
                                                 <div className={styles.reserved__table__right}>
                                                     {!item.isConfirmed && (
                                                         <>
-                                                            <img src={First} alt="icon"   onClick={() => handleClick(item)}/>
+                                                            <img src={First} alt="icon" onClick={() => handleClick(item)} className={styles.reserved__table__img} />
                                                         </>
                                                     )}
-                                                    <img src={Second} alt="icon"    onClick={() => handleClickRemove(item)}/>
+                                                    <img src={Second} alt="icon" onClick={() => handleClickRemove(item)} className={styles.reserved__table__img} />
                                                 </div>
                                             </div>
                                         </>
@@ -103,75 +96,34 @@ const PersonalFormOffers = () => {
                                 ))}
                             </>
                         )}
+                        <SureModalWindow 
+                         isOpen={isOpen}
+                            setIsOpen={setIsOpen} item={clickedElement} handleConfirm={handleConfirm} />
+                        {oneUser.getYourBookedTables.length === 0 ? <NothingToShowText>Nothing to show</NothingToShowText> : <></>}
+                        {allTablesHistory && (
+                            allTablesHistory.getYourBookedTablesHistory.map(itemm => (
+                                <>
+                                    {itemm.history.map((item, index) => (
+                                        <>
+                                            <div className={styles.reserved__table}
+                                                onClick={() => handleHistoryWindow(item)}
+                                            >
+                                                <div className={styles.reserved__table__left}>
+                                                    <p className={styles.reserved__date}>
+                                                        Table №{item.tableID} is booked for
+                                                        {" " + item.timeForBooking}
+                                                        {" (" + item.dataOfBooking + ") "}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ))
+                                    }
+                                </>
+                            ))
+                        )}
 
-
-
-
-    
-<SureModalWindow // isOpen={isOpen}
-isOpen={true}
-setIsOpen={setIsOpen} item={clickedElement} handleConfirm={handleConfirm} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {/*
-
-                            
-                        <div className={styles.reserved__table}>
-
-                            <div className={styles.reserved__table__left}>
-                                <p className={styles.reserved__date}>
-                                    Table №4 is booked for
-                                    12:00-15:00(6-12-2024)
-                                </p>
-                                <p className={styles.reserved__verification}>
-                                    You must confirm reservation
-                                </p>
-                            </div>
-                            <div className={styles.reserved__table__right}>
-                                <img src={First} alt="icon" />
-                                <img src={Second} alt="icon" />
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-                        <div className={styles.reserved__table}>
-
-<div className={styles.reserved__table__left}>
-    <p className={styles.reserved__date}>
-        Table №4 is booked for
-        12:00-15:00(6-12-2024)
-    </p>
-    <p className={styles.reserved__verification}>
-        
-    </p>
-</div>
-<div className={styles.reserved__table__right}>
- 
-    <img src={Second} alt="icon" />
-</div>
-</div>
-
-*/}
+                    
                     </div>
 
                 </div>
