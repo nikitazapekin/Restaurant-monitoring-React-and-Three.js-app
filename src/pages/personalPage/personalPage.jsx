@@ -1,6 +1,7 @@
 
 
 
+import Background from "../../components/Background";
 import Footer from "../../components/Footer/footer";
 import NavBar from "../../components/NavBar/NavBar";
 import NavBarMobileComponent from "../../components/NavBarMobile/NavBarMobile";
@@ -11,15 +12,7 @@ const PersonalPage = () => {
     return ( <>
     <NavBar />
     <PersonalForm />
-    {/*
-    <Layout>
-    <NavBar />
-    <NavBarMobileComponent />
-    <Global /> 
-    <PersonalForm />
-    <Footer />
-    </Layout>
-    */}
+    <Background />
     </>
      );
 }

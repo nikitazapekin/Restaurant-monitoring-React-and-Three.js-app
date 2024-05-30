@@ -155,6 +155,8 @@ width: 100%;
 height: 100%;
 top: 0;
 left: 0;
+
+
 //z-index: 11;
 
 `
@@ -176,15 +178,9 @@ grid-template-columns: minmax(300px, 440px);
 width: 100%;
 justify-content: center;
 position: relative;
-//row-gap: 55px;
+ 
 z-index: 11111; 
 
-/*
-flex-basis: 494px;
-background-color: red;
-height: 440px;
-margin: 0 auto;
-*/
 `
 export const AuthInnerForm = styled.div`
  margin-top: 240px;

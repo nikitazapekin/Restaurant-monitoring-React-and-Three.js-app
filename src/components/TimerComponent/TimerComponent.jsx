@@ -4,7 +4,9 @@ const TimerComponent = ({ isConfirmed, refetch, time, handleRemove, item, handle
     const [hours, minutes, seconds] = time.split(':').map(Number);
     const end = new Date();
     end.setHours(hours);
-    end.setMinutes(minutes + 1);
+   // end.setMinutes(minutes + 1);
+
+   end.setMinutes(minutes + 5);
     end.setSeconds(seconds);
     function update() {
         const currentTime = new Date();
@@ -29,7 +31,7 @@ const TimerComponent = ({ isConfirmed, refetch, time, handleRemove, item, handle
     }, [isConfirmed]);
     return (
         <div>
-   {isConfirmed ? "" : "You must confirm reservation"}
+ 
         </div>
     );
 };

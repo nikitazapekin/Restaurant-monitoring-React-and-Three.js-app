@@ -1,6 +1,7 @@
 
 
 
+import Background from "../../components/Background";
 import Footer from "../../components/Footer/footer";
 import NavBar from "../../components/NavBar/NavBar";
 import NavBarMobileComponent from "../../components/NavBarMobile/NavBarMobile";
@@ -14,15 +15,7 @@ const Homepage = () => {
     <>
  <NavBar />
  <WelcomeForm />
-{/*
-      <NavBar />
-      <NavBarMobileComponent />
-      <Layout>
-        <WelcomeForm />
-        <Global />
-        <Footer />
-        </Layout>
-  */}
+ <Background />
     </>
   );
 }

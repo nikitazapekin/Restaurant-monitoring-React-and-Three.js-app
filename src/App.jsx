@@ -5,24 +5,13 @@ import RestaurantPage from "./pages/restaurantPage/restaurantPage";
 import SignInPage from "./pages/signInPage/signInPage";
 import PersonalPage from "./pages/personalPage/personalPage";
 import PersonalFormOffersPage from "./pages/personalFormOffersPage";
- 
- 
 import useHistoryTables from "./hooks/useHistoryTables";
 import { useEffect, useState } from "react";
 const App = () => {
-
   const {handleTest} = useHistoryTables()
-
-
- 
-
- 
   return (
     <main className='bg-slate-300/20'>
-
- 
    <Router>
- 
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route

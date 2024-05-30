@@ -290,7 +290,7 @@ text-align: right;
 
 
 
-export  const PersonalFormComponent = styled.div`
+export const PersonalFormComponent = styled.div`
 
 height: 100vh;
 position: absolute;
@@ -333,7 +333,7 @@ align-items: center;
 margin-top: 160px;
 `
 
-export const PersonalHeader  = styled.div`
+export const PersonalHeader = styled.div`
   display: flex;
   flex-direction: column;
  // background-color: red;
@@ -342,7 +342,7 @@ z-index:111111111111
 `
 
 
-export const PersonalHeaderTitle  = styled.p`
+export const PersonalHeaderTitle = styled.p`
 font-weight: 400;
 font-size: 51px;
  
@@ -412,7 +412,7 @@ export const PersonalMainInner = styled.div`
 z-index: 1111111;
 `
 
-export const PersonalMainInnerTitle  = styled.h1`
+export const PersonalMainInnerTitle = styled.h1`
 font-weight: 600;
 font-size: 31px;
 color: #fff;
@@ -431,23 +431,23 @@ grid-template-columns: minmax(200px, 435px) minmax(200px, 435px);
 
 `
 
-export const  PersonalMainInnerContentBlock = styled.div`
+export const PersonalMainInnerContentBlock = styled.div`
   
 border-radius: 14px;
 //background-color:  black;
 `
 
-export const  PersonalCalendar = styled.div` 
+export const PersonalCalendar = styled.div` 
 
 `
-export const  PersonalBlockTitle = styled.p` 
+export const PersonalBlockTitle = styled.p` 
 font-weight: 400;
 font-size: 31px;
 color: #fff;
 font-family: "Mohave", sans-serif;
 text-align: center;
 `
-export const  PersonalTables = styled.div` 
+export const PersonalTables = styled.div` 
 height: 432px;
 border-radius: 14px;
 background: #e0b574;
@@ -457,15 +457,18 @@ grid-template-columns: repeat(3, 1fr);
 align-items: center;
 `
 
-export const PersonalTableItem  = styled.div`
+export const PersonalTableItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 8px;
    cursor: pointer;
+   position: relative;
+   height: 104px;
+   justify-content: center;
 `
 
-export const  TableItemMini  = styled.div`
+export const TableItemMini = styled.div`
 border-radius: 3px;
 width: 21px;
 height: 12px;
@@ -473,12 +476,20 @@ box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
 background: #7e643d;
 `
 
-export const  TableItemMiniBlock  = styled.div`
+export const TableItemMiniBlock = styled.div`
 display: flex;
 column-gap: 18px;
+position: absolute;
+ top: 0;
 `
-
-export const  TableItemMain = styled.div`
+export const TableItemMiniBlockBottom = styled.div`
+display: flex;
+column-gap: 18px;
+position: absolute;
+ bottom: 0;
+`
+/*
+export const TableItemMain = styled.div`
 padding: 15px 16px;
 box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
 background: #7e643d;
@@ -491,7 +502,44 @@ color: #000;
 white-space: nowrap;
 max-width: 91px;
 font-family: "Mohave", sans-serif;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+transition: 1s ease-in-out;
+z-index: 111111;
 &:hover {
-  height: 200px;
+  transition: 1s ease-in-out;
+ // height: 200px;
+ height: 100%;
 }
 `
+
+*/
+
+export const TableItemMain = styled.div`
+  padding: 15px 16px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  background: #7e643d;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 23px;
+  text-align: center;
+  color: #000;
+  white-space: nowrap;
+  max-width: 91px;
+  font-family: "Mohave", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: height 0.5s ease-in-out, background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  z-index: 111111;
+  height: 64px; 
+  &:hover {
+    height: 100%;  
+    background-color: #6b5836;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.25);
+  }
+`;
+

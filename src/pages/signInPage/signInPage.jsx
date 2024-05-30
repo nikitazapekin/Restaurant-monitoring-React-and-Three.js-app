@@ -4,24 +4,13 @@ import Footer from "../../components/Footer/footer";
 import { Global } from "../../consts/GlobalStyles";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import NavBarMobileComponent from "../../components/NavBarMobile/NavBarMobile";
-
+import Background from "../../components/Background";
 const SignInPage = () => {
     return ( 
         <>
-
         <NavBar />
         <AuthForm />
-        {/*
-           <Layout>
-        </Layout>
-        <Layout>
-        <NavBarMobileComponent />
-        <NavBar />
-        <AuthForm />
-        <Footer />
-        <Global />
-        </Layout>
-    */}
+        <Background />
         </>
      );
 }

@@ -1,3 +1,4 @@
+import Background from "../components/Background";
 import Footer from "../components/Footer/footer";
 import NavBar from "../components/NavBar/NavBar";
 import NavBarMobileComponent from "../components/NavBarMobile/NavBarMobile";
@@ -10,9 +11,14 @@ const PersonalFormOffersPage = () => {
     <Layout>
         <NavBar  />
         <Global />
+        <Background />
+
+        <PersonalFormOffers />
+     {/*
         <NavBarMobileComponent />
         <PersonalFormOffers />
         <Footer />
+    */}
     </Layout>
 
     </> );

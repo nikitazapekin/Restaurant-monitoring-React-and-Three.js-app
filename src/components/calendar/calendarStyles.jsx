@@ -104,7 +104,7 @@ export const CalendarComponent = styled.div`
     height: 432px;
     background-color: #E0B574;
     border-radius: 14px;
-    padding: 51px 26px;
+    padding: 21px 26px;
 `
 
 export const CalendarDatas = styled.div`
@@ -119,8 +119,6 @@ height: 55px;
 display: flex;
 align-items: center;
 justify-content: center;
-
-
 font-weight: 600;
 font-size: 12px;
 color: #000;
@@ -128,8 +126,23 @@ color: #000;
 
 font-family: "Inter", sans-serif;
 `
+export const CalendarDateBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+`
 
-
+export const CalendarBtns = styled.div`
+display: flex;
+`
+export const CalendarBtn = styled.div`
+ 
+`
+export const CalendarDateBlockTitle = styled.p`
+font-weight: 600;
+font-size: 12px;
+color: #000;
+font-family: "Inter", sans-serif;
+`
 export const CalendarData = styled.div`
 width: 55px;
 height: 55px;
