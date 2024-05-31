@@ -27,7 +27,7 @@ const useRemoveFromBooked = () => {
     const { id } = useParams()
     const [confirmElement] = useMutation(CONFIRM_TABLE);
     const handleConfirmTable = (item) => {
-        console.log(111);
+     
         confirmElement({
             variables: {
                 input: {
@@ -47,20 +47,7 @@ const useRemoveFromBooked = () => {
 
 
 
-
-  /*  const { data: allTablesHistory, refetch } = useQuery(GET_HISTORY, {
-        variables: {
-
-            user: id
-            //  date: `${clickedDay}-${month + 1}-${year}`
-        },
-    })
-    const handleRefetchHistory = () => {
-        console.log("refeeeeee" +id)
-        refetch()
-    } */
-
-    // console.log("ALLLLLLLLLL TABLES")
+ 
 
 
 

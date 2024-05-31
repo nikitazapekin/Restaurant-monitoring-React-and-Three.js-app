@@ -34,6 +34,8 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
     const hasEnglishLetters = (str) => {
         return /[a-zA-Zа-яА-Я]/.test(str);
     }
+
+    const [isBooked, setIsBooked] = useState(false)
     const [newBookingElement] = useMutation(BOOKING_ACTION)
     const handleBook = () => {
         if (hasEnglishLetters(time.from) || hasEnglishLetters(time.to) || time.to.length != 5 || time.from.length !=5 || time.chairs.length == 0 || hasEnglishLetters(time.chairs)) {
@@ -46,11 +48,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
            setErrorMessage("Please enter time")
       }
             else {
-
-
-              //  if(isConfirm) {
-
-      
                newBookingElement({
                         variables: {
                             input: {
@@ -67,7 +64,7 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
                     setErrorMessage(data.createBookingAction.errorMessage)
                 } else {
                     setIsConfirm(true)
-                 //   onClose()
+                    setIsBooked(true)
                 }
             })
        // }
@@ -96,6 +93,6 @@ const GetTableInfo = ({ clickedElement, onClose, month, year, clickedDay }) => {
             to: "00:00"
         }));
     }
-    return {time,  handleTime, oneUser, handleBook, isError, currentDate, handleRefreshData, refetch, errorMessage, handleBookTableForDay, isConfirm }
+    return {time,  handleTime, oneUser, handleBook, isError, currentDate, handleRefreshData, refetch, errorMessage, handleBookTableForDay, isConfirm, isBooked }
 }
 export default GetTableInfo

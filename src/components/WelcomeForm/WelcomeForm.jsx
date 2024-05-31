@@ -65,9 +65,6 @@ import { Link } from "react-router-dom";
 const WelcomeForm = () => {
   const { cardList, currentCard, dragEndHandler, dragLeaveHandler, dragOverHandler, dropHandler, sortCards, dragStartHandler } = useStars()
   return (<>
-  {/*
-    <img src={Background} className={styles.page__background} alt="restaurant" />
-  */}
     <div className={styles.welcome}>
       <h1 className={styles.welcome__title}>
         Welcome to
@@ -78,19 +75,17 @@ const WelcomeForm = () => {
       <h2 className={styles.welcome__subtitle}>
         Aplication of monitoring and booking
       </h2>
-      <button className={styles.welcome__btn}>
-
-        <Link to="/restaurant" style={{color: "#fff", textDecoration: "none"}}>
-
-        3D tour
-        </Link>
-      </button>
+      <Link to="/restaurant" style={{ color: "#fff", textDecoration: "none" }}>
+        <button className={styles.welcome__btn}>
+          3D tour
+        </button>
+      </Link>
       <p className={styles.welcome__reserve}>
-        Reserve a table
+        <Link to="/sign_in" style={{ color: "#fff", textDecoration: "none" }}>
+          Reserve a table
+        </Link>
       </p>
     </div>
-
   </>);
 }
-
 export default WelcomeForm;

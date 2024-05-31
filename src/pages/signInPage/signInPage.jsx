@@ -8,6 +8,8 @@ import Background from "../../components/Background";
 const SignInPage = () => {
     return ( 
         <>
+        {/*
+        */}
         <NavBar />
         <AuthForm />
         <Background />

@@ -7,22 +7,20 @@ import { Global } from "../consts/GlobalStyles";
 import { Layout } from "./pages.styles";
 
 const PersonalFormOffersPage = () => {
-    return ( <>
-    <Layout>
-        <NavBar  />
-        <Global />
-        <Background />
+    return (<>
+        <Layout>
 
-        <PersonalFormOffers />
-     {/*
-        <NavBarMobileComponent />
-        <PersonalFormOffers />
-        <Footer />
+            {/*
     */}
-    </Layout>
+            <NavBar />
+            <Global />
+            <Background />
 
-    </> );
+            <PersonalFormOffers />
+
+        </Layout>
+
+    </>);
 }
- 
+
 export default PersonalFormOffersPage;
- 

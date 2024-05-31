@@ -321,19 +321,18 @@ const PersonalForm = memo(() => {
                     <h1 className={styles.personal__username} >
                         Hello  {oneUser != undefined && oneUser.getUser != undefined ? oneUser.getUser.username : ""}!
                     </h1>
-                    <button className={styles.personal__my}>
-
-                        <Link style={{ textDecoration: "none", color: "#fff" }} to={`/yourOffers/${id}`}>
-
-                            My booked tables
-                        </Link>
-                    </button>
+                    <Link style={{ textDecoration: "none", color: "#fff" }} to={`/yourOffers/${id}`}>
+                        <button className={styles.personal__my}>
+                            <p className={styles.personal__my__text}>
+                                My booked tables
+                            </p>
+                        </button>
+                    </Link>
                     <p className={styles.tables__title}>
                         For booking a table:
                     </p>
                     <div className={styles.tables}>
                         <div className={styles.table}>
-
                             <p className={styles.table__title}>
                                 Select date
                             </p>
@@ -364,8 +363,157 @@ const PersonalForm = memo(() => {
                                 <div className={styles.table__tables}>
                                     <div className={styles.table__background}>
                                     </div>
-
                                     <div className={styles.table__lineBig}>
+                                        <div className={styles.tab} onClick={() => handleClick(1)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 1
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.tab} onClick={() => handleClick(2)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 2
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.tab} onClick={() => handleClick(3)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 3
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.table__lineSmall}>
+                                        <div className={styles.tab} onClick={() => handleClick(4)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 4
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.tab} onClick={() => handleClick(5)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 5
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.table__lineBig}>
+                                        <div className={styles.tab} onClick={() => handleClick(6)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 6
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.tab} onClick={() => handleClick(7)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 7
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.tab} onClick={() => handleClick(8)}>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                            <div className={styles.tab__main}>
+                                                Table 8
+                                            </div>
+                                            <div className={styles.tab__line}>
+                                                <div className={styles.tab__chair}>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    {/*
+
+                                    <div onClick={() => handleClick(1)} className={styles.table__block}>
+                                            <div className={styles.table__first__layer}>
+                                                <div className={styles.table__chair}> </div>
+                                            </div>
+                                            <div className={styles.table__plate}>
+                                                Table 1
+
+                                                <div className={styles.table__plate__background}>
+
+                                                </div>
+                                            </div>
+                                            <div className={styles.table__second__layer}>
+                                                <div className={styles.table__chair}> </div>
+                                            </div>
+
+                                        </div>
+
+
+    */}
+
+
+
+
+
+                                    {/*
+
                                         <div onClick={() => handleClick(1)} className={styles.table__block}>
                                             <div className={styles.table__first__layer}>
                                                 <div className={styles.table__chair}> </div>
@@ -421,6 +569,7 @@ const PersonalForm = memo(() => {
 
 
 
+                                */}
 
 
 
@@ -428,7 +577,7 @@ const PersonalForm = memo(() => {
 
 
 
-
+                                    {/*
 
 
                                     <div className={styles.table__lineSmall}>
@@ -533,7 +682,7 @@ const PersonalForm = memo(() => {
 
                                         </div>
                                     </div>
-
+*/}
                                 </div>
 
                             </div>

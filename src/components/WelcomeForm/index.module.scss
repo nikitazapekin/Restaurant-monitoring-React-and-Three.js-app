@@ -16,6 +16,8 @@
         font-size: 83px;
         color: #fff;
         font-family: "Mohave", sans-serif;
+
+
     }
 
     &__btn {
@@ -29,6 +31,14 @@
         border: 3.59px solid #fff;
         border-radius: 48px;
         padding: 7px 102px;
+
+        transition: 1s ease;
+        perspective: 300px;
+
+    }
+
+    &__btn:hover {
+        transform: rotateY(2deg) rotateZ(7deg) rotateX(30deg);
     }
 
     &__title span {
@@ -54,5 +64,64 @@
         text-decoration: underline;
         color: #fff;
         font-family: "Mohave", sans-serif;
+    }
+
+
+    @media (max-width: 1000px) {
+        &__title {
+            font-size: 60px;
+
+        }
+
+        &__title span {
+            font-weight: 400;
+            font-size: 80px;
+            color: #fff;
+            font-family: "Medula One", sans-serif;
+            padding-left: 20px;
+        }
+
+        &__subtitle {
+            font-weight: 400;
+            font-size: 37px;
+            color: #fff;
+            font-family: "Mohave", sans-serif;
+            margin-bottom: 20px;
+
+        }
+
+
+        &__btn {
+            font-weight: 400;
+            font-size: 28px;
+            text-align: center;
+            color: #fff;
+            font-family: "Mohave", sans-serif;
+            cursor: pointer;
+            background-color: transparent;
+            border: 3.59px solid #fff;
+            border-radius: 48px;
+            padding: 7px 102px;
+
+            transition: 1s ease;
+            perspective: 300px;
+
+        }
+
+        &__reserve {
+            font-weight: 400;
+            font-size: 33px;
+            text-decoration: underline;
+            color: #fff;
+            font-family: "Mohave", sans-serif;
+        }
+    }
+    @media (max-width: 750px) {
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        text-align: center;
     }
 }

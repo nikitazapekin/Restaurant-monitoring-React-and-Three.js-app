@@ -16,6 +16,8 @@ const Homepage = () => {
  <NavBar />
  <WelcomeForm />
  <Background />
+ {/*
+  */}
     </>
   );
 }

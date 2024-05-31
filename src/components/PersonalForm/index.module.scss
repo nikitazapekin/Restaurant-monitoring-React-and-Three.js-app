@@ -1,6 +1,7 @@
 .personal {
     width: 100%;
     height: 100%;
+    padding: 0px 10px;
 
     &__inner {
         margin-top: 72px;
@@ -14,42 +15,82 @@
         font-size: 51px;
         color: #fff;
         font-family: "Mohave", sans-serif;
+
+        @media (max-width: 921px) {
+        text-align: center;
+        }
+        @media (max-width: 560px) {
+         font-size: 35px;
+            }
     }
+
+
 
     &__my {
         border-radius: 25px;
-        padding: 13px 27px;
-        width: 262px;
+        padding: 13px 45px;
         height: 46px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
-
         font-weight: 500;
         font-size: 20px;
         line-height: 100%;
         text-align: center;
         color: #fff;
-
         background-color: rgba(224, 181, 116, 0.6);
-        ;
+        backdrop-filter: blur(100px);
+        box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
         cursor: pointer;
 
         font-family: "Inter", sans-serif;
         border: none;
         outline: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
     }
-}
 
+    &__my::after {
+        position: absolute;
+        content: ">";
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) translateX(300px);
+        transition: transform 0.5s ease;
+    }
+
+    &__my:hover::after {
+        transform: translateY(-50%) translateX(-30px);
+    }
+
+    &__my__text {
+        transition: transform 0.5s ease;
+    }
+
+    &__my:hover {
+        background-color: #ce7c00;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    &__my:hover &__my__text {
+        transform: translateX(-15px);
+    }
+
+}
 
 .tables {
     display: flex;
     max-width: 1006px;
     justify-content: space-between;
-
     width: 100%;
+
+
+    @media (max-width: 921px) {
+        row-gap: 40px;
+        flex-direction: column;
+    }
+
 
     &__title {
         font-weight: 600;
@@ -62,12 +103,14 @@
 .table {
     flex-basis: 440px;
 
-
     &__inner {
 
+        box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(100px);
         position: relative;
         padding: 26px;
         border-radius: 14px;
+        height: 451px;
     }
 
     &__title {
@@ -76,6 +119,8 @@
         font-size: 31px;
         color: #fff;
         font-family: "Mohave", sans-serif;
+
+
     }
 
 
@@ -164,14 +209,13 @@
             top: 0;
             left: 0;
             z-index: -1;
+
         }
 
-        
+
+
     }
 
-    /*   &__plate:hover {
-        padding: 50.63px 16.08px;
-    } */
     &__tables {
         display: flex;
         flex-direction: column;
@@ -252,5 +296,61 @@
         background: #bb904e;
         border: 0.5px solid #fff;
         color: #c7c7c7;
+    }
+}
+
+
+
+.table__block:hover .table__plate__background {
+    height: 150%;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    row-gap: 7.8px;
+    width: 91px;
+    justify-content: space-between;
+    position: relative;
+    font-weight: 600;
+    font-size: 23px;
+    height: 104px;
+    color: #fff;
+
+    &__main {
+        border-radius: 20px;
+        background: #7e643d;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 15px 16px;
+        font-family: "Mohave", sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 91px;
+        height: 64px;
+        transition: 1s;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+        white-space: nowrap;
+
+        &:hover {
+            height: 100%;
+        }
+    }
+
+    &__chair {
+        border-radius: 3px;
+        width: 21px;
+        height: 12px;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+        background: #7e643d;
+    }
+
+    &__line {
+        display: flex;
+        justify-content: center;
+        column-gap: 18px;
     }
 }

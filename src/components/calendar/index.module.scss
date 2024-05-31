@@ -17,8 +17,11 @@
         font-size: 12px;
         text-align: center;
         color: #fff;
+        @media (max-width: 462px) {
+           width: 41px;
+           height: 41px;
+        }
     }
-
     &__item {
         width: 56px;
         height: 56px;
@@ -33,8 +36,11 @@
         text-align: center;
         color: #fff;
         transition: 0.5s;
+        @media (max-width: 462px) {
+            width: 41px;
+            height: 41px;
+         }
     }
-
     &__item:hover {
         background: #ce7c00;
         font-weight: 600;
@@ -59,5 +65,9 @@
         background: #bb904e;
         border: 0.5px solid #fff;
         color: #c7c7c7;
+        @media (max-width: 462px) {
+            width: 41px;
+            height: 41px;
+         }
     }
 }

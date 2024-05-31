@@ -1,42 +1,4 @@
-                                   /*
-import Logo from "../../assets/logo.png"
-import { Link } from "react-router-dom";
-import { useState } from "react";
 
-import { Navbar, NavbarInner, NavbarItem, NavbarList, NavbarListItem, NavbarLogo } from "./NavBarStyled";
-const NavBar = () => {
-     return (
-          <>
-               <Navbar>
-                    <NavbarInner>
-                         <NavbarItem>
-
-                              <NavbarLogo>
-                                   <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
-                                        The Niso
-                                   </Link>
-                              </NavbarLogo>
-                         </NavbarItem>
-                         <NavbarItem>
-                              <NavbarList>
-                                   <NavbarListItem>
-                                        Home
-                                   </NavbarListItem>
-                                        <Link to="/sign_in" style={{ textDecoration: "none", color: "#000" }}>
-                                   <NavbarListItem>
-                                             Account
-                                   </NavbarListItem>
-                                        </Link>
-                              </NavbarList>
-                         </NavbarItem>
-                    </NavbarInner>
-               </Navbar>
-          </>
-     );
-}
-export default NavBar;
-
-*/
 import Logo from "../../assets/logo.png"
 import { Link } from "react-router-dom";
 import { useState } from "react";

@@ -12,7 +12,8 @@
   left: 0;
   top: 0;
   position: absolute;
-  filter: brightness(80%);
+  filter: brightness(80%) blur(130px);
+
 }
 .fon__gradient {
   width: 100%;

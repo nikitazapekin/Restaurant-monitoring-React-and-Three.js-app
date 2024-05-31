@@ -5,15 +5,17 @@ import RestaurantPreview from "../../components/restaurantPreview/restaurantPrev
 import { Global } from "../../consts/GlobalStyles";
 
 const RestaurantPage = () => {
-    return (
-        <>
-        <NavBar />
+  return (
+    <>
+      <NavBar />
+      {/*
         <NavBarMobileComponent />
-        <Global />
-        <RestaurantPreview />
-        
-        </>
-      );
+      <Global />
+    */}
+      <RestaurantPreview />
+
+    </>
+  );
 }
- 
+
 export default RestaurantPage;

@@ -265,7 +265,7 @@ import { CalendarComponent, CalendarData, CalendarDataDay, CalendarDataDisabled,
 const Calendar = ({ month, year, clickedDay, handleDecrement, handleIncrement, handleSelectDay, daysInMonth }) => {
     const daysOfWeek = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
     let currentDate = new Date(year, month, 1);
-    let firstDayOfWeek = (currentDate.getDay() + 6) % 7;  
+    let firstDayOfWeek = (currentDate.getDay() + 6) % 7;
     let previousMonth = new Date(year, month, 0);
     let lastDayOfPreviousMonth = previousMonth.getDate();
     const [isOpen, setIsOpen] = useState(false)
@@ -308,9 +308,9 @@ const Calendar = ({ month, year, clickedDay, handleDecrement, handleIncrement, h
                     </div>
                 ))}
                 {currentMonthDays.map((day, index) => (
-                    <div className={styles.calendar__item} key={`current-${index}`}  onClick={() => handleSelectDay(index + 1)}
-               style={day === clickedDay ? { background: '#ce7c00', fontWeight: 600, fontSize: '12px', color: '#fff' } : {}}
-               >
+                    <div className={styles.calendar__item} key={`current-${index}`} onClick={() => handleSelectDay(index + 1)}
+                        style={day === clickedDay ? { background: '#ce7c00', fontWeight: 600, fontSize: '12px', color: '#fff' } : {}}
+                    >
                         {day}
                     </div>
                 ))}
@@ -321,20 +321,7 @@ const Calendar = ({ month, year, clickedDay, handleDecrement, handleIncrement, h
                 ))}
             </div>
 
-            {/*
-            <ModalWindow
-            open={isOpen}
-            //  open={true}
-                clickedElement={clickedElement}
-                onClose={() => setIsOpen(false)}
-                month={month}
-                year={year}
-                clickedDay={clickedDay}
-                handleOpen={handleOpen}
-                setIsOpen={setIsOpen}
-                >
-                </ModalWindow>
-            */}
+
         </>
     );
 };
