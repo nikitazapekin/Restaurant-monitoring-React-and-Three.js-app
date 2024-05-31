@@ -112,9 +112,40 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
 
 
         <>
+{errMess && (
+<>
+  {errMess.replaceFromHistory.errorMessage ? (
+    <>
 
 
 
+<div className={styles.modal}>
+            <div className={styles.modal__inner}>
+              <div className={styles.modal__background}>   </div>
+              <h1 className={styles.modal__title}>
+              Error
+              </h1>
+              <div className={styles.modal__text}>
+                <p className={styles.modal__about}>
+
+               This table is already booked <br />
+ 
+                </p>
+              </div>
+              <button className={styles.modal__btn}
+                onClick={handleClick}
+              >
+                Submit
+              </button>
+            </div>
+            <div className={styles.modal__overlay}>
+
+            </div>
+          </div>
+  </>
+):  (
+
+<>
           <div className={styles.modal}>
             <div className={styles.modal__inner}>
               <div className={styles.modal__background}>   </div>
@@ -141,6 +172,18 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
             </div>
           </div>
 
+</>
+
+)}
+
+
+
+
+
+
+</>
+)}
+
         </>
       )}
 
@@ -149,3 +192,4 @@ export default function SureModalWindow({ isOpen, setIsOpen, item, handleConfirm
   );
 }
 
+//DATA{"replaceFromHistory":{"errorMessage":"You cannot reserve this table for the whole day as it is already booked for some time","__typename":"ReplaceFromHistoryResult"}}
