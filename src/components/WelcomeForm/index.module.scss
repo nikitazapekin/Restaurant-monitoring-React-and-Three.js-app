@@ -124,4 +124,9 @@
         align-items: center;
         text-align: center;
     }
+
+    @media (max-width: 540px) {
+margin-top: 160px;
+
+    }
 }
