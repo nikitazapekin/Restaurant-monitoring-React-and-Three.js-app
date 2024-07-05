@@ -1,0 +1,22 @@
+
+
+
+
+FROM node:20.1.0
+
+# Set working directory to /app 
+WORKDIR /app
+
+# Copy package.json and yarn.lock to /app
+COPY package*.json yarn.lock ./
+
+# Install dependencies using yarn
+RUN yarn install
+
+# Copy all files to /app
+COPY . .
+
+EXPOSE 5173
+
+# Run the app using yarn run dev
+CMD ["yarn", "run", "dev"]
