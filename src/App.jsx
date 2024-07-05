@@ -42,4 +42,10 @@ export default App;
  //docker build -f Dockerfile.dev -t react-client:1.0 .
 //docker run -d -p 5173:5173 react-client:1.0 
 
+
+
+
+
+//docker-compose up app-dev --build
+
  
